@@ -18,16 +18,16 @@ namespace Domain.CommandHandlers
             INotificationHandler<UpdateCustomerCommand>,
             INotificationHandler<RemoveCustomerCommand>
     {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IMediatorHandler Bus;
+        private readonly ICustomerRepository customerRepository;
+        private readonly IMediatorHandler mediatorHandler;
 
         public CustomerCommandHandler(ICustomerRepository customerRepository,
-                                      IUnitOfWork uow,
-                                      IMediatorHandler bus,
-                                      INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
+                                      IUnitOfWork unitOfWork,
+                                      IMediatorHandler mediatorHandler,
+                                      INotificationHandler<DomainNotification> notifications) : base(unitOfWork, mediatorHandler, notifications)
         {
-            _customerRepository = customerRepository;
-            Bus = bus;
+            this.customerRepository = customerRepository;
+            this.mediatorHandler = mediatorHandler;
         }
 
         public void Handle(RegisterNewCustomerCommand message)
@@ -40,17 +40,17 @@ namespace Domain.CommandHandlers
 
             var customer = new Customer(Guid.NewGuid(), message.Name, message.Email, message.BirthDate);
 
-            if (_customerRepository.GetByEmail(customer.Email) != null)
+            if (customerRepository.GetByEmail(customer.Email) != null)
             {
-                Bus.RaiseEvent(new DomainNotification(message.MessageType, "The customer e-mail has already been taken."));
+                mediatorHandler.RaiseEvent(new DomainNotification(message.MessageType, "The customer e-mail has already been taken."));
                 return;
             }
 
-            _customerRepository.Add(customer);
+            customerRepository.Add(customer);
 
             if (Commit())
             {
-                Bus.RaiseEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+                mediatorHandler.RaiseEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
             }
         }
 
@@ -63,22 +63,22 @@ namespace Domain.CommandHandlers
             }
 
             var customer = new Customer(message.Id, message.Name, message.Email, message.BirthDate);
-            var existingCustomer = _customerRepository.GetByEmail(customer.Email);
+            var existingCustomer = customerRepository.GetByEmail(customer.Email);
 
             if (existingCustomer != null && existingCustomer.Id != customer.Id)
             {
                 if (!existingCustomer.Equals(customer))
                 {
-                    Bus.RaiseEvent(new DomainNotification(message.MessageType, "The customer e-mail has already been taken."));
+                    mediatorHandler.RaiseEvent(new DomainNotification(message.MessageType, "The customer e-mail has already been taken."));
                     return;
                 }
             }
 
-            _customerRepository.Update(customer);
+            customerRepository.Update(customer);
 
             if (Commit())
             {
-                Bus.RaiseEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+                mediatorHandler.RaiseEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
             }
         }
 
@@ -90,17 +90,17 @@ namespace Domain.CommandHandlers
                 return;
             }
 
-            _customerRepository.Remove(message.Id);
+            customerRepository.Remove(message.Id);
 
             if (Commit())
             {
-                Bus.RaiseEvent(new CustomerRemovedEvent(message.Id));
+                mediatorHandler.RaiseEvent(new CustomerRemovedEvent(message.Id));
             }
         }
 
         public void Dispose()
         {
-            _customerRepository.Dispose();
+            customerRepository.Dispose();
         }
     }
 }

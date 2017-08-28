@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Customers.sql" />
+    <Build Include="Tables\Products.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MyApp.Database.publish.xml" />

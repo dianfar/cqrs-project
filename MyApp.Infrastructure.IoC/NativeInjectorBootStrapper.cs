@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.Interfaces;
+using Application.Services;
+using AutoMapper;
 using Domain.CommandHandlers;
 using Domain.Commands;
 using Domain.Core.Bus;
@@ -9,6 +11,7 @@ using Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using MyApp.Application.Services;
 using MyApp.Domain.Core.Bus;
 using MyApp.Infrastructure.Data.Context;
 using MyApp.Infrastructure.Data.Repository;
@@ -30,7 +33,8 @@ namespace MyApp.Infrastructure.IoC
             // Application
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            services.AddScoped<Application.Interfaces.ICustomerAppService, Application.Services.CustomerAppService>();
+            services.AddScoped<ICustomerAppService, CustomerAppService>();
+            services.AddScoped<IProductAppService, ProductAppService>();
 
             // Domain - Events
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();

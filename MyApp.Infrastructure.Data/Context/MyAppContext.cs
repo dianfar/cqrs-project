@@ -3,7 +3,7 @@ using MyApp.Infrastructure.Data.Mappings;
 using MyApp.Infrastructure.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Domain.Models;
+using MyApp.Domain.Models;
 
 namespace MyApp.Infrastructure.Data.Context
 {

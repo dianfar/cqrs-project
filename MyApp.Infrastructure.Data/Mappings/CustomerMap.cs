@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using MyApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyApp.Infrastructure.Data.Extensions;

@@ -1,25 +1,25 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Application.Interfaces;
+using MyApp.Application.Interfaces;
 using MediatR;
-using Domain.Core.Notifications;
-using Application.ViewModels;
+using MyApp.Domain.Core.Notifications;
+using MyApp.Application.ViewModels;
 
 namespace MyApp.Web.Controllers
 {
     public class CustomerController : BaseController
     {
-        private readonly ICustomerAppService _customerAppService;
+        private readonly ICustomerAppService customerAppService;
 
         public CustomerController(ICustomerAppService customerAppService,
                                   INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
-            _customerAppService = customerAppService;
+            this.customerAppService = customerAppService;
         }
 
         public IActionResult Index()
         {
-            var customers = _customerAppService.GetAll();
+            var customers = customerAppService.GetAll();
             return View(customers);
         }
 
@@ -33,7 +33,7 @@ namespace MyApp.Web.Controllers
         public IActionResult Add(CustomerViewModel customerViewModel)
         {
             if (!ModelState.IsValid) return View(customerViewModel);
-            _customerAppService.Register(customerViewModel);
+            customerAppService.Register(customerViewModel);
 
             return RedirectToAction("Index");
         }
@@ -41,7 +41,7 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var customer = _customerAppService.GetById(id);
+            var customer = customerAppService.GetById(id);
             return View(customer);
         }
 
@@ -49,7 +49,7 @@ namespace MyApp.Web.Controllers
         public IActionResult Edit(CustomerViewModel customerViewModel)
         {
             if (!ModelState.IsValid) return View(customerViewModel);
-            _customerAppService.Update(customerViewModel);
+            customerAppService.Update(customerViewModel);
 
             return RedirectToAction("Index");
         }
@@ -57,7 +57,7 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Delete([FromQuery]Guid id)
         {
-            _customerAppService.Remove(id);
+            customerAppService.Remove(id);
             return RedirectToAction("Index");
         }
 

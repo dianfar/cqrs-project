@@ -1,13 +1,13 @@
-﻿using Domain.CommandHandlers;
-using Domain.Commands;
+﻿using MyApp.Domain.CommandHandlers;
+using MyApp.Domain.Commands;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Domain.Core.Bus;
-using Domain.Core.Notifications;
-using Domain.Interfaces;
-using Domain.Models;
+using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Core.Notifications;
+using MyApp.Domain.Interfaces;
+using MyApp.Domain.Models;
 
 namespace MyApp.Domain.CommandHandlers
 {

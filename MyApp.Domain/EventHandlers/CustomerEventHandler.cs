@@ -1,4 +1,4 @@
-﻿using Domain.Events;
+﻿using MyApp.Domain.Events;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.EventHandlers
+namespace MyApp.Domain.EventHandlers
 {
     public class CustomerEventHandler :
             INotificationHandler<CustomerRegisteredEvent>,

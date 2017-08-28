@@ -1,12 +1,12 @@
-﻿using Application.ViewModels;
+﻿using MyApp.Application.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Application.Interfaces
+namespace MyApp.Application.Interfaces
 {
     public interface IProductAppService : IDisposable
     {
+        IEnumerable<ProductViewModel> GetAll();
         void Create(ProductViewModel productViewModel);
     }
 }

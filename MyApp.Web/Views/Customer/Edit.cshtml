@@ -1,10 +1,10 @@
-﻿@model Application.ViewModels.CustomerViewModel
+﻿@model MyApp.Application.ViewModels.CustomerViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form action="/Home/Edit" method="post">
+<form action="/Customer/Edit" method="post">
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
@@ -31,7 +31,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-success" />
-                <a href="/Home/Index" class="btn btn-info">Back to List</a>
+                <a href="/Customer/Index" class="btn btn-info">Back to List</a>
                 <input type="hidden" name="Id" value="@Model.Id" />
             </div>
         </div>

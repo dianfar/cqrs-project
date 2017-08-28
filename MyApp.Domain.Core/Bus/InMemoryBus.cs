@@ -1,6 +1,6 @@
-﻿using Domain.Core.Bus;
-using Domain.Core.Commands;
-using Domain.Core.Events;
+﻿using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Core.Events;
 using MediatR;
 using System;
 using System.Collections.Generic;

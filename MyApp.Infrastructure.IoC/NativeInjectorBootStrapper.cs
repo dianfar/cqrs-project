@@ -1,18 +1,16 @@
-﻿using Application.Interfaces;
-using Application.Services;
+﻿using MyApp.Application.Interfaces;
+using MyApp.Application.Services;
 using AutoMapper;
-using Domain.CommandHandlers;
-using Domain.Commands;
-using Domain.Core.Bus;
-using Domain.Core.Notifications;
-using Domain.EventHandlers;
-using Domain.Events;
-using Domain.Interfaces;
+using MyApp.Domain.CommandHandlers;
+using MyApp.Domain.Commands;
+using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Core.Notifications;
+using MyApp.Domain.EventHandlers;
+using MyApp.Domain.Events;
+using MyApp.Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using MyApp.Application.Services;
-using MyApp.Domain.Core.Bus;
 using MyApp.Infrastructure.Data.Context;
 using MyApp.Infrastructure.Data.Repository;
 using MyApp.Infrastructure.Data.UoW;
@@ -46,6 +44,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<RegisterNewCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<UpdateCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveCustomerCommand>, CustomerCommandHandler>();
+            services.AddScoped<INotificationHandler<CreateNewProductCommand>, ProductCommandHandler>();
 
             // Infra - Data
             services.AddScoped<ICustomerRepository, CustomerRepository>();

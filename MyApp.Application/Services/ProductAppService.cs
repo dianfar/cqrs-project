@@ -1,10 +1,12 @@
-﻿using Application.Interfaces;
+﻿using MyApp.Application.Interfaces;
 using System;
-using Application.ViewModels;
-using Domain.Core.Bus;
+using MyApp.Application.ViewModels;
+using MyApp.Domain.Core.Bus;
 using AutoMapper;
-using Domain.Interfaces;
-using Domain.Commands;
+using MyApp.Domain.Interfaces;
+using MyApp.Domain.Commands;
+using System.Collections.Generic;
+using AutoMapper.QueryableExtensions;
 
 namespace MyApp.Application.Services
 {
@@ -32,6 +34,11 @@ namespace MyApp.Application.Services
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public IEnumerable<ProductViewModel> GetAll()
+        {
+            return productRepository.GetAll().ProjectTo<ProductViewModel>();
         }
     }
 }

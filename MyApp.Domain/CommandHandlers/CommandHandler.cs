@@ -1,10 +1,10 @@
-﻿using Domain.Core.Bus;
-using Domain.Core.Commands;
-using Domain.Core.Notifications;
-using Domain.Interfaces;
+﻿using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Core.Notifications;
+using MyApp.Domain.Interfaces;
 using MediatR;
 
-namespace Domain.CommandHandlers
+namespace MyApp.Domain.CommandHandlers
 {
     public class CommandHandler
     {

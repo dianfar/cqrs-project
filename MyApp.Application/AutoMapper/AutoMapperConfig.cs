@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.AutoMapper
+namespace MyApp.Application.AutoMapper
 {
     public class AutoMapperConfig
     {
-
         public static MapperConfiguration RegisterMappings()
         {
             return new MapperConfiguration(cfg =>

@@ -1,11 +1,11 @@
-﻿using Domain.Core.Commands;
+﻿using MyApp.Domain.Core.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Commands
+namespace MyApp.Domain.Commands
 {
     public abstract class CustomerCommand : Command
     {

@@ -1,9 +1,9 @@
-﻿using Domain.Commands;
-using Domain.Core.Bus;
-using Domain.Core.Notifications;
-using Domain.Events;
-using Domain.Interfaces;
-using Domain.Models;
+﻿using MyApp.Domain.Commands;
+using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Core.Notifications;
+using MyApp.Domain.Events;
+using MyApp.Domain.Interfaces;
+using MyApp.Domain.Models;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.CommandHandlers
+namespace MyApp.Domain.CommandHandlers
 {
     public class CustomerCommandHandler : CommandHandler,
             INotificationHandler<RegisterNewCustomerCommand>,

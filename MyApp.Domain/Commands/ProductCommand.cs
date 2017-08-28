@@ -1,9 +1,9 @@
-﻿using Domain.Core.Commands;
+﻿using MyApp.Domain.Core.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Commands
+namespace MyApp.Domain.Commands
 {
     public abstract class ProductCommand : Command
     {

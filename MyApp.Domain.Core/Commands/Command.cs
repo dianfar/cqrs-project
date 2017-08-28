@@ -1,4 +1,4 @@
-﻿using Domain.Core.Events;
+﻿using MyApp.Domain.Core.Events;
 using FluentValidation.Results;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Core.Commands
+namespace MyApp.Domain.Core.Commands
 {
     public abstract class Command : Message
     {

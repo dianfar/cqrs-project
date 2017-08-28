@@ -1,11 +1,11 @@
-﻿using Application.ViewModels;
+﻿using MyApp.Application.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace MyApp.Application.Interfaces
 {
     public interface ICustomerAppService : IDisposable
     {

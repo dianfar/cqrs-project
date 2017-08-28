@@ -1,21 +1,27 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Application.Interfaces;
+using MyApp.Application.Interfaces;
 using MediatR;
-using Domain.Core.Notifications;
-using Application.ViewModels;
+using MyApp.Domain.Core.Notifications;
+using MyApp.Application.ViewModels;
 
 namespace MyApp.Web.Controllers
 {
     public class ProductController : BaseController
     {
-        public ProductController(INotificationHandler<DomainNotification> notifications) : base(notifications)
+        private readonly IProductAppService productAppService;
+
+        public ProductController(
+            IProductAppService productAppService, 
+            INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
+            this.productAppService = productAppService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var products = productAppService.GetAll();
+            return View(products);
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using Domain.Interfaces;
-using Domain.Models;
+﻿using MyApp.Domain.Interfaces;
+using MyApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Interfaces
+namespace MyApp.Domain.Interfaces
 {
     public interface IProductRepository : IRepository<Product>
     {

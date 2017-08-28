@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Core.Models
+namespace MyApp.Domain.Core.Models
 {
     public abstract class Entity
     {

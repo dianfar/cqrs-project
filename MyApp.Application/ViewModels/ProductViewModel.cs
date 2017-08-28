@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Application.ViewModels
+namespace MyApp.Application.ViewModels
 {
     public class ProductViewModel
     {

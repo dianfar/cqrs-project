@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Interfaces
+namespace MyApp.Domain.Interfaces
 {
     public interface IUser
     {

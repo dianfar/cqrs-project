@@ -1,11 +1,11 @@
-﻿using Domain.Core.Models;
+﻿using MyApp.Domain.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace MyApp.Domain.Models
 {
     public class Customer : Entity
     {

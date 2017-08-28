@@ -1,5 +1,5 @@
-﻿using Domain.Core.Commands;
-using Domain.Interfaces;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Interfaces;
 using MyApp.Infrastructure.Data.Context;
 
 namespace MyApp.Infrastructure.Data.UoW

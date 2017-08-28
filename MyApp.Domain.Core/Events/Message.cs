@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Core.Events
+namespace MyApp.Domain.Core.Events
 {
     public abstract class Message : INotification
     {

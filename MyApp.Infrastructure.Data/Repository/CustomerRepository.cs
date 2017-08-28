@@ -1,5 +1,5 @@
-﻿using Domain.Interfaces;
-using Domain.Models;
+﻿using MyApp.Domain.Interfaces;
+using MyApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using MyApp.Infrastructure.Data.Context;
 using System;

@@ -1,4 +1,4 @@
-﻿using Domain.Core.Notifications;
+﻿using MyApp.Domain.Core.Notifications;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;

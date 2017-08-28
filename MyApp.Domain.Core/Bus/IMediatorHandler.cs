@@ -1,12 +1,12 @@
-﻿using Domain.Core.Commands;
-using Domain.Core.Events;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Core.Bus
+namespace MyApp.Domain.Core.Bus
 {
     public interface IMediatorHandler
     {

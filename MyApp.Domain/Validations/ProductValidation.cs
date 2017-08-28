@@ -1,4 +1,4 @@
-﻿using Domain.Commands;
+﻿using MyApp.Domain.Commands;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

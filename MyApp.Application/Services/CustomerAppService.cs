@@ -1,17 +1,17 @@
-﻿using Application.Interfaces;
-using Application.ViewModels;
+﻿using MyApp.Application.Interfaces;
+using MyApp.Application.ViewModels;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain.Commands;
-using Domain.Core.Bus;
-using Domain.Interfaces;
+using MyApp.Domain.Commands;
+using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services
+namespace MyApp.Application.Services
 {
     public class CustomerAppService : ICustomerAppService
     {

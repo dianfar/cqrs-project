@@ -1,19 +1,15 @@
-﻿using Application.ViewModels;
+﻿using MyApp.Application.ViewModels;
 using AutoMapper;
-using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyApp.Domain.Models;
 
-namespace Application.AutoMapper
+namespace MyApp.Application.AutoMapper
 {
     public class DomainToViewModelMappingProfile : Profile
     {
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Customer, CustomerViewModel>();
+            CreateMap<Product, ProductViewModel>();
         }
     }
 }

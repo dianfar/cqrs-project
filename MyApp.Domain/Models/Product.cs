@@ -1,9 +1,9 @@
-﻿using Domain.Core.Models;
+﻿using MyApp.Domain.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Models
+namespace MyApp.Domain.Models
 {
     public class Product : Entity
     {

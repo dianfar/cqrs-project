@@ -1,4 +1,5 @@
-﻿using Domain.Commands;
+﻿using MyApp.Domain.Commands;
+using MyApp.Domain.Validations;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -12,7 +12,8 @@ using MyApp.Domain.Models;
 namespace MyApp.Domain.CommandHandlers
 {
     public class ProductCommandHandler : CommandHandler,
-        INotificationHandler<CreateNewProductCommand>
+        INotificationHandler<CreateNewProductCommand>,
+        INotificationHandler<UpdateProductCommand>
     {
         private readonly IProductRepository productRepository;
         private readonly IMediatorHandler mediatorHandler;
@@ -38,6 +39,19 @@ namespace MyApp.Domain.CommandHandlers
             var product = new Product(Guid.NewGuid(), message.Name, message.Quantity);
 
             productRepository.Add(product);
+            Commit();
+        }
+
+        public void Handle(UpdateProductCommand message)
+        {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return;
+            }
+
+            var product = new Product(message.Id, message.Name, message.Quantity);
+            productRepository.Update(product);
             Commit();
         }
     }

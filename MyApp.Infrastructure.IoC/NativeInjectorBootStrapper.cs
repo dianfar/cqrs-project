@@ -21,33 +21,26 @@ namespace MyApp.Infrastructure.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            // Domain Bus (Mediator)
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
-
-            // Application
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<ICustomerAppService, CustomerAppService>();
             services.AddScoped<IProductAppService, ProductAppService>();
 
-            // Domain - Events
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();
             services.AddScoped<INotificationHandler<CustomerUpdatedEvent>, CustomerEventHandler>();
             services.AddScoped<INotificationHandler<CustomerRemovedEvent>, CustomerEventHandler>();
 
-            // Domain - Commands
             services.AddScoped<INotificationHandler<RegisterNewCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<UpdateCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<CreateNewProductCommand>, ProductCommandHandler>();
 
-            // Infra - Data
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<MyAppContext>();
         }

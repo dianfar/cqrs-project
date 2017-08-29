@@ -10,13 +10,13 @@ namespace MyApp.Infrastructure.Data.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly MyAppContext Db;
+        protected readonly MyAppContext databaseContext;
         protected readonly DbSet<TEntity> DbSet;
 
         public Repository(MyAppContext context)
         {
-            Db = context;
-            DbSet = Db.Set<TEntity>();
+            databaseContext = context;
+            DbSet = databaseContext.Set<TEntity>();
         }
 
         public virtual void Add(TEntity obj)
@@ -46,12 +46,12 @@ namespace MyApp.Infrastructure.Data.Repository
 
         public int SaveChanges()
         {
-            return Db.SaveChanges();
+            return databaseContext.SaveChanges();
         }
 
         public void Dispose()
         {
-            Db.Dispose();
+            databaseContext.Dispose();
             GC.SuppressFinalize(this);
         }
     }

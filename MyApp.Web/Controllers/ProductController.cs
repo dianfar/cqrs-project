@@ -23,5 +23,20 @@ namespace MyApp.Web.Controllers
             var products = productAppService.GetAll();
             return View(products);
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(ProductViewModel product)
+        {
+            if (!ModelState.IsValid) return View(product);
+            productAppService.Create(product);
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -40,5 +40,22 @@ namespace MyApp.Application.Services
         {
             return productRepository.GetAll().ProjectTo<ProductViewModel>();
         }
+
+        public ProductViewModel GetById(Guid id)
+        {
+            return mapper.Map<ProductViewModel>(productRepository.GetById(id));
+        }
+
+        public void Remove(Guid id)
+        {
+            var removeCommand = new RemoveProductCommand(id);
+            mediatorHandler.SendCommand(removeCommand);
+        }
+
+        public void Update(ProductViewModel productViewModel)
+        {
+            var updateCommand = mapper.Map<UpdateProductCommand>(productViewModel);
+            mediatorHandler.SendCommand(updateCommand);
+        }
     }
 }

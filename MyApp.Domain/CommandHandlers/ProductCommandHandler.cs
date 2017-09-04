@@ -13,7 +13,8 @@ namespace MyApp.Domain.CommandHandlers
 {
     public class ProductCommandHandler : CommandHandler,
         INotificationHandler<CreateNewProductCommand>,
-        INotificationHandler<UpdateProductCommand>
+        INotificationHandler<UpdateProductCommand>,
+        INotificationHandler<RemoveProductCommand>
     {
         private readonly IProductRepository productRepository;
         private readonly IMediatorHandler mediatorHandler;
@@ -52,6 +53,18 @@ namespace MyApp.Domain.CommandHandlers
 
             var product = new Product(message.Id, message.Name, message.Quantity);
             productRepository.Update(product);
+            Commit();
+        }
+
+        public void Handle(RemoveProductCommand message)
+        {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return;
+            }
+
+            productRepository.Remove(message.Id);
             Commit();
         }
     }

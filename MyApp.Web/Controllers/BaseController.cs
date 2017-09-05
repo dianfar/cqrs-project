@@ -10,16 +10,16 @@ namespace MyApp.Web.Controllers
 {
     public class BaseController : Controller
     {
-        private readonly DomainNotificationHandler _notifications;
+        private readonly DomainNotificationHandler notifications;
 
         public BaseController(INotificationHandler<DomainNotification> notifications)
         {
-            _notifications = (DomainNotificationHandler)notifications;
+            this.notifications = (DomainNotificationHandler)notifications;
         }
 
         public bool IsValidOperation()
         {
-            return (!_notifications.HasNotifications());
+            return (!notifications.HasNotifications());
         }
     }
 }

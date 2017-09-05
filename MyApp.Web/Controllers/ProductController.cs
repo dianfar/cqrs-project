@@ -38,5 +38,28 @@ namespace MyApp.Web.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(Guid id)
+        {
+            var customer = productAppService.GetById(id);
+            return View(customer);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ProductViewModel productViewModel)
+        {
+            if (!ModelState.IsValid) return View(productViewModel);
+            productAppService.Update(productViewModel);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete([FromQuery]Guid id)
+        {
+            productAppService.Remove(id);
+            return RedirectToAction("Index");
+        }
     }
 }

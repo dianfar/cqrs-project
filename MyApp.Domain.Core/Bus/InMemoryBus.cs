@@ -11,11 +11,11 @@ namespace MyApp.Domain.Core.Bus
 {
     public sealed class InMemoryBus : IMediatorHandler
     {
-        private readonly IMediator _mediator;
+        private readonly IMediator mediator;
 
         public InMemoryBus(IMediator mediator)
         {
-            _mediator = mediator;
+            this.mediator = mediator;
         }
 
         public Task SendCommand<T>(T command) where T : Command
@@ -30,7 +30,7 @@ namespace MyApp.Domain.Core.Bus
 
         private Task Publish<T>(T message) where T : Message
         {
-            return _mediator.Publish(message);
+            return mediator.Publish(message);
         }
     }
 }

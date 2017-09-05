@@ -6,22 +6,22 @@ namespace MyApp.Infrastructure.Data.UoW
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly MyAppContext _context;
+        private readonly MyAppContext context;
 
         public UnitOfWork(MyAppContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
         public CommandResponse Commit()
         {
-            var rowsAffected = _context.SaveChanges();
+            var rowsAffected = context.SaveChanges();
             return new CommandResponse(rowsAffected > 0);
         }
 
         public void Dispose()
         {
-            _context.Dispose();
+            context.Dispose();
         }
     }
 }

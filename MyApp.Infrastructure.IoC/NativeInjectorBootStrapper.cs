@@ -38,6 +38,8 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<UpdateCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveCustomerCommand>, CustomerCommandHandler>();
             services.AddScoped<INotificationHandler<CreateNewProductCommand>, ProductCommandHandler>();
+            services.AddScoped<INotificationHandler<UpdateProductCommand>, ProductCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveProductCommand>, ProductCommandHandler>();
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();

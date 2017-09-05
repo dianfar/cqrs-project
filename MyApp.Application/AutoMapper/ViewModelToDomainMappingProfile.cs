@@ -14,6 +14,8 @@ namespace MyApp.Application.AutoMapper
                 .ConstructUsing(c => new UpdateCustomerCommand(c.Id, c.Name, c.Email, c.BirthDate));
             CreateMap<ProductViewModel, CreateNewProductCommand>()
                 .ConstructUsing(c => new CreateNewProductCommand(c.Name, c.Quantity));
+            CreateMap<ProductViewModel, UpdateProductCommand>()
+                .ConstructUsing(c => new UpdateProductCommand(c.Id, c.Name, c.Quantity));
         }
     }
 }

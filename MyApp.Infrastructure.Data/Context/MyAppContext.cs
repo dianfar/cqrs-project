@@ -9,8 +9,8 @@ namespace MyApp.Infrastructure.Data.Context
 {
     public class MyAppContext : DbContext
     {
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Project> Project { get; set; }
+        public DbSet<Client> Client { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

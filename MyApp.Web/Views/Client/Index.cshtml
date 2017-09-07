@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyApp.Application.ViewModels.ClientViewModel>
 
 @{
-    ViewData["Title"] = "Customer Page";
+    ViewData["Title"] = "Client Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div>
             <div class="pull-left">
-                <a href="Customer/Add" class="btn btn-primary">
+                <a href="Client/Add" class="btn btn-primary">
                     <span title="Register New" class="glyphicon glyphicon-plus-sign"></span> Register New
                 </a>
             </div>
@@ -42,10 +42,10 @@
                         @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
-                        <a href="/Customer/Edit/@item.Id" class="btn btn-warning">
+                        <a href="/Client/Edit/@item.Id" class="btn btn-warning">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        <a href="/Customer/Delete?id=@item.Id" class="btn btn-danger">
+                        <a href="/Client/Delete?id=@item.Id" class="btn btn-danger">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>

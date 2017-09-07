@@ -5,9 +5,9 @@ using MyApp.Infrastructure.Data.Extensions;
 
 namespace MyApp.Infrastructure.Data.Mappings
 {
-    public class ClientMap : EntityTypeConfiguration<Project>
+    public class ClientMap : EntityTypeConfiguration<Client>
     {
-        public override void Map(EntityTypeBuilder<Project> builder)
+        public override void Map(EntityTypeBuilder<Client> builder)
         {
             builder.Property(c => c.Id)
                 .HasColumnName("Id");

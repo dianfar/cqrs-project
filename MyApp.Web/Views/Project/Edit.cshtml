@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form action="/Product/Edit" method="post">
+<form action="/Project/Edit" method="post">
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
@@ -24,7 +24,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Update" class="btn btn-success" />
-                <a href="/Product/Index" class="btn btn-info">Back to List</a>
+                <a href="/Project/Index" class="btn btn-info">Back to List</a>
                 <input type="hidden" name="Id" value="@Model.Id" />
             </div>
         </div>

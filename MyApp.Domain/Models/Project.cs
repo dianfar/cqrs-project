@@ -5,13 +5,14 @@ namespace MyApp.Domain.Models
 {
     public class Project : Entity
     {
-        public Project(Guid id, string name, string description, DateTime completionDate, bool active)
+        public Project(Guid id, string name, string description, DateTime completionDate, bool active, Client client)
         {
             Id = id;
             Name = name;
             Description = description;
             CompletionDate = completionDate;
             Active = active;
+            Client = client;
         }
 
         protected Project() { }

@@ -9,33 +9,33 @@ namespace MyApp.Web.Controllers
 {
     public class ProjectController : BaseController
     {
-        private readonly IProjectAppService productAppService;
+        private readonly IProjectAppService projectAppService;
 
         public ProjectController(
             IProjectAppService productAppService, 
             INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
-            this.productAppService = productAppService;
+            this.projectAppService = productAppService;
         }
 
         public IActionResult Index()
         {
-            var products = productAppService.GetAll();
-            return View(products);
+            var projects = projectAppService.GetAll();
+            return View(projects);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            var createNewProjectViewModel = productAppService.GetCreateNewProjectData();
+            var createNewProjectViewModel = projectAppService.GetCreateNewProjectData();
             return View(createNewProjectViewModel);
         }
 
         [HttpPost]
-        public IActionResult Add(ProjectViewModel product)
+        public IActionResult Add(ProjectViewModel projectViewModel)
         {
-            if (!ModelState.IsValid) return View(product);
-            productAppService.Create(product);
+            if (!ModelState.IsValid) return View(projectViewModel);
+            projectAppService.Create(projectViewModel);
 
             return RedirectToAction("Index");
         }
@@ -43,15 +43,15 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var customer = productAppService.GetById(id);
-            return View(customer);
+            var project = projectAppService.GetById(id);
+            return View(project);
         }
 
         [HttpPost]
-        public IActionResult Edit(ProjectViewModel productViewModel)
+        public IActionResult Edit(ProjectViewModel projectViewModel)
         {
-            if (!ModelState.IsValid) return View(productViewModel);
-            productAppService.Update(productViewModel);
+            if (!ModelState.IsValid) return View(projectViewModel);
+            projectAppService.Update(projectViewModel);
 
             return RedirectToAction("Index");
         }
@@ -59,7 +59,7 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Delete([FromQuery]Guid id)
         {
-            productAppService.Remove(id);
+            projectAppService.Remove(id);
             return RedirectToAction("Index");
         }
     }

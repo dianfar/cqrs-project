@@ -27,7 +27,9 @@ namespace MyApp.Application.ViewModels
         [DisplayName("Active")]
         public bool Active { get; set; }
 
+        public Guid ClientId { get; set; }
+
         [DisplayName("Client")]
-        public ClientViewModel Client { get; set; }
+        public string ClientName { get; set; }
     }
 }

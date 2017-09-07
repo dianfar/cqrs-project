@@ -7,11 +7,12 @@ namespace MyApp.Domain.Commands
 {
     public class CreateNewProjectCommand : ProjectCommand
     {
-        public CreateNewProjectCommand(string name, string description, DateTime completionDate)
+        public CreateNewProjectCommand(string name, string description, DateTime completionDate, Guid clientId)
         {
             Name = name;
             Description = description;
             CompletionDate = completionDate;
+            ClientId = clientId;
         }
 
         public override bool IsValid()

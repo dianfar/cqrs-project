@@ -14,5 +14,7 @@ namespace MyApp.Domain.Commands
         public DateTime CompletionDate { get; protected set; }
 
         public bool Active { get; protected set; }
+
+        public Guid ClientId { get; protected set; }
     }
 }

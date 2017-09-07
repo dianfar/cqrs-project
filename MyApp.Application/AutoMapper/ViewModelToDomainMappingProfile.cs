@@ -13,7 +13,7 @@ namespace MyApp.Application.AutoMapper
             CreateMap<ClientViewModel, UpdateClientCommand>()
                 .ConstructUsing(c => new UpdateClientCommand(c.Id, c.Name, c.Description));
             CreateMap<ProjectViewModel, CreateNewProjectCommand>()
-                .ConstructUsing(c => new CreateNewProjectCommand(c.Name, c.Description, c.CompletionDate));
+                .ConstructUsing(c => new CreateNewProjectCommand(c.Name, c.Description, c.CompletionDate, c.ClientId));
             CreateMap<ProjectViewModel, UpdateProjectCommand>()
                 .ConstructUsing(c => new UpdateProjectCommand(c.Id, c.Name, c.Description, c.CompletionDate));
         }

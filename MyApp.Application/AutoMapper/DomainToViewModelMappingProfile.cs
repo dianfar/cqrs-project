@@ -9,7 +9,16 @@ namespace MyApp.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Client, ClientViewModel>();
-            CreateMap<Project, ProjectViewModel>();
+            CreateMap<Project, ProjectViewModel>()
+                .ConstructUsing(c => new ProjectViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    CompletionDate = c.CompletionDate,
+                    ClientId = c.Client.Id,
+                    ClientName = c.Client.Name
+                });
         }
     }
 }

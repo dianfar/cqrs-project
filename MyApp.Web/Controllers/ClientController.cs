@@ -9,17 +9,17 @@ namespace MyApp.Web.Controllers
 {
     public class ClientController : BaseController
     {
-        private readonly IClientAppService customerAppService;
+        private readonly IClientAppService clientAppService;
 
-        public ClientController(IClientAppService customerAppService,
+        public ClientController(IClientAppService clientAppService,
                                   INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
-            this.customerAppService = customerAppService;
+            this.clientAppService = clientAppService;
         }
 
         public IActionResult Index()
         {
-            var customers = customerAppService.GetAll();
+            var customers = clientAppService.GetAll();
             return View(customers);
         }
 
@@ -30,10 +30,10 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(ClientViewModel customerViewModel)
+        public IActionResult Add(ClientViewModel clientViewModel)
         {
-            if (!ModelState.IsValid) return View(customerViewModel);
-            customerAppService.Register(customerViewModel);
+            if (!ModelState.IsValid) return View(clientViewModel);
+            clientAppService.Register(clientViewModel);
 
             return RedirectToAction("Index");
         }
@@ -41,15 +41,15 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var customer = customerAppService.GetById(id);
+            var customer = clientAppService.GetById(id);
             return View(customer);
         }
 
         [HttpPost]
-        public IActionResult Edit(ClientViewModel customerViewModel)
+        public IActionResult Edit(ClientViewModel clientViewModel)
         {
-            if (!ModelState.IsValid) return View(customerViewModel);
-            customerAppService.Update(customerViewModel);
+            if (!ModelState.IsValid) return View(clientViewModel);
+            clientAppService.Update(clientViewModel);
 
             return RedirectToAction("Index");
         }
@@ -57,7 +57,7 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Delete([FromQuery]Guid id)
         {
-            customerAppService.Remove(id);
+            clientAppService.Remove(id);
             return RedirectToAction("Index");
         }
 

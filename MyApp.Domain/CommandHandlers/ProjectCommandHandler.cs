@@ -14,15 +14,18 @@ namespace MyApp.Domain.CommandHandlers
         INotificationHandler<RemoveProductCommand>
     {
         private readonly IProjectRepository projectRepository;
+        private readonly IClientRepository clientRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public ProjectCommandHandler(
-            IProjectRepository productRepository,
+            IProjectRepository projectRepository,
+            IClientRepository clientRepository,
             IUnitOfWork uow, 
             IMediatorHandler bus, 
             INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
         {
-            this.projectRepository = productRepository;
+            this.projectRepository = projectRepository;
+            this.clientRepository = clientRepository;
             this.mediatorHandler = bus;
         }
 
@@ -34,8 +37,9 @@ namespace MyApp.Domain.CommandHandlers
                 return;
             }
 
-            var product = new Project(Guid.NewGuid(), message.Name, message.Description, message.CompletionDate, true);
-
+            var client = clientRepository.GetById(message.ClientId);
+            var product = new Project(Guid.NewGuid(), message.Name, message.Description, message.CompletionDate, true, client);
+            
             projectRepository.Add(product);
             Commit();
         }
@@ -48,7 +52,9 @@ namespace MyApp.Domain.CommandHandlers
                 return;
             }
 
-            var product = new Project(message.Id, message.Name, message.Description, message.CompletionDate, message.Active);
+            var client = clientRepository.GetById(message.ClientId);
+            var product = new Project(message.Id, message.Name, message.Description, message.CompletionDate, message.Active, client);
+
             projectRepository.Update(product);
             Commit();
         }

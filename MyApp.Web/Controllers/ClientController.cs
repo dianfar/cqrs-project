@@ -7,11 +7,11 @@ using MyApp.Application.ViewModels;
 
 namespace MyApp.Web.Controllers
 {
-    public class CustomerController : BaseController
+    public class ClientController : BaseController
     {
         private readonly IClientAppService customerAppService;
 
-        public CustomerController(IClientAppService customerAppService,
+        public ClientController(IClientAppService customerAppService,
                                   INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.customerAppService = customerAppService;

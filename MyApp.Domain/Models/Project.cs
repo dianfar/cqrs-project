@@ -27,5 +27,7 @@ namespace MyApp.Domain.Models
         public DateTime CompletionDate { get; private set; }
 
         public bool Active { get; private set; }
+
+        public Client Client { get; private set; }
     }
 }

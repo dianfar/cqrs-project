@@ -7,11 +7,11 @@ using MyApp.Application.ViewModels;
 
 namespace MyApp.Web.Controllers
 {
-    public class ProductController : BaseController
+    public class ProjectController : BaseController
     {
         private readonly IProjectAppService productAppService;
 
-        public ProductController(
+        public ProjectController(
             IProjectAppService productAppService, 
             INotificationHandler<DomainNotification> notifications) : base(notifications)
         {

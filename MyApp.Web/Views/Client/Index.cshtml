@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyApp.Application.ViewModels.CustomerViewModel>
+﻿@model IEnumerable<MyApp.Application.ViewModels.ClientViewModel>
 
 @{
     ViewData["Title"] = "Customer Page";
@@ -26,10 +26,7 @@
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BirthDate)
+                    @Html.DisplayNameFor(model => model.Description)
                 </th>
                 <th></th>
             </tr>
@@ -42,10 +39,7 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BirthDate)
+                        @Html.DisplayFor(modelItem => item.Description)
                     </td>
                     <td>
                         <a href="/Customer/Edit/@item.Id" class="btn btn-warning">

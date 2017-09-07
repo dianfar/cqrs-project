@@ -16,6 +16,7 @@ namespace MyApp.Infrastructure.Data.Context
         {
             modelBuilder.AddConfiguration(new ClientMap());
             modelBuilder.AddConfiguration(new ProjectMap());
+            modelBuilder.Entity<Project>().HasOne(project => project.Client);
 
             base.OnModelCreating(modelBuilder);
         }

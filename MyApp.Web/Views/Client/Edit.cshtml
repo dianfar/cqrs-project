@@ -1,4 +1,4 @@
-﻿@model MyApp.Application.ViewModels.CustomerViewModel
+﻿@model MyApp.Application.ViewModels.ClientViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,14 +17,7 @@
         <div class="form-group">
             <label asp-for="Email" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input name="Email" class="form-control" value="@Model.Email" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="BirthDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input name="BirthDate" class="form-control" value="@Model.BirthDate" />
+                <input name="Email" class="form-control" value="@Model.Description" />
             </div>
         </div>
 

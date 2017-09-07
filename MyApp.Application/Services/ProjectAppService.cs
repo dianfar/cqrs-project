@@ -14,15 +14,18 @@ namespace MyApp.Application.Services
     {
         private readonly IMapper mapper;
         private readonly IProjectRepository projectRepository;
+        private readonly IClientRepository clientRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public ProjectAppService(IMapper mapper,
-                                  IProjectRepository projectRepository,
-                                  IMediatorHandler bus)
+                                IProjectRepository projectRepository,
+                                IClientRepository clientRepository,
+                                IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
             this.projectRepository = projectRepository;
-            mediatorHandler = bus;
+            this.clientRepository = clientRepository;
+            this.mediatorHandler = mediatorHandler;
         }
 
         public void Create(ProjectViewModel productViewModel)
@@ -34,6 +37,15 @@ namespace MyApp.Application.Services
         public void Dispose()
         {
             GC.SuppressFinalize(this);
+        }
+
+        public CreateNewProjectViewModel GetCreateNewProjectData()
+        {
+            var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
+            return new CreateNewProjectViewModel
+            {
+                Clients = clients
+            };
         }
 
         public IEnumerable<ProjectViewModel> GetAll()

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MyApp.Application.ViewModels.CreateNewProjectViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,6 +11,18 @@
             <label class="col-md-2 control-label">Name</label>
             <div class="col-md-10">
                 <input name="Name" class="form-control" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Client</label>
+            <div class="col-md-10">
+                <select>
+                    @foreach (var item in Model.Clients)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
             </div>
         </div>
 

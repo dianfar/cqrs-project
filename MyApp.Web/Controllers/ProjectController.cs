@@ -27,7 +27,8 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            var createNewProjectViewModel = productAppService.GetCreateNewProjectData();
+            return View(createNewProjectViewModel);
         }
 
         [HttpPost]

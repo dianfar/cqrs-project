@@ -9,10 +9,10 @@ namespace MyApp.Web.Controllers
 {
     public class ProductController : BaseController
     {
-        private readonly IProductAppService productAppService;
+        private readonly IProjectAppService productAppService;
 
         public ProductController(
-            IProductAppService productAppService, 
+            IProjectAppService productAppService, 
             INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.productAppService = productAppService;
@@ -31,7 +31,7 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(ProductViewModel product)
+        public IActionResult Add(ProjectViewModel product)
         {
             if (!ModelState.IsValid) return View(product);
             productAppService.Create(product);
@@ -47,7 +47,7 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(ProductViewModel productViewModel)
+        public IActionResult Edit(ProjectViewModel productViewModel)
         {
             if (!ModelState.IsValid) return View(productViewModel);
             productAppService.Update(productViewModel);

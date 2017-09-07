@@ -8,14 +8,14 @@ namespace MyApp.Application.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
-            CreateMap<CustomerViewModel, RegisterNewCustomerCommand>()
-                .ConstructUsing(c => new RegisterNewCustomerCommand(c.Name, c.Email, c.BirthDate));
-            CreateMap<CustomerViewModel, UpdateCustomerCommand>()
-                .ConstructUsing(c => new UpdateCustomerCommand(c.Id, c.Name, c.Email, c.BirthDate));
-            CreateMap<ProductViewModel, CreateNewProductCommand>()
-                .ConstructUsing(c => new CreateNewProductCommand(c.Name, c.Quantity));
-            CreateMap<ProductViewModel, UpdateProductCommand>()
-                .ConstructUsing(c => new UpdateProductCommand(c.Id, c.Name, c.Quantity));
+            CreateMap<ClientViewModel, RegisterNewClientCommand>()
+                .ConstructUsing(c => new RegisterNewClientCommand(c.Name, c.Description));
+            CreateMap<ClientViewModel, UpdateClientCommand>()
+                .ConstructUsing(c => new UpdateClientCommand(c.Id, c.Name, c.Description));
+            CreateMap<ProjectViewModel, CreateNewProjectCommand>()
+                .ConstructUsing(c => new CreateNewProjectCommand(c.Name, c.Description, c.CompletionDate));
+            CreateMap<ProjectViewModel, UpdateProjectCommand>()
+                .ConstructUsing(c => new UpdateProjectCommand(c.Id, c.Name, c.Description, c.CompletionDate));
         }
     }
 }

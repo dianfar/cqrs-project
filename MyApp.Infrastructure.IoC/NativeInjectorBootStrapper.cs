@@ -26,23 +26,23 @@ namespace MyApp.Infrastructure.IoC
 
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
-            services.AddScoped<ICustomerAppService, CustomerAppService>();
-            services.AddScoped<IProductAppService, ProductAppService>();
+            services.AddScoped<IClientAppService, ClientAppService>();
+            services.AddScoped<IProjectAppService, ProjectAppService>();
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
-            services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();
-            services.AddScoped<INotificationHandler<CustomerUpdatedEvent>, CustomerEventHandler>();
-            services.AddScoped<INotificationHandler<CustomerRemovedEvent>, CustomerEventHandler>();
+            services.AddScoped<INotificationHandler<ClientRegisteredEvent>, ClientEventHandler>();
+            services.AddScoped<INotificationHandler<ClientUpdatedEvent>, ClientEventHandler>();
+            services.AddScoped<INotificationHandler<ClientRemovedEvent>, ClientEventHandler>();
 
-            services.AddScoped<INotificationHandler<RegisterNewCustomerCommand>, CustomerCommandHandler>();
-            services.AddScoped<INotificationHandler<UpdateCustomerCommand>, CustomerCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveCustomerCommand>, CustomerCommandHandler>();
-            services.AddScoped<INotificationHandler<CreateNewProductCommand>, ProductCommandHandler>();
-            services.AddScoped<INotificationHandler<UpdateProductCommand>, ProductCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveProductCommand>, ProductCommandHandler>();
+            services.AddScoped<INotificationHandler<RegisterNewClientCommand>, ClientCommandHandler>();
+            services.AddScoped<INotificationHandler<UpdateClientCommand>, ClientCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveClientCommand>, ClientCommandHandler>();
+            services.AddScoped<INotificationHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<INotificationHandler<UpdateProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveProductCommand>, ProjectCommandHandler>();
 
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<MyAppContext>();
         }

@@ -60,8 +60,12 @@
     <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Customers.sql" />
-    <Build Include="Tables\Products.sql" />
+    <Build Include="Tables\Project.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\Category.sql" />
+    <Build Include="Tables\Client.sql" />
+    <Build Include="Tables\EntryLog.sql" />
+    <Build Include="Tables\ProjectMember.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MyApp.Database.publish.xml" />

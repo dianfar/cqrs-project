@@ -9,9 +9,9 @@ namespace MyApp.Web.Controllers
 {
     public class CustomerController : BaseController
     {
-        private readonly ICustomerAppService customerAppService;
+        private readonly IClientAppService customerAppService;
 
-        public CustomerController(ICustomerAppService customerAppService,
+        public CustomerController(IClientAppService customerAppService,
                                   INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.customerAppService = customerAppService;
@@ -30,7 +30,7 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(CustomerViewModel customerViewModel)
+        public IActionResult Add(ClientViewModel customerViewModel)
         {
             if (!ModelState.IsValid) return View(customerViewModel);
             customerAppService.Register(customerViewModel);
@@ -46,7 +46,7 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(CustomerViewModel customerViewModel)
+        public IActionResult Edit(ClientViewModel customerViewModel)
         {
             if (!ModelState.IsValid) return View(customerViewModel);
             customerAppService.Update(customerViewModel);

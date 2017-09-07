@@ -9,17 +9,11 @@ using System.Text;
 
 namespace MyApp.Infrastructure.Data.Repository
 {
-    public class CustomerRepository : Repository<Customer>, ICustomerRepository
+    public class ClientRepository : Repository<Client>, IClientRepository
     {
-        public CustomerRepository(MyAppContext context)
+        public ClientRepository(MyAppContext context)
             : base(context)
         {
-
-        }
-
-        public Customer GetByEmail(string email)
-        {
-            return DbSet.AsNoTracking().FirstOrDefault(c => c.Email == email);
         }
     }
 }

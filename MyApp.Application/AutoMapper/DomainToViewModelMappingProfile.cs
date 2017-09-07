@@ -8,8 +8,8 @@ namespace MyApp.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            CreateMap<Customer, CustomerViewModel>();
-            CreateMap<Product, ProductViewModel>();
+            CreateMap<Client, ClientViewModel>();
+            CreateMap<Project, ProjectViewModel>();
         }
     }
 }

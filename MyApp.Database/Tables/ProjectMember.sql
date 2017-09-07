@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[ProjectMember]
+(
+	[ProjectId] UNIQUEIDENTIFIER NOT NULL,
+	[UserId] UNIQUEIDENTIFIER NOT NULL
+)

@@ -23,5 +23,11 @@ namespace MyApp.Application.ViewModels
         [Required(ErrorMessage = "The Completion Date is Required")]
         [DisplayName("Completion Date")]
         public DateTime CompletionDate { get; set; }
+
+        [DisplayName("Active")]
+        public bool Active { get; set; }
+
+        [DisplayName("Client")]
+        public ClientViewModel Client { get; set; }
     }
 }

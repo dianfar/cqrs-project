@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyApp.Application.ViewModels
 {
-    public class UpdateProjectViewModel
+    public class UpdateProjectViewModel : ProjectViewModel
     {
         private IEnumerable<ClientViewModel> clientList;
 
@@ -12,8 +12,6 @@ namespace MyApp.Application.ViewModels
         {
             clientList = new List<ClientViewModel>();
         }
-
-        public ProjectViewModel SelectedProject { get; set; }
 
         public IEnumerable<ClientViewModel> Clients
         {

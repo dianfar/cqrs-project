@@ -48,10 +48,10 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(ProjectViewModel projectViewModel)
+        public IActionResult Edit(UpdateProjectViewModel updateProjectViewModel)
         {
-            if (!ModelState.IsValid) return View(projectViewModel);
-            projectAppService.Update(projectViewModel);
+            if (!ModelState.IsValid) return View(updateProjectViewModel);
+            projectAppService.Update(updateProjectViewModel);
 
             return RedirectToAction("Index");
         }

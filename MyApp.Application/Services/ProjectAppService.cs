@@ -73,11 +73,10 @@ namespace MyApp.Application.Services
         public UpdateProjectViewModel GetUpdateProjectData(Guid id)
         {
             var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
-            return new UpdateProjectViewModel
-            {
-                Clients = clients,
-                SelectedProject = mapper.Map<ProjectViewModel>(projectRepository.GetById(id))
-            };
+            var result = mapper.Map<UpdateProjectViewModel>(projectRepository.GetById(id));
+            result.Clients = clients;
+
+            return result;
         }
     }
 }

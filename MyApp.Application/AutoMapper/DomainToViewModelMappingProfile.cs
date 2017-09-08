@@ -19,6 +19,16 @@ namespace MyApp.Application.AutoMapper
                     ClientId = c.Client.Id,
                     ClientName = c.Client.Name
                 });
+            CreateMap<Project, UpdateProjectViewModel>()
+                .ConstructUsing(c => new UpdateProjectViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Description = c.Description,
+                    CompletionDate = c.CompletionDate,
+                    ClientId = c.Client.Id,
+                    ClientName = c.Client.Name
+                });
         }
     }
 }

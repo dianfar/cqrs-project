@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form action="/Project/Edit" method="post">
+<form action="/Project/Edit" method="post" name="SelectedProject">
     <div class="form-horizontal">
         <hr />
         <div class="form-group">
             <label class="col-md-2 control-label">Name</label>
             <div class="col-md-10">
-                <input name="Name" class="form-control" value="@Model.SelectedProject.Name" />
+                <input name="Name" class="form-control" value="@Model.Name" />
             </div>
         </div>
 
@@ -20,7 +20,7 @@
                 <select name="ClientId">
                     @foreach (var item in Model.Clients)
                     {
-                        <option value="@item.Id" @(item.Id == Model.SelectedProject.Id ? "selected" : "")>@item.Name</option>
+                        <option value="@item.Id" @(item.Id == Model.ClientId ? "selected" : "")>@item.Name</option>
                     }
                 </select>
             </div>
@@ -29,14 +29,21 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Description</label>
             <div class="col-md-10">
-                <input name="Quantity" class="form-control" value="@Model.SelectedProject.Description" />
+                <input name="Description" class="form-control" value="@Model.Description" />
             </div>
         </div>
 
         <div class="form-group">
             <label class="col-md-2 control-label">Completion Date</label>
             <div class="col-md-10">
-                <input name="CompletionDate" class="form-control" type="datetime" value="@Model.SelectedProject.CompletionDate" />
+                <input name="CompletionDate" class="form-control" type="datetime" value="@Model.CompletionDate" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Active</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Active)
             </div>
         </div>
 
@@ -44,7 +51,7 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Update" class="btn btn-success" />
                 <a href="/Project/Index" class="btn btn-info">Back to List</a>
-                <input type="hidden" name="Id" value="@Model.SelectedProject.Id" />
+                <input type="hidden" name="Id" value="@Model.Id" />
             </div>
         </div>
     </div>

@@ -69,5 +69,15 @@ namespace MyApp.Application.Services
             var updateCommand = mapper.Map<UpdateProjectCommand>(productViewModel);
             mediatorHandler.SendCommand(updateCommand);
         }
+
+        public UpdateProjectViewModel GetUpdateProjectData(Guid id)
+        {
+            var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
+            return new UpdateProjectViewModel
+            {
+                Clients = clients,
+                SelectedProject = mapper.Map<ProjectViewModel>(projectRepository.GetById(id))
+            };
+        }
     }
 }

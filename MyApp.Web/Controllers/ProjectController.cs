@@ -43,8 +43,8 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var project = projectAppService.GetById(id);
-            return View(project);
+            var updateProjectData = projectAppService.GetUpdateProjectData(id);
+            return View(updateProjectData);
         }
 
         [HttpPost]

@@ -12,5 +12,6 @@ namespace MyApp.Application.Interfaces
         void Update(ProjectViewModel productViewModel);
         void Remove(Guid id);
         CreateNewProjectViewModel GetCreateNewProjectData();
+        UpdateProjectViewModel GetUpdateProjectData(Guid id);
     }
 }

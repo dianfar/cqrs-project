@@ -29,6 +29,7 @@ namespace MyApp.Application.AutoMapper
                     ClientId = c.Client.Id,
                     ClientName = c.Client.Name
                 });
+            CreateMap<User, UserViewModel>();
         }
     }
 }

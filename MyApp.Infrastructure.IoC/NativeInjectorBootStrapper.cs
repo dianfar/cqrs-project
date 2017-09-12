@@ -28,6 +28,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<IClientAppService, ClientAppService>();
             services.AddScoped<IProjectAppService, ProjectAppService>();
+            services.AddScoped<IUserAppService, UserAppService>();
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<ClientRegisteredEvent>, ClientEventHandler>();
@@ -37,12 +38,16 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<RegisterNewClientCommand>, ClientCommandHandler>();
             services.AddScoped<INotificationHandler<UpdateClientCommand>, ClientCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveClientCommand>, ClientCommandHandler>();
+
             services.AddScoped<INotificationHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<INotificationHandler<UpdateProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveProductCommand>, ProjectCommandHandler>();
 
+            services.AddScoped<INotificationHandler<RegisterNewUserCommand>, UserCommandHandler>();
+
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<MyAppContext>();
         }

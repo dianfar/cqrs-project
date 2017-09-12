@@ -1,11 +1,12 @@
 ﻿using MyApp.Application.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using MyApp.Application.ViewModels;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Core.Bus;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using MyApp.Domain.Commands;
 
 namespace MyApp.Application.Services
@@ -33,12 +34,12 @@ namespace MyApp.Application.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            GC.SuppressFinalize(this);
         }
 
         public IEnumerable<UserViewModel> GetAll()
         {
-            throw new NotImplementedException();
+            return userRepository.GetAll().ProjectTo<UserViewModel>();
         }
 
         public UserViewModel GetById(Guid id)

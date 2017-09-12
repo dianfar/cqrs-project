@@ -11,11 +11,13 @@ namespace MyApp.Infrastructure.Data.Context
     {
         public DbSet<Project> Project { get; set; }
         public DbSet<Client> Client { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.AddConfiguration(new ClientMap());
             modelBuilder.AddConfiguration(new ProjectMap());
+            modelBuilder.AddConfiguration(new UserMap());
             modelBuilder.Entity<Project>().HasOne(project => project.Client);
 
             base.OnModelCreating(modelBuilder);

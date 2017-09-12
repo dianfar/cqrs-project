@@ -10,12 +10,12 @@ using MyApp.Domain.Models;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class UserCommandHandlerr : CommandHandler, INotificationHandler<RegisterNewUserCommand>
+    public class UserCommandHandler : CommandHandler, INotificationHandler<RegisterNewUserCommand>
     {
         private readonly IUserRepository userRepository;
         private readonly IMediatorHandler mediatorHandler;
 
-        public UserCommandHandlerr(
+        public UserCommandHandler(
             IUserRepository userRepository,
             IUnitOfWork uow, 
             IMediatorHandler bus, 

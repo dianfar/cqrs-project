@@ -7,8 +7,9 @@ namespace MyApp.Domain.Models
 {
     public class User : Entity
     {
-        public User(string name, bool active, string email)
+        public User(Guid id, string name, bool active, string email)
         {
+            this.Id = id;
             this.Name = name;
             this.Active = active;
             this.Email = email;

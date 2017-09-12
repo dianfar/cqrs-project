@@ -7,8 +7,9 @@ namespace MyApp.Domain.Commands
 {
     public class UpdateUserCommand : UserCommand
     {
-        public UpdateUserCommand(string name, bool active, string email)
+        public UpdateUserCommand(Guid id, string name, bool active, string email)
         {
+            this.Id = id;
             this.Name = name;
             this.Active = active;
             this.Email = email;

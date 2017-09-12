@@ -44,6 +44,8 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<RemoveProductCommand>, ProjectCommandHandler>();
 
             services.AddScoped<INotificationHandler<RegisterNewUserCommand>, UserCommandHandler>();
+            services.AddScoped<INotificationHandler<UpdateUserCommand>, UserCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveUserCommand>, UserCommandHandler>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();

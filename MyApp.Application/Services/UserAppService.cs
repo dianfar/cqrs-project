@@ -44,17 +44,19 @@ namespace MyApp.Application.Services
 
         public UserViewModel GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return mapper.Map<UserViewModel>(userRepository.GetById(id));
         }
 
         public void Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var removeCommand = new RemoveUserCommand(id);
+            mediatorHandler.SendCommand(removeCommand);
         }
 
         public void Update(UserViewModel userViewModel)
         {
-            throw new NotImplementedException();
+            var updateCommand = mapper.Map<UpdateUserCommand>(userViewModel);
+            mediatorHandler.SendCommand(updateCommand);
         }
     }
 }

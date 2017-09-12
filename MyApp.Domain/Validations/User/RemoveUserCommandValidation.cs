@@ -5,11 +5,11 @@ using System.Text;
 
 namespace MyApp.Domain.Validations
 {
-    public class RegisterNewUserCommandValidation : UserValidation<RegisterNewUserCommand>
+    public class RemoveUserCommandValidation : UserValidation<RemoveUserCommand>
     {
-        public RegisterNewUserCommandValidation()
+        public RemoveUserCommandValidation()
         {
-            ValidateName();
+            ValidateId();
         }
     }
 }

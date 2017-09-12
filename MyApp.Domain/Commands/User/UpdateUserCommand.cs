@@ -5,17 +5,18 @@ using System.Text;
 
 namespace MyApp.Domain.Commands
 {
-    public class RegisterNewUserCommand : UserCommand
+    public class UpdateUserCommand : UserCommand
     {
-        public RegisterNewUserCommand(string name, string email)
+        public UpdateUserCommand(string name, bool active, string email)
         {
             this.Name = name;
+            this.Active = active;
             this.Email = email;
         }
 
         public override bool IsValid()
         {
-            var validationResult = new RegisterNewUserCommandValidation().Validate(this);
+            var validationResult = new UpdateUserCommandValidation().Validate(this);
             return validationResult.IsValid;
         }
     }

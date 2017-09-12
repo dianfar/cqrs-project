@@ -5,17 +5,17 @@ using System.Text;
 
 namespace MyApp.Domain.Commands
 {
-    public class RegisterNewUserCommand : UserCommand
+    public class RemoveUserCommand : UserCommand
     {
-        public RegisterNewUserCommand(string name, string email)
+        public RemoveUserCommand(Guid id)
         {
-            this.Name = name;
-            this.Email = email;
+            Id = id;
+            AggregateId = id;
         }
 
         public override bool IsValid()
         {
-            var validationResult = new RegisterNewUserCommandValidation().Validate(this);
+            var validationResult = new RemoveUserCommandValidation().Validate(this);
             return validationResult.IsValid;
         }
     }

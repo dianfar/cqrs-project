@@ -39,6 +39,16 @@ namespace MyApp.Application.AutoMapper
                     RoleId = c.Role.Id,
                     RoleName = c.Role.Name
                 });
+            CreateMap<User, UpdateUserViewModel>()
+                .ConstructUsing(c => new UpdateUserViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Active = c.Active,
+                    Email = c.Email,
+                    RoleId = c.Role.Id,
+                    RoleName = c.Role.Name
+                });
             CreateMap<Role, RoleViewModel>();
         }
     }

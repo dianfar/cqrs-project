@@ -44,7 +44,7 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var customer = userAppService.GetById(id);
+            var customer = userAppService.GetUpdateUserData(id);
             return View(customer);
         }
 

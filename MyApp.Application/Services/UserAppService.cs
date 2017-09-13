@@ -59,6 +59,15 @@ namespace MyApp.Application.Services
             };
         }
 
+        public UpdateUserViewModel GetUpdateUserData(Guid id)
+        {
+            var roles = this.roleRepository.GetAll().ProjectTo<RoleViewModel>();
+            var result = mapper.Map<UpdateUserViewModel>(userRepository.GetById(id));
+            result.Roles = roles;
+
+            return result;
+        }
+
         public void Remove(Guid id)
         {
             var removeCommand = new RemoveUserCommand(id);

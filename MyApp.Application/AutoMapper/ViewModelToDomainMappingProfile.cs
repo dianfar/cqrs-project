@@ -19,7 +19,7 @@ namespace MyApp.Application.AutoMapper
             CreateMap<UserViewModel, RegisterNewUserCommand>()
                 .ConstructUsing(c => new RegisterNewUserCommand(c.Name, c.Email, c.RoleId));
             CreateMap<UserViewModel, UpdateUserCommand>()
-                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Active, c.Email));
+                .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Active, c.Email, c.RoleId));
         }
     }
 }

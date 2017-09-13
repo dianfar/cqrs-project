@@ -13,16 +13,19 @@ namespace MyApp.Domain.CommandHandlers
         INotificationHandler<UpdateUserCommand>,
         INotificationHandler<RemoveUserCommand>
     {
+        private readonly IRoleRepository roleRepository;
         private readonly IUserRepository userRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public UserCommandHandler(
+            IRoleRepository roleRepository,
             IUserRepository userRepository,
             IUnitOfWork uow, 
             IMediatorHandler bus, 
             INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
         {
             this.mediatorHandler = bus;
+            this.roleRepository = roleRepository;
             this.userRepository = userRepository;
         }
 
@@ -34,7 +37,8 @@ namespace MyApp.Domain.CommandHandlers
                 return;
             }
 
-            var user = new User(Guid.NewGuid(), message.Name, true, message.Email);
+            var role = this.roleRepository.GetById(message.RoleId);
+            var user = new User(Guid.NewGuid(), message.Name, true, message.Email, role);
 
             this.userRepository.Add(user);
             this.Commit();
@@ -48,7 +52,8 @@ namespace MyApp.Domain.CommandHandlers
                 return;
             }
 
-            var user = new User(message.Id, message.Name, message.Active, message.Email);
+            var role = this.roleRepository.GetById(message.RoleId);
+            var user = new User(message.Id, message.Name, message.Active, message.Email, role);
             userRepository.Update(user);
             this.Commit();
         }

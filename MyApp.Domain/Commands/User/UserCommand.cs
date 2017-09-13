@@ -11,5 +11,6 @@ namespace MyApp.Domain.Commands
         public string Name { get; set; }
         public bool Active { get; set; }
         public string Email { get; set; }
+        public Guid RoleId { get; set; }
     }
 }

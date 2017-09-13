@@ -15,7 +15,6 @@ namespace MyApp.Domain.Models
         protected Client() { }
 
         public string Name { get; private set; }
-
         public string Description { get; private set; }
     }
 }

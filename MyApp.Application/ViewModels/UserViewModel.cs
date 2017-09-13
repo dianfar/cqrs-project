@@ -20,5 +20,10 @@ namespace MyApp.Application.ViewModels
         public string Email { get; set; }
 
         public bool Active { get; set; }
+
+        public Guid RoleId { get; set; }
+
+        [DisplayName("Role")]
+        public string RoleName { get; set; }
     }
 }

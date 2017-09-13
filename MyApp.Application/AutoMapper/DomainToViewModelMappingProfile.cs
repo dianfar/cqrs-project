@@ -30,6 +30,7 @@ namespace MyApp.Application.AutoMapper
                     ClientName = c.Client.Name
                 });
             CreateMap<User, UserViewModel>();
+            CreateMap<Role, RoleViewModel>();
         }
     }
 }

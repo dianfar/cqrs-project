@@ -15,10 +15,12 @@ namespace MyApp.Application.Services
     {
         private readonly IMapper mapper;
         private readonly IUserRepository userRepository;
+        private readonly IRoleRepository roleRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public UserAppService(IMapper mapper,
                                   IUserRepository userRepository,
+                                  IRoleRepository roleRepository,
                                   IMediatorHandler bus)
         {
             this.mapper = mapper;
@@ -45,6 +47,15 @@ namespace MyApp.Application.Services
         public UserViewModel GetById(Guid id)
         {
             return mapper.Map<UserViewModel>(userRepository.GetById(id));
+        }
+
+        public RegisterNewUserViewModel GetRegisterNewUserData()
+        {
+            var roles = this.roleRepository.GetAll().ProjectTo<RoleViewModel>();
+            return new RegisterNewUserViewModel()
+            {
+                Roles = roles
+            };
         }
 
         public void Remove(Guid id)

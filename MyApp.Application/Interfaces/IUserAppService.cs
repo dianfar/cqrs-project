@@ -7,6 +7,7 @@ namespace MyApp.Application.Interfaces
 {
     public interface IUserAppService : IDisposable
     {
+        RegisterNewUserViewModel GetRegisterNewUserData();
         IEnumerable<UserViewModel> GetAll();
         UserViewModel GetById(Guid id);
         void Create(UserViewModel userViewModel);

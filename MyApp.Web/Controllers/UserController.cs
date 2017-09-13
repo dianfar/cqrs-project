@@ -28,7 +28,8 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            var viewModel = userAppService.GetRegisterNewUserData();
+            return View(viewModel);
         }
 
         [HttpPost]

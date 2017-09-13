@@ -66,6 +66,7 @@
     <Build Include="Tables\Client.sql" />
     <Build Include="Tables\EntryLog.sql" />
     <Build Include="Tables\ProjectMember.sql" />
+    <Build Include="Tables\Role.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MyApp.Database.publish.xml" />

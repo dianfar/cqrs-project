@@ -20,5 +20,6 @@ namespace MyApp.Domain.Models
         public string Name { get; set; }
         public bool Active { get; set; }
         public string Email { get; set; }
+        public Role Role { get; set; }
     }
 }

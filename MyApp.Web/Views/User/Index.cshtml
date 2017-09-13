@@ -28,6 +28,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Email)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -40,6 +43,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
                     </td>
                     <td>
                         <a href="/User/Edit/@item.Id" class="btn btn-warning">

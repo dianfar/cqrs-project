@@ -29,7 +29,16 @@ namespace MyApp.Application.AutoMapper
                     ClientId = c.Client.Id,
                     ClientName = c.Client.Name
                 });
-            CreateMap<User, UserViewModel>();
+            CreateMap<User, UserViewModel>()
+                .ConstructUsing(c => new UserViewModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Active = c.Active,
+                    Email = c.Email,
+                    RoleId = c.Role.Id,
+                    RoleName = c.Role.Name
+                });
             CreateMap<Role, RoleViewModel>();
         }
     }

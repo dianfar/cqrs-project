@@ -25,6 +25,7 @@ namespace MyApp.Application.Services
         {
             this.mapper = mapper;
             this.userRepository = userRepository;
+            this.roleRepository = roleRepository;
             this.mediatorHandler = bus;
         }
 

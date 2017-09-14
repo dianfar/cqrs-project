@@ -5,17 +5,16 @@ using System.Text;
 
 namespace MyApp.Domain.Commands
 {
-    public class RemoveUserCommand : UserCommand
+    public class RemoveProjectMemberCommand : ProjectMemberCommand
     {
-        public RemoveUserCommand(Guid id)
+        public RemoveProjectMemberCommand(Guid id)
         {
-            Id = id;
-            AggregateId = id;
+            this.Id = id;
         }
 
         public override bool IsValid()
         {
-            ValidationResult = new RemoveUserCommandValidation().Validate(this);
+            ValidationResult = new RemoveProjectMemberCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

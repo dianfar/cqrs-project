@@ -16,8 +16,8 @@ namespace MyApp.Domain.Commands
 
         public override bool IsValid()
         {
-            var validationResult = new RegisterNewUserCommandValidation().Validate(this);
-            return validationResult.IsValid;
+            ValidationResult = new RegisterNewUserCommandValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

@@ -18,8 +18,8 @@ namespace MyApp.Domain.Commands
 
         public override bool IsValid()
         {
-            var validationResult = new UpdateUserCommandValidation().Validate(this);
-            return validationResult.IsValid;
+            ValidationResult = new UpdateUserCommandValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

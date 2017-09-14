@@ -1,8 +1,5 @@
 ﻿using MyApp.Domain.Models;
 using MyApp.Infrastructure.Data.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 

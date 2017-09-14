@@ -20,9 +20,12 @@ namespace MyApp.Infrastructure.Data.Context
             modelBuilder.AddConfiguration(new ProjectMap());
             modelBuilder.AddConfiguration(new UserMap());
             modelBuilder.AddConfiguration(new RoleMap());
+            modelBuilder.AddConfiguration(new ProjectMemberMap());
 
             modelBuilder.Entity<Project>().HasOne(project => project.Client);
+            modelBuilder.Entity<Project>().HasMany(project => project.ProjectMembers).WithOne(member => member.Project);
             modelBuilder.Entity<User>().HasOne(user => user.Role);
+            modelBuilder.Entity<ProjectMember>().HasOne(member => member.User);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -6,6 +7,11 @@ namespace MyApp.Application.ViewModels
 {
     public class ProjectViewModel
     {
+        public ProjectViewModel()
+        {
+            ProjectMembers = new List<ProjectMemberViewModel>();
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -31,5 +37,7 @@ namespace MyApp.Application.ViewModels
 
         [DisplayName("Client")]
         public string ClientName { get; set; }
+
+        public IEnumerable<ProjectMemberViewModel> ProjectMembers { get; set; }
     }
 }

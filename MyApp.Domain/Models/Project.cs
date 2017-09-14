@@ -1,5 +1,6 @@
 ﻿using MyApp.Domain.Core.Models;
 using System;
+using System.Collections.Generic;
 
 namespace MyApp.Domain.Models
 {
@@ -13,6 +14,7 @@ namespace MyApp.Domain.Models
             CompletionDate = completionDate;
             Active = active;
             Client = client;
+            ProjectMembers = new List<ProjectMember>();
         }
 
         protected Project() { }
@@ -22,5 +24,6 @@ namespace MyApp.Domain.Models
         public DateTime CompletionDate { get; private set; }
         public bool Active { get; private set; }
         public Client Client { get; private set; }
+        public IEnumerable<ProjectMember> ProjectMembers { get; set; }
     }
 }

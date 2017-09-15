@@ -77,7 +77,8 @@ namespace MyApp.Application.Services
         {
             var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
             var users = userRepository.GetAll().ProjectTo<UserViewModel>();
-            var result = mapper.Map<UpdateProjectViewModel>(projectRepository.GetById(id));
+            var project = projectRepository.GetById(id);
+            var result = mapper.Map<UpdateProjectViewModel>(project);
             result.Clients = clients;
             result.Users = users;
 

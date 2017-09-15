@@ -59,6 +59,17 @@
 
 <form action="/ProjectMember/Add" method="post">
     <div class="form-horizontal">
+        <table>
+            <thead>
+                <tr><td colspan="2"><b>Project Member(s)</b></td></tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProjectMembers)
+                {
+                    <tr><td>@item.UserName</td><td><a href='/ProjectMember/Remove?userId=@item.UserId'>Remove</a></td></tr>
+                }
+            </tbody>
+        </table>
         <hr />
         <div class="form-group">
             <label class="col-md-2 control-label">User</label>

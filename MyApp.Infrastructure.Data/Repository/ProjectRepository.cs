@@ -15,7 +15,10 @@ namespace MyApp.Infrastructure.Data.Repository
 
         public override Project GetById(Guid id)
         {
-            return DbSet.Include(p => p.Client).FirstOrDefault(p => p.Id == id);
+            return DbSet.Include(p => p.Client)
+                .Include(p => p.ProjectMembers)
+                .Include("ProjectMembers.User")
+                .FirstOrDefault(p => p.Id == id);
         }
     }
 }

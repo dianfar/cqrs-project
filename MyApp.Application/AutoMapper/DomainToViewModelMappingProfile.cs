@@ -18,7 +18,7 @@ namespace MyApp.Application.AutoMapper
                     CompletionDate = c.CompletionDate,
                     ClientId = c.Client.Id,
                     ClientName = c.Client.Name
-                });
+                }).ForMember(s => s.ProjectMembers, c => c.MapFrom(m => m.ProjectMembers)); 
             CreateMap<Project, UpdateProjectViewModel>()
                 .ConstructUsing(c => new UpdateProjectViewModel()
                 {
@@ -50,6 +50,12 @@ namespace MyApp.Application.AutoMapper
                     RoleName = c.Role.Name
                 });
             CreateMap<Role, RoleViewModel>();
+            CreateMap<ProjectMember, ProjectMemberViewModel>()
+                .ConstructUsing(c => new ProjectMemberViewModel()
+                {
+                    Id = c.Id,
+                    User = new UserViewModel() { Id = c.User.Id, Name = c.User.Name }
+                });
         }
     }
 }

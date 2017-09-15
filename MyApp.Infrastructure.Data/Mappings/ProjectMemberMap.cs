@@ -11,12 +11,6 @@ namespace MyApp.Infrastructure.Data.Mappings
         {
             builder.Property(product => product.Id)
                 .HasColumnName("Id");
-
-            builder.Property(product => product.Project.Id)
-                .HasColumnName("ProjectId");
-
-            builder.Property(product => product.User.Id)
-                .HasColumnName("UserId");
         }
     }
 }

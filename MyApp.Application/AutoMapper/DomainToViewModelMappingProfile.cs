@@ -54,7 +54,8 @@ namespace MyApp.Application.AutoMapper
                 .ConstructUsing(c => new ProjectMemberViewModel()
                 {
                     Id = c.Id,
-                    User = new UserViewModel() { Id = c.User.Id, Name = c.User.Name }
+                    UserId = c.User.Id,
+                    UserName = c.User.Name
                 });
         }
     }

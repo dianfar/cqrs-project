@@ -20,6 +20,8 @@ namespace MyApp.Application.AutoMapper
                 .ConstructUsing(c => new RegisterNewUserCommand(c.Name, c.Email, c.RoleId));
             CreateMap<UserViewModel, UpdateUserCommand>()
                 .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Active, c.Email, c.RoleId));
+            CreateMap<ProjectMemberViewModel, AddProjectMemberCommand>()
+                .ConstructUsing(c => new AddProjectMemberCommand(c.ProjectId, c.UserId));
         }
     }
 }

@@ -11,7 +11,7 @@ namespace MyApp.Domain.CommandHandlers
     public class ProjectCommandHandler : CommandHandler,
         INotificationHandler<CreateNewProjectCommand>,
         INotificationHandler<UpdateProjectCommand>,
-        INotificationHandler<RemoveProductCommand>
+        INotificationHandler<RemoveProjectCommand>
     {
         private readonly IProjectRepository projectRepository;
         private readonly IClientRepository clientRepository;
@@ -59,7 +59,7 @@ namespace MyApp.Domain.CommandHandlers
             Commit();
         }
 
-        public void Handle(RemoveProductCommand message)
+        public void Handle(RemoveProjectCommand message)
         {
             if (!message.IsValid())
             {

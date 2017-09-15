@@ -7,6 +7,8 @@ namespace MyApp.Domain.Models
 {
     public class EntryLog : Entity
     {
+        public EntryLog() { }
+
         public User User { get; set; }
         public Project Project { get; set; }
         public DateTime EntryDate { get; set; }

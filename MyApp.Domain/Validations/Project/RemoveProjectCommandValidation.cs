@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyApp.Domain.Validations
 {
-    public class RemoveProjectCommandValidation : ProjectValidation<RemoveProductCommand>
+    public class RemoveProjectCommandValidation : ProjectValidation<RemoveProjectCommand>
     {
         public RemoveProjectCommandValidation()
         {

@@ -29,6 +29,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IClientAppService, ClientAppService>();
             services.AddScoped<IProjectAppService, ProjectAppService>();
             services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<IProjectMemberAppService, ProjectMemberAppService>();
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<ClientRegisteredEvent>, ClientEventHandler>();
@@ -41,16 +42,20 @@ namespace MyApp.Infrastructure.IoC
 
             services.AddScoped<INotificationHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<INotificationHandler<UpdateProjectCommand>, ProjectCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveProductCommand>, ProjectCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveProjectCommand>, ProjectCommandHandler>();
 
             services.AddScoped<INotificationHandler<RegisterNewUserCommand>, UserCommandHandler>();
             services.AddScoped<INotificationHandler<UpdateUserCommand>, UserCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveUserCommand>, UserCommandHandler>();
 
+            services.AddScoped<INotificationHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
+
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IProjectMemberRepository, ProjectMemberRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<MyAppContext>();
         }

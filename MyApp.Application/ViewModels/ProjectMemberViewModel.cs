@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyApp.Application.ViewModels
 {
@@ -8,6 +6,10 @@ namespace MyApp.Application.ViewModels
     {
         public Guid Id { get; set; }
 
-        public UserViewModel User { get; set; }
+        public Guid ProjectId { get; set; }
+
+        public Guid UserId { get; set; }
+
+        public string UserName { get; set; }
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MyApp.Domain.Commands
 {
-    public class RemoveProductCommand : ProjectCommand
+    public class RemoveProjectCommand : ProjectCommand
     {
-        public RemoveProductCommand(Guid id)
+        public RemoveProjectCommand(Guid id)
         {
             Id = id;
         }

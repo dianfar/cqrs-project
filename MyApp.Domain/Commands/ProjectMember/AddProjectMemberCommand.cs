@@ -6,10 +6,10 @@ namespace MyApp.Domain.Commands
 {
     public class AddProjectMemberCommand : ProjectMemberCommand
     {
-        public AddProjectMemberCommand(Project project, User user)
+        public AddProjectMemberCommand(Guid projectId, Guid userId)
         {
-            this.Project = project;
-            this.User = user;
+            this.ProjectId = projectId;
+            this.UserId = userId;
         }
 
         public override bool IsValid()

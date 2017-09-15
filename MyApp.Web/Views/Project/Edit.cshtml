@@ -56,3 +56,27 @@
         </div>
     </div>
 </form>
+
+<form action="/ProjectMember/Add" method="post">
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            <label class="col-md-2 control-label">User</label>
+            <div class="col-md-10">
+                <select name="UserId">
+                    @foreach (var item in Model.Users)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add member" class="btn btn-success" />
+                <input type="hidden" name="ProjectId" value="@Model.Id" />
+            </div>
+        </div>
+    </div>
+</form>

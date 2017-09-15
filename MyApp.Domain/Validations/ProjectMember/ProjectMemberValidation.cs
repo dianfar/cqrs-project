@@ -16,13 +16,13 @@ namespace MyApp.Domain.Validations
 
         protected void ValidateProjectId()
         {
-            RuleFor(projectMember => projectMember.Project.Id)
+            RuleFor(projectMember => projectMember.ProjectId)
                 .NotEqual(Guid.Empty);
         }
 
         protected void ValidateUserId()
         {
-            RuleFor(projectMember => projectMember.User.Id)
+            RuleFor(projectMember => projectMember.UserId)
                 .NotEqual(Guid.Empty);
         }
     }

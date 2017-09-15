@@ -6,6 +6,8 @@ namespace MyApp.Domain.Models
 {
     public class Project : Entity
     {
+        public Project() { }
+
         public Project(Guid id, string name, string description, DateTime completionDate, bool active, Client client)
         {
             Id = id;
@@ -16,8 +18,6 @@ namespace MyApp.Domain.Models
             Client = client;
             ProjectMembers = new List<ProjectMember>();
         }
-
-        protected Project() { }
 
         public string Name { get; private set; }
         public string Description { get; private set; }

@@ -7,6 +7,8 @@ namespace MyApp.Domain.Models
 {
     public class Role : Entity
     {
+        public Role() { }
+
         public string Name { get; set; }
     }
 }

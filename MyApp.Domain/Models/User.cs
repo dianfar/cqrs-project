@@ -1,12 +1,12 @@
 ﻿using MyApp.Domain.Core.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyApp.Domain.Models
 {
     public class User : Entity
     {
+        public User() { }
+
         public User(Guid id, string name, bool active, string email, Role role)
         {
             this.Id = id;
@@ -15,8 +15,6 @@ namespace MyApp.Domain.Models
             this.Email = email;
             this.Role = role;
         }
-
-        protected User() { }
 
         public string Name { get; set; }
         public bool Active { get; set; }

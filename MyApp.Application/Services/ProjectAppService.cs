@@ -15,16 +15,19 @@ namespace MyApp.Application.Services
         private readonly IMapper mapper;
         private readonly IProjectRepository projectRepository;
         private readonly IClientRepository clientRepository;
+        private readonly IUserRepository userRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public ProjectAppService(IMapper mapper,
                                 IProjectRepository projectRepository,
                                 IClientRepository clientRepository,
+                                IUserRepository userRepository,
                                 IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
             this.projectRepository = projectRepository;
             this.clientRepository = clientRepository;
+            this.userRepository = userRepository;
             this.mediatorHandler = mediatorHandler;
         }
 
@@ -60,7 +63,7 @@ namespace MyApp.Application.Services
 
         public void Remove(Guid id)
         {
-            var removeCommand = new RemoveProductCommand(id);
+            var removeCommand = new RemoveProjectCommand(id);
             mediatorHandler.SendCommand(removeCommand);
         }
 
@@ -73,8 +76,10 @@ namespace MyApp.Application.Services
         public UpdateProjectViewModel GetUpdateProjectData(Guid id)
         {
             var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
+            var users = userRepository.GetAll().ProjectTo<UserViewModel>();
             var result = mapper.Map<UpdateProjectViewModel>(projectRepository.GetById(id));
             result.Clients = clients;
+            result.Users = users;
 
             return result;
         }

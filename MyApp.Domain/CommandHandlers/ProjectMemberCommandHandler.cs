@@ -30,11 +30,24 @@ namespace MyApp.Domain.CommandHandlers
 
         public void Handle(RemoveProjectMemberCommand message)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return;
+            }
+
+            projectMemberRepository.Remove(message.Id);
+            Commit();
         }
 
         public void Handle(AddProjectMemberCommand message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return;
+            }
+
             var member = new ProjectMember(Guid.NewGuid());
             member.User = userRepository.GetById(message.UserId);
             member.Project = projectRepository.GetById(message.ProjectId);

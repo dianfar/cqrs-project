@@ -66,7 +66,7 @@
             <tbody>
                 @foreach (var item in Model.ProjectMembers)
                 {
-                    <tr><td>@item.UserName</td><td><a href='/ProjectMember/Remove?userId=@item.UserId'>Remove</a></td></tr>
+                    <tr><td>@item.UserName</td><td><a href='/ProjectMember/Remove?id=@item.Id'>Remove</a></td></tr>
                 }
             </tbody>
         </table>

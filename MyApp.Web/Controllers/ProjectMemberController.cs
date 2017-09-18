@@ -37,5 +37,17 @@ namespace MyApp.Web.Controllers
                 action = "Index"
             });
         }
+
+        [HttpGet]
+        public IActionResult Remove(Guid id)
+        {
+            projectMemberAppService.Remove(id);
+
+            return RedirectToRoute(new
+            {
+                controller = "Project",
+                action = "Index"
+            });
+        }
     }
 }

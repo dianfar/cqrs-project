@@ -10,6 +10,8 @@ namespace MyApp.Application.ViewModels
 
         public Guid ProjectId { get; set; }
 
+        public string ProjectName { get; set; }
+
         public DateTime EntryDate { get; set; }
 
         public decimal Hours { get; set; }

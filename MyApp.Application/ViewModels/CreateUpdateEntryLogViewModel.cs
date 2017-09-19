@@ -7,13 +7,11 @@ namespace MyApp.Application.ViewModels
     public class CreateUpdateEntryLogViewModel
     {
         private IEnumerable<EntryLogViewModel> entryLogList;
-        private IEnumerable<UserViewModel> userList;
         private IEnumerable<ProjectViewModel> projectList;
 
         public CreateUpdateEntryLogViewModel()
         {
             entryLogList = new List<EntryLogViewModel>();
-            userList = new List<UserViewModel>();
             projectList = new List<ProjectViewModel>();
         }
 
@@ -21,12 +19,6 @@ namespace MyApp.Application.ViewModels
         {
             get { return entryLogList; }
             set { entryLogList = value; }
-        }
-
-        public IEnumerable<UserViewModel> Users
-        {
-            get { return userList; }
-            set { userList = value; }
         }
 
         public IEnumerable<ProjectViewModel> Projects

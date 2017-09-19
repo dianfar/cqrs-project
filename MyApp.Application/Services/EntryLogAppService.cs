@@ -14,17 +14,14 @@ namespace MyApp.Application.Services
     {
         private readonly IMapper mapper;
         private readonly IEntryLogRepository entryLogRepository;
-        private readonly IUserRepository userRepository;
         private readonly IProjectRepository projectRepository;
 
         public EntryLogAppService(IMapper mapper,
                                IEntryLogRepository entryLogRepository,
-                               IUserRepository userRepository,
                                IProjectRepository projectRepository)
         {
             this.mapper = mapper;
             this.entryLogRepository = entryLogRepository;
-            this.userRepository = userRepository;
             this.projectRepository = projectRepository;
         }
 
@@ -46,13 +43,11 @@ namespace MyApp.Application.Services
         public CreateUpdateEntryLogViewModel GetByUser()
         {
             var entryLogs = entryLogRepository.GetAll().ProjectTo<EntryLogViewModel>();
-            var users = userRepository.GetAll().ProjectTo<UserViewModel>();
             var projects = projectRepository.GetAll().ProjectTo<ProjectViewModel>();
 
             return new CreateUpdateEntryLogViewModel
             {
                 EntryLogs = entryLogs,
-                Users = users,
                 Projects = projects
             };
         }

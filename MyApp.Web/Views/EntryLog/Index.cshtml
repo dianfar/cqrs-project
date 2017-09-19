@@ -5,28 +5,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<div class="row">
-    <div class="col-md-12">
-        <div>
-            <div class="pull-left">
-                <a href="/Client/Add" class="btn btn-primary">
-                    <span title="Register New" class="glyphicon glyphicon-plus-sign"></span> Create New
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<br />*@
-
+<br />
 <div class="panel panel-default">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>
+                    Project
+                </th>
+                <th>
                     Entry date
                 </th>
                 <th>
                     Hours
+                </th>
+                <th>
+                    Description
                 </th>
                 <th></th>
             </tr>
@@ -36,16 +30,22 @@
             {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.ProjectName)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.EntryDate)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Hours)
                     </td>
                     <td>
-                        <a href="/Client/Edit/@item.Id" class="btn btn-warning">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a href="/EntryLog/Edit/@item.Id" class="btn btn-warning">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        <a href="/Client/Delete?id=@item.Id" class="btn btn-danger">
+                        <a href="/EntryLog/Delete?id=@item.Id" class="btn btn-danger">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
@@ -54,3 +54,53 @@
         </tbody>
     </table>
 </div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <form action="/EntryLog/Add" method="post">
+            <div class="form-horizontal">
+                <hr />
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Project</label>
+                    <div class="col-md-10">
+                        <select name="ClientId">
+                            @foreach (var item in Model.Projects)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Entry Date</label>
+                    <div class="col-md-10">
+                        <input name="EntryDate" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Hours</label>
+                    <div class="col-md-10">
+                        <input name="Hours" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Description</label>
+                    <div class="col-md-10">
+                        <input name="Description" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

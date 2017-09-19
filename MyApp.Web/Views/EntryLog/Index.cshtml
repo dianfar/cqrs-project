@@ -1,1 +1,56 @@
-﻿
+﻿@model MyApp.Application.ViewModels.CreateUpdateEntryLogViewModel
+
+@{
+    ViewData["Title"] = "Entry Log Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<div class="row">
+    <div class="col-md-12">
+        <div>
+            <div class="pull-left">
+                <a href="/Client/Add" class="btn btn-primary">
+                    <span title="Register New" class="glyphicon glyphicon-plus-sign"></span> Create New
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />*@
+
+<div class="panel panel-default">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Entry date
+                </th>
+                <th>
+                    Hours
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.EntryLogs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hours)
+                    </td>
+                    <td>
+                        <a href="/Client/Edit/@item.Id" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="/Client/Delete?id=@item.Id" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

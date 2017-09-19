@@ -7,7 +7,7 @@ namespace MyApp.Application.Interfaces
 {
     public interface IEntryLogAppService : IDisposable
     {
-        IEnumerable<CreateUpdateEntryLogViewModel> GetByUser();
+        CreateUpdateEntryLogViewModel GetByUser();
         EntryLogViewModel GetById(Guid id);
         void Create(EntryLogViewModel entryLogViewModel);
         void Update(EntryLogViewModel entryLogViewModel);

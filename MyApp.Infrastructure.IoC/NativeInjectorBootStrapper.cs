@@ -30,6 +30,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IProjectAppService, ProjectAppService>();
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IProjectMemberAppService, ProjectMemberAppService>();
+            services.AddScoped<IEntryLogAppService, EntryLogAppService>();
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<ClientRegisteredEvent>, ClientEventHandler>();
@@ -51,11 +52,15 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
             services.AddScoped<INotificationHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
 
+            services.AddScoped<INotificationHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();
+
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IProjectMemberRepository, ProjectMemberRepository>();
+            services.AddScoped<IEntryLogRepository, EntryLogRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<MyAppContext>();
         }

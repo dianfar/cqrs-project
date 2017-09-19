@@ -21,11 +21,14 @@ namespace MyApp.Infrastructure.Data.Context
             modelBuilder.AddConfiguration(new UserMap());
             modelBuilder.AddConfiguration(new RoleMap());
             modelBuilder.AddConfiguration(new ProjectMemberMap());
+            modelBuilder.AddConfiguration(new EntryLogMap());
 
             modelBuilder.Entity<Project>().HasOne(project => project.Client);
             modelBuilder.Entity<Project>().HasMany(project => project.ProjectMembers).WithOne(member => member.Project);
             modelBuilder.Entity<User>().HasOne(user => user.Role);
             modelBuilder.Entity<ProjectMember>().HasOne(member => member.User);
+            modelBuilder.Entity<EntryLog>().HasOne(log => log.User);
+            modelBuilder.Entity<EntryLog>().HasOne(log => log.Project);
 
             base.OnModelCreating(modelBuilder);
         }

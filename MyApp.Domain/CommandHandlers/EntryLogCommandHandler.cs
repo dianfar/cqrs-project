@@ -21,6 +21,8 @@ namespace MyApp.Domain.CommandHandlers
             IMediatorHandler bus, 
             INotificationHandler<DomainNotification> notifications) : base(uow, bus, notifications)
         {
+            this.entryLogRepository = entryLogRepository;
+            this.mediatorHandler = bus;
         }
 
         public void Handle(AddEntryLogCommand notification)

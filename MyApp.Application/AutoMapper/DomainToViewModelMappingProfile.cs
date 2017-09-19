@@ -57,6 +57,16 @@ namespace MyApp.Application.AutoMapper
                     UserId = c.User.Id,
                     UserName = c.User.Name
                 });
+            CreateMap<EntryLog, EntryLogViewModel>()
+                .ConstructUsing(c => new EntryLogViewModel()
+                {
+                    Id = c.Id,
+                    UserId = c.User.Id,
+                    ProjectId = c.Project.Id,
+                    EntryDate = c.EntryDate,
+                    Hours = c.Hours,
+                    Description = c.Description
+                });
         }
     }
 }

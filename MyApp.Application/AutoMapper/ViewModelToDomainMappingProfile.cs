@@ -22,6 +22,10 @@ namespace MyApp.Application.AutoMapper
                 .ConstructUsing(c => new UpdateUserCommand(c.Id, c.Name, c.Active, c.Email, c.RoleId));
             CreateMap<ProjectMemberViewModel, AddProjectMemberCommand>()
                 .ConstructUsing(c => new AddProjectMemberCommand(c.ProjectId, c.UserId));
+            CreateMap<EntryLogViewModel, AddEntryLogCommand>()
+                .ConstructUsing(c => new AddEntryLogCommand(c.UserId, c.ProjectId, c.EntryDate, c.Hours, c.Description));
+            CreateMap<EntryLogViewModel, UpdateEntryLogCommand>()
+                .ConstructUsing(c => new UpdateEntryLogCommand(c.Id, c.UserId, c.ProjectId, c.EntryDate, c.Hours, c.Description));
         }
     }
 }

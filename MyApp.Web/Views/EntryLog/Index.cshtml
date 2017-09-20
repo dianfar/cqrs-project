@@ -64,7 +64,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">Project</label>
                     <div class="col-md-10">
-                        <select name="ClientId">
+                        <select name="ProjectId">
                             @foreach (var item in Model.Projects)
                             {
                                 <option value="@item.Id">@item.Name</option>
@@ -76,7 +76,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">Entry Date</label>
                     <div class="col-md-10">
-                        <input name="EntryDate" class="form-control" />
+                        <input id="datepicker" name="EntryDate" class="form-control" />
                     </div>
                 </div>
 

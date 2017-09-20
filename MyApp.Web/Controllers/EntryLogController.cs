@@ -23,5 +23,13 @@ namespace MyApp.Web.Controllers
             var entryLogs = entryLogAppService.GetByUser();
             return View(entryLogs);
         }
+
+        public IActionResult Add(CreateUpdateEntryLogViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+            entryLogAppService.Create(viewModel);
+
+            return RedirectToAction("Index");
+        }
     }
 }

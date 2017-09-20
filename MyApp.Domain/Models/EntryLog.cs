@@ -9,6 +9,14 @@ namespace MyApp.Domain.Models
     {
         public EntryLog() { }
 
+        public EntryLog(Guid id, DateTime entryDate, decimal Hours, string description)
+        {
+            this.Id = id;
+            this.EntryDate = entryDate;
+            this.Hours = Hours;
+            this.Description = description;
+        }
+
         public User User { get; set; }
         public Project Project { get; set; }
         public DateTime EntryDate { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyApp.Application.ViewModels
 {
-    public class CreateUpdateEntryLogViewModel
+    public class CreateUpdateEntryLogViewModel : EntryLogViewModel
     {
         private IEnumerable<EntryLogViewModel> entryLogList;
         private IEnumerable<ProjectViewModel> projectList;

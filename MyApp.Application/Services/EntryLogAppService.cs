@@ -15,19 +15,23 @@ namespace MyApp.Application.Services
         private readonly IMapper mapper;
         private readonly IEntryLogRepository entryLogRepository;
         private readonly IProjectRepository projectRepository;
+        private readonly IMediatorHandler mediatorHandler;
 
         public EntryLogAppService(IMapper mapper,
                                IEntryLogRepository entryLogRepository,
-                               IProjectRepository projectRepository)
+                               IProjectRepository projectRepository,
+                               IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
             this.entryLogRepository = entryLogRepository;
             this.projectRepository = projectRepository;
+            this.mediatorHandler = mediatorHandler;
         }
 
         public void Create(EntryLogViewModel entryLogViewModel)
         {
-            throw new NotImplementedException();
+            var addCommand = mapper.Map<AddEntryLogCommand>(entryLogViewModel);
+            mediatorHandler.SendCommand(addCommand);
         }
 
         public void Dispose()

@@ -58,7 +58,8 @@ namespace MyApp.Application.Services
 
         public void Remove(Guid id)
         {
-            throw new NotImplementedException();
+            var removeCommand = new RemoveEntryLogCommand(id);
+            mediatorHandler.SendCommand(removeCommand);
         }
 
         public void Update(EntryLogViewModel entryLogViewModel)

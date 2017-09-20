@@ -55,9 +55,16 @@ namespace MyApp.Domain.CommandHandlers
             throw new NotImplementedException();
         }
 
-        public void Handle(RemoveEntryLogCommand notification)
+        public void Handle(RemoveEntryLogCommand message)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return;
+            }
+
+            entryLogRepository.Remove(message.Id);
+            Commit();
         }
     }
 }

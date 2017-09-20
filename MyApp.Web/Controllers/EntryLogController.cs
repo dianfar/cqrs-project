@@ -24,11 +24,19 @@ namespace MyApp.Web.Controllers
             return View(entryLogs);
         }
 
+        [HttpPost]
         public IActionResult Add(CreateUpdateEntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
             entryLogAppService.Create(viewModel);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Delete([FromQuery]Guid id)
+        {
+            entryLogAppService.Remove(id);
             return RedirectToAction("Index");
         }
     }

@@ -21,6 +21,7 @@ namespace MyApp.Web.Controllers
         public IActionResult Index()
         {
             var entryLogs = entryLogAppService.GetByUser();
+            entryLogs.EditMode = false;
             return View(entryLogs);
         }
 
@@ -28,7 +29,26 @@ namespace MyApp.Web.Controllers
         public IActionResult Add(CreateUpdateEntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
+            viewModel.UserId = UserId;
             entryLogAppService.Create(viewModel);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(Guid id)
+        {
+            var updateEntryLogData = entryLogAppService.GetUpdatedData(id);
+            updateEntryLogData.EditMode = true;
+            return View("Index", updateEntryLogData);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(CreateUpdateEntryLogViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+            viewModel.UserId = UserId;
+            entryLogAppService.Update(viewModel);
 
             return RedirectToAction("Index");
         }

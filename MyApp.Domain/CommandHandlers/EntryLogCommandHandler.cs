@@ -50,9 +50,22 @@ namespace MyApp.Domain.CommandHandlers
             Commit();
         }
 
-        public void Handle(UpdateEntryLogCommand notification)
+        public void Handle(UpdateEntryLogCommand message)
         {
-            throw new NotImplementedException();
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return;
+            }
+
+            var user = userRepository.GetById(message.UserId);
+            var project = projectRepository.GetById(message.ProjectId);
+            var entryLog = new EntryLog(message.Id, message.EntryDate, message.Hours, message.Description);
+            entryLog.User = user;
+            entryLog.Project = project;
+
+            entryLogRepository.Update(entryLog);
+            Commit();
         }
 
         public void Handle(RemoveEntryLogCommand message)

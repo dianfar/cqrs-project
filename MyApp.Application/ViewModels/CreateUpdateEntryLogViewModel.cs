@@ -15,6 +15,8 @@ namespace MyApp.Application.ViewModels
             projectList = new List<ProjectViewModel>();
         }
 
+        public bool EditMode { get; set; }
+
         public IEnumerable<EntryLogViewModel> EntryLogs
         {
             get { return entryLogList; }

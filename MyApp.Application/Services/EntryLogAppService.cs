@@ -39,9 +39,23 @@ namespace MyApp.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public EntryLogViewModel GetById(Guid id)
+        public CreateUpdateEntryLogViewModel GetUpdatedData(Guid id)
         {
-            throw new NotImplementedException();
+            var entryLogs = entryLogRepository.GetAll().ProjectTo<EntryLogViewModel>();
+            var projects = projectRepository.GetAll().ProjectTo<ProjectViewModel>();
+            var entryLog = entryLogRepository.GetById(id);
+
+            return new CreateUpdateEntryLogViewModel
+            {
+                Id = entryLog.Id,
+                EntryDate = entryLog.EntryDate,
+                Hours = entryLog.Hours,
+                Description = entryLog.Description,
+                UserId = entryLog.User.Id,
+                ProjectId = entryLog.Project.Id,
+                EntryLogs = entryLogs,
+                Projects = projects
+            };
         }
 
         public CreateUpdateEntryLogViewModel GetByUser()
@@ -64,7 +78,8 @@ namespace MyApp.Application.Services
 
         public void Update(EntryLogViewModel entryLogViewModel)
         {
-            throw new NotImplementedException();
+            var addCommand = mapper.Map<UpdateEntryLogCommand>(entryLogViewModel);
+            mediatorHandler.SendCommand(addCommand);
         }
     }
 }

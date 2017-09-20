@@ -1,29 +1,26 @@
 ﻿using MediatR;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyApp.Domain.Core.Notifications
 {
     public class DomainNotificationHandler : INotificationHandler<DomainNotification>
     {
-        private List<DomainNotification> _notifications;
+        private List<DomainNotification> notifications;
 
         public DomainNotificationHandler()
         {
-            _notifications = new List<DomainNotification>();
+            notifications = new List<DomainNotification>();
         }
 
         public void Handle(DomainNotification message)
         {
-            _notifications.Add(message);
+            notifications.Add(message);
         }
 
         public virtual List<DomainNotification> GetNotifications()
         {
-            return _notifications;
+            return notifications;
         }
 
         public virtual bool HasNotifications()
@@ -33,7 +30,7 @@ namespace MyApp.Domain.Core.Notifications
 
         public void Dispose()
         {
-            _notifications = new List<DomainNotification>();
+            notifications = new List<DomainNotification>();
         }
     }
 }

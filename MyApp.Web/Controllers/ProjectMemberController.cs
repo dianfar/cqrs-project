@@ -7,9 +7,11 @@ using MyApp.Domain.Core.Notifications;
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyApp.Web.Controllers
 {
+    //[Authorize]
     public class ProjectMemberController : BaseController
     {
         private readonly IProjectMemberAppService projectMemberAppService;

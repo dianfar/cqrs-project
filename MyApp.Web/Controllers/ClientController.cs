@@ -4,9 +4,11 @@ using MyApp.Application.Interfaces;
 using MediatR;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyApp.Web.Controllers
 {
+    //[Authorize]
     public class ClientController : BaseController
     {
         private readonly IClientAppService clientAppService;
@@ -59,11 +61,6 @@ namespace MyApp.Web.Controllers
         {
             clientAppService.Remove(id);
             return RedirectToAction("Index");
-        }
-
-        public IActionResult Error()
-        {
-            return View();
         }
     }
 }

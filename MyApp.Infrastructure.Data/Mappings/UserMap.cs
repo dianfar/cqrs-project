@@ -25,6 +25,14 @@ namespace MyApp.Infrastructure.Data.Mappings
                 .HasColumnType("varchar(100)")
                 .HasMaxLength(100)
                 .IsRequired();
+
+            builder.Property(c => c.Password)
+                .HasColumnType("varchar(128)")
+                .IsRequired();
+
+            builder.Property(c => c.PasswordSalt)
+                .HasColumnType("varchar(128)")
+                .IsRequired();
         }
     }
 }

@@ -7,11 +7,12 @@ namespace MyApp.Domain.Commands
 {
     public class RegisterNewUserCommand : UserCommand
     {
-        public RegisterNewUserCommand(string name, string email, Guid roleId)
+        public RegisterNewUserCommand(string name, string email, Guid roleId, string password)
         {
             this.Name = name;
             this.Email = email;
             this.RoleId = roleId;
+            this.Password = password;
         }
 
         public override bool IsValid()

@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using MediatR;
 using MyApp.Infrastructure.IoC;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System;
+using System.Threading.Tasks;
 
 namespace MyApp.Web
 {
@@ -26,6 +29,7 @@ namespace MyApp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            //services.AddAuthentication(sharedOption => sharedOption.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
             services.AddAutoMapper();
             services.AddMediatR(typeof(Startup));
             NativeInjectorBootStrapper.RegisterServices(services);
@@ -47,6 +51,15 @@ namespace MyApp.Web
             }
 
             app.UseStaticFiles();
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
+            //{
+            //    CookiePath = "/Home/Login",
+            //    ExpireTimeSpan = TimeSpan.FromMinutes(30),
+            //    Events = new CookieAuthenticationEvents()
+            //    {
+            //        OnSigningIn = this.Test
+            //    }
+            //});
 
             app.UseMvc(routes =>
             {
@@ -54,6 +67,11 @@ namespace MyApp.Web
                     name: "default",
                     template: "{controller=Client}/{action=Index}/{id?}");
             });
+        }
+
+        public async Task Test(CookieSigningInContext context)
+        {
+            await Task.FromResult(0);
         }
     }
 }

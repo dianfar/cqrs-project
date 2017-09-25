@@ -4,9 +4,11 @@ using MyApp.Application.Interfaces;
 using MediatR;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyApp.Web.Controllers
 {
+    //[Authorize]
     public class ProjectController : BaseController
     {
         private readonly IProjectAppService projectAppService;

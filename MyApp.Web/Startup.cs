@@ -29,7 +29,7 @@ namespace MyApp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //services.AddAuthentication(sharedOption => sharedOption.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+            services.AddAuthentication(sharedOption => sharedOption.SignInScheme = "CookieAuth");
             services.AddAutoMapper();
             services.AddMediatR(typeof(Startup));
             NativeInjectorBootStrapper.RegisterServices(services);
@@ -51,15 +51,15 @@ namespace MyApp.Web
             }
 
             app.UseStaticFiles();
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions
-            //{
-            //    CookiePath = "/Home/Login",
-            //    ExpireTimeSpan = TimeSpan.FromMinutes(30),
-            //    Events = new CookieAuthenticationEvents()
-            //    {
-            //        OnSigningIn = this.Test
-            //    }
-            //});
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AccessDeniedPath = "/Account/Forbidden/",
+                AuthenticationScheme = "CookieAuth",
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                LoginPath = "/Account/Login/",
+                ExpireTimeSpan = TimeSpan.FromMinutes(30)
+            });
 
             app.UseMvc(routes =>
             {
@@ -67,11 +67,6 @@ namespace MyApp.Web
                     name: "default",
                     template: "{controller=Client}/{action=Index}/{id?}");
             });
-        }
-
-        public async Task Test(CookieSigningInContext context)
-        {
-            await Task.FromResult(0);
         }
     }
 }

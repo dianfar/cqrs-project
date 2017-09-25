@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MyApp.Infrastructure.Data.Context;
 using MyApp.Infrastructure.Data.Repository;
 using MyApp.Infrastructure.Data.UoW;
+using MyApp.Infrastructure.Identity.PasswordHasher;
 
 namespace MyApp.Infrastructure.IoC
 {
@@ -31,6 +32,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IProjectMemberAppService, ProjectMemberAppService>();
             services.AddScoped<IEntryLogAppService, EntryLogAppService>();
+            services.AddScoped<IAccountAppService, AccountAppService>();
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<ClientRegisteredEvent>, ClientEventHandler>();
@@ -62,6 +64,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IProjectMemberRepository, ProjectMemberRepository>();
             services.AddScoped<IEntryLogRepository, EntryLogRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<MyAppContext>();
         }
     }

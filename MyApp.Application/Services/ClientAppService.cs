@@ -35,7 +35,7 @@ namespace MyApp.Application.Services
 
         public ClientViewModel GetById(Guid id)
         {
-            return mapper.Map<ClientViewModel>(clientRepository .GetById(id));
+            return mapper.Map<ClientViewModel>(clientRepository.GetById(id));
         }
 
         public void Register(ClientViewModel customerViewModel)

@@ -7,6 +7,6 @@ namespace MyApp.Application.Interfaces
 {
     public interface IAccountAppService : IDisposable
     {
-        void Login(LoginViewModel viewModel);
+        UserViewModel Login(LoginViewModel viewModel);
     }
 }

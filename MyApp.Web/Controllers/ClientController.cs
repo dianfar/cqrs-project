@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MyApp.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ClientController : BaseController
     {
         private readonly IClientAppService clientAppService;

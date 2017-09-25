@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MyApp.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ProjectMemberController : BaseController
     {
         private readonly IProjectMemberAppService projectMemberAppService;

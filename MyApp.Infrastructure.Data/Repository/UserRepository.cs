@@ -13,6 +13,11 @@ namespace MyApp.Infrastructure.Data.Repository
         {
         }
 
+        public User GetByEmail(string email)
+        {
+            return DbSet.Include(p => p.Role).FirstOrDefault(p => p.Email == email);
+        }
+
         public override User GetById(Guid id)
         {
             return DbSet.Include(p => p.Role).FirstOrDefault(p => p.Id == id);

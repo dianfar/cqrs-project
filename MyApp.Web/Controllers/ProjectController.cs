@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MyApp.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ProjectController : BaseController
     {
         private readonly IProjectAppService projectAppService;

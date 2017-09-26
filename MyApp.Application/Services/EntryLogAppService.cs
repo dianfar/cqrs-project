@@ -58,9 +58,9 @@ namespace MyApp.Application.Services
             };
         }
 
-        public CreateUpdateEntryLogViewModel GetByUser()
+        public CreateUpdateEntryLogViewModel GetByUser(Guid userId)
         {
-            var entryLogs = entryLogRepository.GetAll().ProjectTo<EntryLogViewModel>();
+            var entryLogs = entryLogRepository.GetByUser(userId).ProjectTo<EntryLogViewModel>();
             var projects = projectRepository.GetAll().ProjectTo<ProjectViewModel>();
 
             return new CreateUpdateEntryLogViewModel

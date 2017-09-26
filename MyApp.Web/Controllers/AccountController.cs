@@ -42,7 +42,7 @@ namespace MyApp.Web.Controllers
 
             List<Claim> userClaims = new List<Claim>
             {
-                new Claim(ClaimTypes.Upn, user.Id.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Role, user.RoleName)
             };

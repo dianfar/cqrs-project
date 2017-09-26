@@ -20,5 +20,13 @@ namespace MyApp.Infrastructure.Data.Repository
                 .Include(p => p.Project)
                 .FirstOrDefault(p => p.Id == id);
         }
+
+        public IQueryable<EntryLog> GetByUser(Guid userId)
+        {
+            return DbSet
+                .Include(p => p.User)
+                .Include(p => p.Project)
+                .Where(p => p.User.Id == userId);
+        }
     }
 }

@@ -16,10 +16,10 @@ namespace MyApp.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("")]
-        public CreateUpdateEntryLogViewModel GetEntries()
+        [Route("{userId}")]
+        public CreateUpdateEntryLogViewModel GetEntries(Guid userId)
         {
-            var entryLogs = entryLogAppService.GetByUser();
+            var entryLogs = entryLogAppService.GetByUser(userId);
             entryLogs.EditMode = false;
             return entryLogs;
         }

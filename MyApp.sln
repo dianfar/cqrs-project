@@ -1,23 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Web", "MyApp.Web\MyApp.Web.csproj", "{9C5F9343-B185-4374-95FA-B01D003141CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Web", "MyApp.Web\MyApp.Web.csproj", "{9C5F9343-B185-4374-95FA-B01D003141CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Domain", "MyApp.Domain\MyApp.Domain.csproj", "{CC833302-752C-42B5-952D-C03DC7A40AF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Domain", "MyApp.Domain\MyApp.Domain.csproj", "{CC833302-752C-42B5-952D-C03DC7A40AF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Domain.Core", "MyApp.Domain.Core\MyApp.Domain.Core.csproj", "{73E906C0-577E-4EE7-88F8-C122C4829F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Domain.Core", "MyApp.Domain.Core\MyApp.Domain.Core.csproj", "{73E906C0-577E-4EE7-88F8-C122C4829F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Application", "MyApp.Application\MyApp.Application.csproj", "{97B9F532-B93D-4F11-8B4D-395B27223968}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Application", "MyApp.Application\MyApp.Application.csproj", "{97B9F532-B93D-4F11-8B4D-395B27223968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Infrastructure.Data", "MyApp.Infrastructure.Data\MyApp.Infrastructure.Data.csproj", "{88192903-D5F5-4B5A-86DB-562A939CB330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Infrastructure.Data", "MyApp.Infrastructure.Data\MyApp.Infrastructure.Data.csproj", "{88192903-D5F5-4B5A-86DB-562A939CB330}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MyApp.Database", "MyApp.Database\MyApp.Database.sqlproj", "{C1342391-85AB-400B-8949-261870903EA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Infrastructure.IoC", "MyApp.Infrastructure.IoC\MyApp.Infrastructure.IoC.csproj", "{24312B12-CFA6-4FF6-8926-C20F5E2D3314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Infrastructure.IoC", "MyApp.Infrastructure.IoC\MyApp.Infrastructure.IoC.csproj", "{24312B12-CFA6-4FF6-8926-C20F5E2D3314}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Infrastructure.Identity", "MyApp.Infrastructure.Identity\MyApp.Infrastructure.Identity.csproj", "{3692CE3E-4DCC-4DCF-BBB2-0BE28F741920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Infrastructure.Identity", "MyApp.Infrastructure.Identity\MyApp.Infrastructure.Identity.csproj", "{3692CE3E-4DCC-4DCF-BBB2-0BE28F741920}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.WebApi", "MyApp.WebApi\MyApp.WebApi.csproj", "{F580D36B-4D35-47BB-B60C-12B47BB60ECD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,8 +61,15 @@ Global
 		{3692CE3E-4DCC-4DCF-BBB2-0BE28F741920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3692CE3E-4DCC-4DCF-BBB2-0BE28F741920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3692CE3E-4DCC-4DCF-BBB2-0BE28F741920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F580D36B-4D35-47BB-B60C-12B47BB60ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F580D36B-4D35-47BB-B60C-12B47BB60ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F580D36B-4D35-47BB-B60C-12B47BB60ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F580D36B-4D35-47BB-B60C-12B47BB60ECD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B84A377F-F33E-4A43-9DC6-CBEB0DA5C757}
 	EndGlobalSection
 EndGlobal

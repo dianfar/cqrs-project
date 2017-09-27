@@ -14,7 +14,7 @@ const main = (
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" className="navbar-brand">Project Management System</a>
+                    <a className="navbar-brand">Project Management System</a>
                 </div>
                 <div className="navbar-collapse collapse">
                     <ul className="nav navbar-nav">

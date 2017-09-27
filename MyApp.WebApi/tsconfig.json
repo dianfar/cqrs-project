@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "target": "es5",
+    "types": [
+        "@types/react",
+        "@types/react-dom",
+        "@types/react-router-dom",
+        "@types/react-test-renderer",
+        "@types/jasmine"
+    ],
+    "lib": [
+        "es2015",
+        "dom"
+    ]
+  },
+  "include": [
+    "Frontend"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

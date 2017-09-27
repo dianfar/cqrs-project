@@ -3,6 +3,14 @@ import * as ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Client from "./client"
 
+const route = (
+    <BrowserRouter>
+        <Switch>
+            <Route exact path="/" component={Client}></Route>
+        </Switch>
+    </BrowserRouter>
+);
+
 const main = (
     <div>
         <nav className="navbar navbar-inverse">
@@ -27,11 +35,7 @@ const main = (
             </div>
         </nav>
         <div className="container body-content">
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={Client}></Route>
-                </Switch>
-            </BrowserRouter>
+            {route}
             <hr />
             <footer>
                 <p>&copy; 2017 - Project Management System</p>

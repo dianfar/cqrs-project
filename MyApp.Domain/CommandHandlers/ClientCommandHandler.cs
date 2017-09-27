@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 namespace MyApp.Domain.CommandHandlers
 {
     public class ClientCommandHandler : CommandHandler,
-            INotificationHandler<RegisterNewClientCommand>,
-            INotificationHandler<UpdateClientCommand>,
-            INotificationHandler<RemoveClientCommand>
+            IRequestHandler<RegisterNewClientCommand>,
+            IRequestHandler<UpdateClientCommand>,
+            IRequestHandler<RemoveClientCommand>
     {
         private readonly IClientRepository clientRepository;
         private readonly IMediatorHandler mediatorHandler;

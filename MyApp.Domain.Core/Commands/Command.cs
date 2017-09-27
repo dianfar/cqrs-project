@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace MyApp.Domain.Core.Commands
 {
-    public abstract class Command : Message
+    public abstract class Command : Message, IRequest
     {
         public DateTime Timestamp { get; private set; }
         public ValidationResult ValidationResult { get; set; }

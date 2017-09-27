@@ -9,10 +9,10 @@ using MyApp.Infrastructure.Identity.PasswordHasher;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class UserCommandHandler : CommandHandler, 
-        INotificationHandler<RegisterNewUserCommand>,
-        INotificationHandler<UpdateUserCommand>,
-        INotificationHandler<RemoveUserCommand>
+    public class UserCommandHandler : CommandHandler,
+        IRequestHandler<RegisterNewUserCommand>,
+        IRequestHandler<UpdateUserCommand>,
+        IRequestHandler<RemoveUserCommand>
     {
         private readonly IRoleRepository roleRepository;
         private readonly IUserRepository userRepository;

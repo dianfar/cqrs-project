@@ -9,8 +9,8 @@ using MyApp.Domain.Models;
 namespace MyApp.Domain.CommandHandlers
 {
     public class ProjectMemberCommandHandler : CommandHandler,
-        INotificationHandler<AddProjectMemberCommand>,
-        INotificationHandler<RemoveProjectMemberCommand>
+        IRequestHandler<AddProjectMemberCommand>,
+        IRequestHandler<RemoveProjectMemberCommand>
     {
         private readonly IProjectMemberRepository projectMemberRepository;
         private readonly IUserRepository userRepository;

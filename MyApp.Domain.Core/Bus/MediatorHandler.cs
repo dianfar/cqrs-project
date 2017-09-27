@@ -9,28 +9,23 @@ using System.Threading.Tasks;
 
 namespace MyApp.Domain.Core.Bus
 {
-    public sealed class InMemoryBus : IMediatorHandler
+    public sealed class MediatorHandler : IMediatorHandler
     {
         private readonly IMediator mediator;
 
-        public InMemoryBus(IMediator mediator)
+        public MediatorHandler(IMediator mediator)
         {
             this.mediator = mediator;
         }
 
         public Task SendCommand<T>(T command) where T : Command
         {
-            return Publish(command);
+            return mediator.Send(command);
         }
 
         public Task RaiseEvent<T>(T @event) where T : Event
         {
-            return Publish(@event);
-        }
-
-        private Task Publish<T>(T message) where T : Message
-        {
-            return mediator.Publish(message);
+            return mediator.Publish(@event);
         }
     }
 }

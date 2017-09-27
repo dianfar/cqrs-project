@@ -1,10 +1,13 @@
-﻿using MyApp.Domain.Validations;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Validations;
 using System;
 
 namespace MyApp.Domain.Commands
 {
-    public class RemoveEntryLogCommand : EntryLogCommand
+    public class RemoveEntryLogCommand : Command
     {
+        public Guid Id { get; set; }
+
         public RemoveEntryLogCommand(Guid id)
         {
             this.Id = id;

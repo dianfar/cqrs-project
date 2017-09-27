@@ -1,12 +1,13 @@
-﻿using MyApp.Domain.Validations;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Validations;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyApp.Domain.Commands
 {
-    public class RemoveProjectMemberCommand : ProjectMemberCommand
+    public class RemoveProjectMemberCommand : Command
     {
+        public Guid Id { get; set; }
+
         public RemoveProjectMemberCommand(Guid id)
         {
             this.Id = id;

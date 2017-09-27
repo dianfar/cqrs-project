@@ -1,13 +1,27 @@
-﻿using MyApp.Domain.Commands;
+﻿using FluentValidation;
+using MyApp.Domain.Commands;
+using System;
 
 namespace MyApp.Domain.Validations
 {
-    public class AddEntryLogCommandValidation : EntryLogValidation<AddEntryLogCommand>
+    public class AddEntryLogCommandValidation : AbstractValidator<AddEntryLogCommand>
     {
         public AddEntryLogCommandValidation()
         {
             ValidateUserId();
             ValidateProjectId();
+        }
+
+        protected void ValidateUserId()
+        {
+            RuleFor(entryLog => entryLog.UserId)
+                .NotEqual(Guid.Empty);
+        }
+
+        protected void ValidateProjectId()
+        {
+            RuleFor(entryLog => entryLog.ProjectId)
+                .NotEqual(Guid.Empty);
         }
     }
 }

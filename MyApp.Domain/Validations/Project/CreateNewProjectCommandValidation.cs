@@ -1,16 +1,20 @@
-﻿using MyApp.Domain.Commands;
-using MyApp.Domain.Validations;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FluentValidation;
+using MyApp.Domain.Commands;
 
 namespace MyApp.Domain.Validations
 {
-    public class CreateNewProjectCommandValidation : ProjectValidation<CreateNewProjectCommand>
+    public class CreateNewProjectCommandValidation : AbstractValidator<CreateNewProjectCommand>
     {
         public CreateNewProjectCommandValidation()
         {
             ValidateName();
+        }
+
+        protected void ValidateName()
+        {
+            RuleFor(product => product.Name)
+                .NotEmpty().WithMessage("Please ensure you have entered the Name")
+                .Length(2, 100).WithMessage("The Name must have between 2 and 100 characters");
         }
     }
 }

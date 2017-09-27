@@ -9,9 +9,9 @@ using MyApp.Domain.Models;
 namespace MyApp.Domain.CommandHandlers
 {
     public class EntryLogCommandHandler : CommandHandler,
-            INotificationHandler<AddEntryLogCommand>,
-            INotificationHandler<UpdateEntryLogCommand>,
-            INotificationHandler<RemoveEntryLogCommand>
+            IRequestHandler<AddEntryLogCommand>,
+            IRequestHandler<UpdateEntryLogCommand>,
+            IRequestHandler<RemoveEntryLogCommand>
     {
         private readonly IEntryLogRepository entryLogRepository;
         private readonly IUserRepository userRepository;

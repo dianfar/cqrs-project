@@ -1,15 +1,20 @@
-﻿using MyApp.Domain.Commands;
+﻿using FluentValidation;
+using MyApp.Domain.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyApp.Domain.Validations
 {
-    public class RemoveProjectCommandValidation : ProjectValidation<RemoveProjectCommand>
+    public class RemoveProjectCommandValidation : AbstractValidator<RemoveProjectCommand>
     {
         public RemoveProjectCommandValidation()
         {
             ValidateId();
+        }
+
+        protected void ValidateId()
+        {
+            RuleFor(product => product.Id)
+                .NotEqual(Guid.Empty);
         }
     }
 }

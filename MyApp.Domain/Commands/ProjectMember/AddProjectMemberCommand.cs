@@ -1,11 +1,15 @@
-﻿using MyApp.Domain.Models;
+﻿using MyApp.Domain.Core.Commands;
 using MyApp.Domain.Validations;
 using System;
 
 namespace MyApp.Domain.Commands
 {
-    public class AddProjectMemberCommand : ProjectMemberCommand
+    public class AddProjectMemberCommand : Command
     {
+        public Guid ProjectId { get; set; }
+
+        public Guid UserId { get; set; }
+
         public AddProjectMemberCommand(Guid projectId, Guid userId)
         {
             this.ProjectId = projectId;

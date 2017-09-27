@@ -23,7 +23,7 @@ namespace MyApp.Infrastructure.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IMediatorHandler, InMemoryBus>();
+            services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
@@ -39,23 +39,23 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<ClientUpdatedEvent>, ClientEventHandler>();
             services.AddScoped<INotificationHandler<ClientRemovedEvent>, ClientEventHandler>();
 
-            services.AddScoped<INotificationHandler<RegisterNewClientCommand>, ClientCommandHandler>();
-            services.AddScoped<INotificationHandler<UpdateClientCommand>, ClientCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveClientCommand>, ClientCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewClientCommand>, ClientCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateClientCommand>, ClientCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveClientCommand>, ClientCommandHandler>();
 
-            services.AddScoped<INotificationHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
-            services.AddScoped<INotificationHandler<UpdateProjectCommand>, ProjectCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveProjectCommand>, ProjectCommandHandler>();
 
-            services.AddScoped<INotificationHandler<RegisterNewUserCommand>, UserCommandHandler>();
-            services.AddScoped<INotificationHandler<UpdateUserCommand>, UserCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveUserCommand>, UserCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewUserCommand>, UserCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveUserCommand>, UserCommandHandler>();
 
-            services.AddScoped<INotificationHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
+            services.AddScoped<IRequestHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
 
-            services.AddScoped<INotificationHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();
+            services.AddScoped<IRequestHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();

@@ -1,14 +1,17 @@
-﻿using MyApp.Domain.Validations;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Validations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyApp.Domain.Commands
 {
-    public class UpdateClientCommand : ClientCommand
+    public class UpdateClientCommand : Command
     {
+        public Guid Id { get; protected set; }
+
+        public string Name { get; protected set; }
+
+        public string Description { get; protected set; }
+
         public UpdateClientCommand(Guid id, string name, string description)
         {
             Id = id;

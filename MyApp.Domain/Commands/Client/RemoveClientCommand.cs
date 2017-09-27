@@ -1,19 +1,16 @@
 ﻿using MyApp.Domain.Validations;
-using FluentValidation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MyApp.Domain.Core.Commands;
 
 namespace MyApp.Domain.Commands
 {
-    public class RemoveClientCommand : ClientCommand
+    public class RemoveClientCommand : Command
     {
+        public Guid Id { get; protected set; }
+
         public RemoveClientCommand(Guid id)
         {
             Id = id;
-            AggregateId = id;
         }
 
         public override bool IsValid()

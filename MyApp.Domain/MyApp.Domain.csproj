@@ -14,8 +14,4 @@
     <ProjectReference Include="..\MyApp.Infrastructure.Identity\MyApp.Infrastructure.Identity.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Commands\Account\" />
-  </ItemGroup>
-
 </Project>

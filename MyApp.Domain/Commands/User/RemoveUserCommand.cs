@@ -1,16 +1,16 @@
-﻿using MyApp.Domain.Validations;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Validations;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyApp.Domain.Commands
 {
-    public class RemoveUserCommand : UserCommand
+    public class RemoveUserCommand : Command
     {
+        public Guid Id { get; set; }
+
         public RemoveUserCommand(Guid id)
         {
             Id = id;
-            AggregateId = id;
         }
 
         public override bool IsValid()

@@ -1,15 +1,20 @@
-﻿using MyApp.Domain.Commands;
+﻿using FluentValidation;
+using MyApp.Domain.Commands;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyApp.Domain.Validations
 {
-    public class RemoveProjectMemberCommandValidation : ProjectMemberValidation<RemoveProjectMemberCommand>
+    public class RemoveProjectMemberCommandValidation : AbstractValidator<RemoveProjectMemberCommand>
     {
         public RemoveProjectMemberCommandValidation()
         {
             ValidateId();
+        }
+
+        protected void ValidateId()
+        {
+            RuleFor(projectMember => projectMember.Id)
+                .NotEqual(Guid.Empty);
         }
     }
 }

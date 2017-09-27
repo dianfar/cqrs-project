@@ -1,14 +1,14 @@
-﻿using MyApp.Domain.Validations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyApp.Domain.Core.Commands;
+using MyApp.Domain.Validations;
 
 namespace MyApp.Domain.Commands
 {
-    public class RegisterNewClientCommand : ClientCommand
+    public class RegisterNewClientCommand : Command
     {
+        public string Name { get; protected set; }
+
+        public string Description { get; protected set; }
+
         public RegisterNewClientCommand(string name, string description)
         {
             Name = name;

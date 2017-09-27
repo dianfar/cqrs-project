@@ -1,17 +1,20 @@
-﻿using MyApp.Domain.Commands;
+﻿using FluentValidation;
+using MyApp.Domain.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyApp.Domain.Validations
 {
-    public class RemoveClientCommandValidation : ClientValidation<RemoveClientCommand>
+    public class RemoveClientCommandValidation : AbstractValidator<RemoveClientCommand>
     {
         public RemoveClientCommandValidation()
         {
             ValidateId();
+        }
+
+        protected void ValidateId()
+        {
+            RuleFor(client => client.Id)
+                .NotEqual(Guid.Empty);
         }
     }
 }

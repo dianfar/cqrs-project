@@ -15,6 +15,7 @@ using MyApp.Infrastructure.Data.Context;
 using MyApp.Infrastructure.Data.Repository;
 using MyApp.Infrastructure.Data.UoW;
 using MyApp.Infrastructure.Identity.PasswordHasher;
+using MyApp.Domain.Models;
 
 namespace MyApp.Infrastructure.IoC
 {
@@ -56,6 +57,8 @@ namespace MyApp.Infrastructure.IoC
 
             services.AddScoped<IRequestHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();
+
+            services.AddScoped<IRequestHandler<AccountLoginQuery, User>, AccountCommandHandler>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();

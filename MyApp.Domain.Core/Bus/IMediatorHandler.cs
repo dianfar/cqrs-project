@@ -10,7 +10,8 @@ namespace MyApp.Domain.Core.Bus
 {
     public interface IMediatorHandler
     {
-        Task SendCommand<T>(T command) where T : Command;
-        Task RaiseEvent<T>(T @event) where T : Event;
+        Task SendCommand(Command command);
+        Task<T> GetResult<T>(Query<T> command);
+        Task RaiseEvent(Event @event);
     }
 }

@@ -3,7 +3,7 @@ using MyApp.Domain.Commands;
 
 namespace MyApp.Domain.Validations
 {
-    public class AccountLoginCommandValidation : AbstractValidator<AccountLoginCommand>
+    public class AccountLoginCommandValidation : AbstractValidator<AccountLoginQuery>
     {
         public AccountLoginCommandValidation()
         {

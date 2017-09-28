@@ -4,13 +4,13 @@ using MyApp.Domain.Validations;
 
 namespace MyApp.Domain.Commands
 {
-    public class AccountLoginCommand : CommandWithResult<User>
+    public class AccountLoginQuery : Query<User>
     {
         public string Email { get; set; }
 
         public string Password { get; set; }
 
-        public AccountLoginCommand(string email, string password)
+        public AccountLoginQuery(string email, string password)
         {
             this.Email = email;
             this.Password = password;

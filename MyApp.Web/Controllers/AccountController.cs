@@ -33,7 +33,7 @@ namespace MyApp.Web.Controllers
         {
             if (!ModelState.IsValid) return View(viewModel);
 
-            var user = accountAppService.Login(viewModel);
+            var user = await accountAppService.Login(viewModel);
 
             if (user == null)
             {

@@ -18,14 +18,19 @@ namespace MyApp.Domain.Core.Bus
             this.mediator = mediator;
         }
 
-        public Task SendCommand<T>(T command) where T : Command
+        public Task SendCommand(Command command)
         {
             return mediator.Send(command);
         }
 
-        public Task RaiseEvent<T>(T @event) where T : Event
+        public Task RaiseEvent(Event @event)
         {
             return mediator.Publish(@event);
+        }
+
+        public Task<T> GetResult<T>(Query<T> query)
+        {
+            return mediator.Send<T>(query);
         }
     }
 }

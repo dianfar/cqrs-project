@@ -26,6 +26,8 @@ namespace MyApp.Application.AutoMapper
                 .ConstructUsing(c => new AddEntryLogCommand(c.UserId, c.ProjectId, c.EntryDate, c.Hours, c.Description));
             CreateMap<EntryLogViewModel, UpdateEntryLogCommand>()
                 .ConstructUsing(c => new UpdateEntryLogCommand(c.Id, c.UserId, c.ProjectId, c.EntryDate, c.Hours, c.Description));
+            CreateMap<LoginViewModel, AccountLoginQuery>()
+                .ConstructUsing(c => new AccountLoginQuery(c.Email, c.Password));
         }
     }
 }

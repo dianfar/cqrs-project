@@ -1,6 +1,7 @@
 ﻿using MyApp.Domain.Models;
 using System;
 using System.Linq;
+using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.Interfaces
 {

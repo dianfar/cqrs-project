@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class ClientCommandHandler : CommandHandler,
+    public class ClientCommandHandler : ActionHandler,
             IRequestHandler<RegisterNewClientCommand>,
             IRequestHandler<UpdateClientCommand>,
             IRequestHandler<RemoveClientCommand>

@@ -5,10 +5,11 @@ using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Models;
+using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class ProjectMemberCommandHandler : CommandHandler,
+    public class ProjectMemberCommandHandler : ActionHandler,
         IRequestHandler<AddProjectMemberCommand>,
         IRequestHandler<RemoveProjectMemberCommand>
     {

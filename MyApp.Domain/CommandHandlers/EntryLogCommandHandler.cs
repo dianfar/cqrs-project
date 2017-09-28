@@ -5,10 +5,11 @@ using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Commands;
 using MyApp.Domain.Models;
+using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class EntryLogCommandHandler : CommandHandler,
+    public class EntryLogCommandHandler : ActionHandler,
             IRequestHandler<AddEntryLogCommand>,
             IRequestHandler<UpdateEntryLogCommand>,
             IRequestHandler<RemoveEntryLogCommand>

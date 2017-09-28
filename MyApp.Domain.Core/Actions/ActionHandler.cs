@@ -1,18 +1,18 @@
 ﻿using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Commands;
 using MyApp.Domain.Core.Notifications;
-using MyApp.Domain.Interfaces;
+using MyApp.Domain.Core.Interfaces;
 using MediatR;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class CommandHandler
+    public class ActionHandler
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly IMediatorHandler mediatorHandler;
         private readonly DomainNotificationHandler domainNotificationHandler;
 
-        public CommandHandler(IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications)
+        public ActionHandler(IUnitOfWork uow, IMediatorHandler bus, INotificationHandler<DomainNotification> notifications)
         {
             unitOfWork = uow;
             domainNotificationHandler = (DomainNotificationHandler)notifications;

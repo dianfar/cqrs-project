@@ -1,5 +1,5 @@
 ﻿using MyApp.Domain.Core.Commands;
-using MyApp.Domain.Interfaces;
+using MyApp.Domain.Core.Interfaces;
 using MyApp.Infrastructure.Data.Context;
 
 namespace MyApp.Infrastructure.Data.UoW
@@ -13,10 +13,10 @@ namespace MyApp.Infrastructure.Data.UoW
             this.context = context;
         }
 
-        public CommandResponse Commit()
+        public ActionResponse Commit()
         {
             var rowsAffected = context.SaveChanges();
-            return new CommandResponse(rowsAffected > 0);
+            return new ActionResponse(rowsAffected > 0);
         }
 
         public void Dispose()

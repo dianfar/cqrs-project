@@ -1,22 +1,22 @@
 ﻿using MyApp.Domain.Commands;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Notifications;
-using MyApp.Domain.Events;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Models;
 using MediatR;
 using MyApp.Infrastructure.Identity.PasswordHasher;
+using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class AccountCommandHandler : CommandHandler,
+    public class AccountLoginQueryHandler : ActionHandler,
                                          IRequestHandler<AccountLoginQuery, User>
     {
         private readonly IUserRepository userRepository;
         private readonly IMediatorHandler mediatorHandler;
         private readonly IPasswordHasher passwordHasher;
 
-        public AccountCommandHandler(IUserRepository userRepository,
+        public AccountLoginQueryHandler(IUserRepository userRepository,
                                       IUnitOfWork unitOfWork,
                                       IMediatorHandler mediatorHandler,
                                       IPasswordHasher passwordHasher,

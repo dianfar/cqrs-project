@@ -5,11 +5,12 @@ using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Commands;
 using MyApp.Domain.Models;
+using MyApp.Domain.Core.Interfaces;
 using MyApp.Infrastructure.Identity.PasswordHasher;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class UserCommandHandler : CommandHandler,
+    public class UserCommandHandler : ActionHandler,
         IRequestHandler<RegisterNewUserCommand>,
         IRequestHandler<UpdateUserCommand>,
         IRequestHandler<RemoveUserCommand>

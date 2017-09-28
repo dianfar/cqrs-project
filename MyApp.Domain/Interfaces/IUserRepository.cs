@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.Interfaces
 {

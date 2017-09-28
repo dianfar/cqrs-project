@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyApp.Domain.Interfaces
+namespace MyApp.Domain.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        CommandResponse Commit();
+        ActionResponse Commit();
     }
 }

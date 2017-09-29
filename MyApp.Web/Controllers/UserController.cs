@@ -46,8 +46,8 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var customer = userAppService.GetUpdateUserData(id);
-            return View(customer);
+            var user = userAppService.GetUpdateUserData(id);
+            return View(user);
         }
 
         [HttpPost]

@@ -27,10 +27,10 @@ namespace MyApp.WebApi.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public ClientViewModel GetClient(Guid id)
+        public async Task<ClientViewModel> GetClient(Guid id)
         {
-            var clients = clientAppService.GetById(id);
-            return clients;
+            var client = await clientAppService.GetById(id);
+            return client;
         }
 
         [HttpPost]

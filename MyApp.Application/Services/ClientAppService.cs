@@ -4,11 +4,8 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MyApp.Domain.Queries;
 using MyApp.Domain.Core.Bus;
-using MyApp.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyApp.Application.Services
@@ -16,15 +13,12 @@ namespace MyApp.Application.Services
     public class ClientAppService : IClientAppService
     {
         private readonly IMapper mapper;
-        private readonly IClientRepository clientRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public ClientAppService(IMapper mapper,
-                                  IClientRepository clientRepository,
                                   IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
-            this.clientRepository = clientRepository;
             this.mediatorHandler = mediatorHandler;
         }
 

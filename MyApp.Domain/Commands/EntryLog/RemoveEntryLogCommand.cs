@@ -2,7 +2,7 @@
 using MyApp.Domain.Validations;
 using System;
 
-namespace MyApp.Domain.Commands
+namespace MyApp.Domain.Queries
 {
     public class RemoveEntryLogCommand : Command
     {

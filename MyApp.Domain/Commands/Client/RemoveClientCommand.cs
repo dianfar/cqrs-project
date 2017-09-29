@@ -2,7 +2,7 @@
 using System;
 using MyApp.Domain.Core.Commands;
 
-namespace MyApp.Domain.Commands
+namespace MyApp.Domain.Queries
 {
     public class RemoveClientCommand : Command
     {

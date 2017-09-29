@@ -4,7 +4,7 @@ using MyApp.Application.ViewModels;
 using MyApp.Domain.Core.Bus;
 using AutoMapper;
 using MyApp.Domain.Interfaces;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 using System.Collections.Generic;
 using AutoMapper.QueryableExtensions;
 

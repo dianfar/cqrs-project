@@ -2,7 +2,7 @@
 using MyApp.Application.Services;
 using AutoMapper;
 using MyApp.Domain.CommandHandlers;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.EventHandlers;
@@ -17,6 +17,8 @@ using MyApp.Infrastructure.Data.UoW;
 using MyApp.Infrastructure.Identity.PasswordHasher;
 using MyApp.Domain.Models;
 using MyApp.Domain.Core.Interfaces;
+using System.Linq;
+using MyApp.Domain.QueryHandlers;
 
 namespace MyApp.Infrastructure.IoC
 {
@@ -60,6 +62,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();
 
             services.AddScoped<IRequestHandler<AccountLoginQuery, User>, AccountLoginQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllClientQuery, IQueryable<Client>>, GetAllClientQueryHandler>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();

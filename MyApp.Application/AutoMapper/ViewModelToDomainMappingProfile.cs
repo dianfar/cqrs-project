@@ -1,6 +1,6 @@
 ﻿using MyApp.Application.ViewModels;
 using AutoMapper;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 
 namespace MyApp.Application.AutoMapper
 {

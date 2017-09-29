@@ -1,4 +1,4 @@
-﻿using MyApp.Domain.Commands;
+﻿using MyApp.Domain.Queries;
 using MediatR;
 using System;
 using MyApp.Domain.Core.Bus;

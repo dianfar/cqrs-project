@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using System;
 using MediatR;
 
-namespace MyApp.Domain.Core.Commands
+namespace MyApp.Domain.Core.Queries
 {
     public abstract class Query<T> : Message, IRequest<T>
     {

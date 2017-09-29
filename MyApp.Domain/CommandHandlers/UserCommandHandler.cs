@@ -3,7 +3,7 @@ using MediatR;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Interfaces;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 using MyApp.Domain.Models;
 using MyApp.Domain.Core.Interfaces;
 using MyApp.Infrastructure.Identity.PasswordHasher;

@@ -10,7 +10,7 @@ namespace MyApp.Application.Interfaces
     public interface IClientAppService : IDisposable
     {
         void Register(ClientViewModel customerViewModel);
-        IEnumerable<ClientViewModel> GetAll();
+        Task<IEnumerable<ClientViewModel>> GetAll();
         ClientViewModel GetById(Guid id);
         void Update(ClientViewModel customerViewModel);
         void Remove(Guid id);

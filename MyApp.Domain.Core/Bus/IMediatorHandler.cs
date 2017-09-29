@@ -1,5 +1,6 @@
 ﻿using MyApp.Domain.Core.Commands;
 using MyApp.Domain.Core.Events;
+using MyApp.Domain.Core.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;

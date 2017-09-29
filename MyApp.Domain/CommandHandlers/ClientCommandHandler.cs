@@ -1,4 +1,4 @@
-﻿using MyApp.Domain.Commands;
+﻿using MyApp.Domain.Queries;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Events;

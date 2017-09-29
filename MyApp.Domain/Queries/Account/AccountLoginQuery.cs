@@ -1,8 +1,8 @@
-﻿using MyApp.Domain.Core.Commands;
+﻿using MyApp.Domain.Core.Queries;
 using MyApp.Domain.Models;
 using MyApp.Domain.Validations;
 
-namespace MyApp.Domain.Commands
+namespace MyApp.Domain.Queries
 {
     public class AccountLoginQuery : Query<User>
     {
@@ -18,7 +18,7 @@ namespace MyApp.Domain.Commands
 
         public override bool IsValid()
         {
-            ValidationResult = new AccountLoginCommandValidation().Validate(this);
+            ValidationResult = new AccountLoginQueryValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

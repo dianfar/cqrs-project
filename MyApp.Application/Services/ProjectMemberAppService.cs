@@ -4,7 +4,7 @@ using MyApp.Application.ViewModels;
 using AutoMapper;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Core.Bus;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 
 namespace MyApp.Application.Services
 {

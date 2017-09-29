@@ -5,6 +5,7 @@ using MediatR;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace MyApp.Web.Controllers
 {
@@ -19,10 +20,10 @@ namespace MyApp.Web.Controllers
             this.clientAppService = clientAppService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var customers = clientAppService.GetAll();
-            return View(customers);
+            var clients = await clientAppService.GetAll();
+            return View(clients);
         }
 
         [HttpGet]
@@ -43,8 +44,8 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            var customer = clientAppService.GetById(id);
-            return View(customer);
+            var client = clientAppService.GetById(id);
+            return View(client);
         }
 
         [HttpPost]

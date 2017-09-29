@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 
 namespace MyApp.Domain.Validations
 {
-    public class AccountLoginCommandValidation : AbstractValidator<AccountLoginQuery>
+    public class AccountLoginQueryValidation : AbstractValidator<AccountLoginQuery>
     {
-        public AccountLoginCommandValidation()
+        public AccountLoginQueryValidation()
         {
             ValidateEmail();
             ValidatePassword();

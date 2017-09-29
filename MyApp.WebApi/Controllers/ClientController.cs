@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
+using System.Threading.Tasks;
 
 namespace MyApp.WebApi.Controllers
 {
@@ -18,9 +19,9 @@ namespace MyApp.WebApi.Controllers
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<ClientViewModel> GetClients()
+        public async Task<IEnumerable<ClientViewModel>> GetClients()
         {
-            var clients = clientAppService.GetAll();
+            var clients = await clientAppService.GetAll();
             return clients;
         }
 

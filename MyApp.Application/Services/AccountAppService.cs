@@ -5,7 +5,7 @@ using MyApp.Domain.Interfaces;
 using AutoMapper;
 using MyApp.Infrastructure.Identity.PasswordHasher;
 using MyApp.Domain.Core.Bus;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 using System.Threading.Tasks;
 using MyApp.Domain.Models;
 

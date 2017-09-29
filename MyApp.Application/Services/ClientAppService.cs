@@ -2,7 +2,7 @@
 using MyApp.Application.ViewModels;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using MyApp.Domain.Commands;
+using MyApp.Domain.Queries;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Interfaces;
 using System;
@@ -21,16 +21,17 @@ namespace MyApp.Application.Services
 
         public ClientAppService(IMapper mapper,
                                   IClientRepository clientRepository,
-                                  IMediatorHandler bus)
+                                  IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
             this.clientRepository = clientRepository;
-            mediatorHandler = bus;
+            this.mediatorHandler = mediatorHandler;
         }
 
-        public IEnumerable<ClientViewModel> GetAll()
+        public async Task<IEnumerable<ClientViewModel>> GetAll()
         {
-            return clientRepository.GetAll().ProjectTo<ClientViewModel>();
+            var clients = await mediatorHandler.GetResult(new GetAllClientQuery());
+            return clients.ProjectTo<ClientViewModel>();
         }
 
         public ClientViewModel GetById(Guid id)

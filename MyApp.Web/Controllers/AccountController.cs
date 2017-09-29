@@ -56,5 +56,17 @@ namespace MyApp.Web.Controllers
                 action = "Index"
             });
         }
+
+        [HttpGet]
+        public IActionResult Forbidden()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Unauthorize()
+        {
+            return View();
+        }
     }
 }

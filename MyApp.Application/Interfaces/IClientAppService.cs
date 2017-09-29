@@ -11,7 +11,7 @@ namespace MyApp.Application.Interfaces
     {
         void Register(ClientViewModel customerViewModel);
         Task<IEnumerable<ClientViewModel>> GetAll();
-        ClientViewModel GetById(Guid id);
+        Task<ClientViewModel> GetById(Guid id);
         void Update(ClientViewModel customerViewModel);
         void Remove(Guid id);
     }

@@ -42,9 +42,9 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            var client = clientAppService.GetById(id);
+            var client = await clientAppService.GetById(id);
             return View(client);
         }
 

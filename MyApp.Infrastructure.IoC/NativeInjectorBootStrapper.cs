@@ -63,6 +63,7 @@ namespace MyApp.Infrastructure.IoC
 
             services.AddScoped<IRequestHandler<AccountLoginQuery, User>, AccountLoginQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllClientQuery, IQueryable<Client>>, GetAllClientQueryHandler>();
+            services.AddScoped<IRequestHandler<GetClientByIdQuery, Client>, GetClientByIdQueryHandler>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();

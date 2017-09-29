@@ -34,9 +34,10 @@ namespace MyApp.Application.Services
             return clients.ProjectTo<ClientViewModel>();
         }
 
-        public ClientViewModel GetById(Guid id)
+        public async Task<ClientViewModel> GetById(Guid id)
         {
-            return mapper.Map<ClientViewModel>(clientRepository.GetById(id));
+            var client = await mediatorHandler.GetResult(new GetClientByIdQuery(id));
+            return mapper.Map<ClientViewModel>(client);
         }
 
         public void Register(ClientViewModel customerViewModel)

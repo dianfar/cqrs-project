@@ -58,9 +58,10 @@ namespace MyApp.Application.Services
             return projects.ProjectTo<ProjectViewModel>();
         }
 
-        public ProjectViewModel GetById(Guid id)
+        public async Task<ProjectViewModel> GetById(Guid id)
         {
-            return mapper.Map<ProjectViewModel>(projectRepository.GetById(id));
+            var project = await mediatorHandler.GetResult(new GetProjectByIdQuery(id));
+            return mapper.Map<ProjectViewModel>(project);
         }
 
         public void Remove(Guid id)

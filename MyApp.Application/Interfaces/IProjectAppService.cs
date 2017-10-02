@@ -8,7 +8,7 @@ namespace MyApp.Application.Interfaces
     public interface IProjectAppService : IDisposable
     {
         Task<IEnumerable<ProjectViewModel>> GetAll();
-        ProjectViewModel GetById(Guid id);
+        Task<ProjectViewModel> GetById(Guid id);
         void Create(ProjectViewModel productViewModel);
         void Update(ProjectViewModel productViewModel);
         void Remove(Guid id);

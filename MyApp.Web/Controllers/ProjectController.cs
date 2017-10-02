@@ -44,9 +44,9 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            var updateProjectData = projectAppService.GetUpdateProjectData(id);
+            var updateProjectData = await projectAppService.GetUpdateProjectData(id);
             return View(updateProjectData);
         }
 

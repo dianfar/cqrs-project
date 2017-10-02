@@ -13,6 +13,6 @@ namespace MyApp.Application.Interfaces
         void Update(ProjectViewModel productViewModel);
         void Remove(Guid id);
         Task<CreateNewProjectViewModel> GetCreateNewProjectData();
-        UpdateProjectViewModel GetUpdateProjectData(Guid id);
+        Task<UpdateProjectViewModel> GetUpdateProjectData(Guid id);
     }
 }

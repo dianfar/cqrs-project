@@ -76,13 +76,13 @@ namespace MyApp.Application.Services
             mediatorHandler.SendCommand(updateCommand);
         }
 
-        public UpdateProjectViewModel GetUpdateProjectData(Guid id)
+        public async Task<UpdateProjectViewModel> GetUpdateProjectData(Guid id)
         {
-            var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
+            var clients = await mediatorHandler.GetResult(new GetAllClientQuery());
             var users = userRepository.GetAll().ProjectTo<UserViewModel>();
-            var project = projectRepository.GetById(id);
+            var project = await mediatorHandler.GetResult(new GetProjectByIdQuery(id));
             var result = mapper.Map<UpdateProjectViewModel>(project);
-            result.Clients = clients;
+            result.Clients = clients.ProjectTo<ClientViewModel>();
             result.Users = users;
 
             return result;

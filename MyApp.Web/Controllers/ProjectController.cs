@@ -28,9 +28,9 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            var createNewProjectViewModel = projectAppService.GetCreateNewProjectData();
+            var createNewProjectViewModel = await projectAppService.GetCreateNewProjectData();
             return View(createNewProjectViewModel);
         }
 

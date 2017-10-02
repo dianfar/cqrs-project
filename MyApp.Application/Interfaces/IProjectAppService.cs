@@ -12,7 +12,7 @@ namespace MyApp.Application.Interfaces
         void Create(ProjectViewModel productViewModel);
         void Update(ProjectViewModel productViewModel);
         void Remove(Guid id);
-        CreateNewProjectViewModel GetCreateNewProjectData();
+        Task<CreateNewProjectViewModel> GetCreateNewProjectData();
         UpdateProjectViewModel GetUpdateProjectData(Guid id);
     }
 }

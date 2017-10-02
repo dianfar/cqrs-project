@@ -43,12 +43,12 @@ namespace MyApp.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public CreateNewProjectViewModel GetCreateNewProjectData()
+        public async Task<CreateNewProjectViewModel> GetCreateNewProjectData()
         {
-            var clients = clientRepository.GetAll().ProjectTo<ClientViewModel>();
+            var clients = await mediatorHandler.GetResult(new GetAllClientQuery());
             return new CreateNewProjectViewModel
             {
-                Clients = clients
+                Clients = clients.ProjectTo<ClientViewModel>()
             };
         }
 

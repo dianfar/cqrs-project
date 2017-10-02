@@ -1,12 +1,13 @@
 ﻿using MyApp.Application.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyApp.Application.Interfaces
 {
     public interface IProjectAppService : IDisposable
     {
-        IEnumerable<ProjectViewModel> GetAll();
+        Task<IEnumerable<ProjectViewModel>> GetAll();
         ProjectViewModel GetById(Guid id);
         void Create(ProjectViewModel productViewModel);
         void Update(ProjectViewModel productViewModel);

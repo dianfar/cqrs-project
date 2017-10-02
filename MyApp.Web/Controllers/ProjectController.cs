@@ -5,6 +5,7 @@ using MediatR;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace MyApp.Web.Controllers
 {
@@ -20,9 +21,9 @@ namespace MyApp.Web.Controllers
             this.projectAppService = productAppService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var projects = projectAppService.GetAll();
+            var projects = await projectAppService.GetAll();
             return View(projects);
         }
 

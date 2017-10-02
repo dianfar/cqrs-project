@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyApp.WebApi.Controllers
 {
@@ -18,9 +19,9 @@ namespace MyApp.WebApi.Controllers
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<ProjectViewModel> GetProjects()
+        public async Task<IEnumerable<ProjectViewModel>> GetProjects()
         {
-            var projects = projectAppService.GetAll();
+            var projects = await projectAppService.GetAll();
             return projects;
         }
 

@@ -7,6 +7,7 @@ using MyApp.Domain.Interfaces;
 using MyApp.Domain.Queries;
 using System.Collections.Generic;
 using AutoMapper.QueryableExtensions;
+using System.Threading.Tasks;
 
 namespace MyApp.Application.Services
 {
@@ -51,9 +52,10 @@ namespace MyApp.Application.Services
             };
         }
 
-        public IEnumerable<ProjectViewModel> GetAll()
+        public async Task<IEnumerable<ProjectViewModel>> GetAll()
         {
-            return projectRepository.GetAll().ProjectTo<ProjectViewModel>();
+            var projects = await mediatorHandler.GetResult(new GetAllProjectQuery());
+            return projects.ProjectTo<ProjectViewModel>();
         }
 
         public ProjectViewModel GetById(Guid id)

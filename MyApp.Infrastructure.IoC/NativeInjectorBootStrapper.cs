@@ -50,6 +50,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IRequestHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<GetAllProjectQuery, IQueryable<Project>>, GetAllProjectQueryHandler>();
 
             services.AddScoped<IRequestHandler<RegisterNewUserCommand>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>();

@@ -7,6 +7,7 @@ using MyApp.Domain.Core.Notifications;
 using MyApp.Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MyApp.Web.Controllers
 {
@@ -22,9 +23,9 @@ namespace MyApp.Web.Controllers
             this.entryLogAppService = entryLogAppService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var entryLogs = entryLogAppService.GetByUser(Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value));
+            var entryLogs = await entryLogAppService.GetByUser(Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value));
             entryLogs.EditMode = false;
             return View(entryLogs);
         }
@@ -40,9 +41,10 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            var updateEntryLogData = entryLogAppService.GetUpdatedData(id);
+            var userId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+            var updateEntryLogData = await entryLogAppService.GetUpdatedData(userId, id);
             updateEntryLogData.EditMode = true;
             return View("Index", updateEntryLogData);
         }

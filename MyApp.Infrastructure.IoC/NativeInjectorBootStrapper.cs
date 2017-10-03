@@ -62,6 +62,7 @@ namespace MyApp.Infrastructure.IoC
 
             services.AddScoped<IRequestHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
+            services.AddScoped<IRequestHandler<GetEntryLogByUserQuery, IQueryable<EntryLog>>, GetEntryLogByUserQueryHandler>();
 
             services.AddScoped<IRequestHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();

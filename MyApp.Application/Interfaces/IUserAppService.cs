@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MyApp.Application.Interfaces
 {
     public interface IUserAppService : IDisposable
     {
         RegisterNewUserViewModel GetRegisterNewUserData();
-        IEnumerable<UserViewModel> GetAll();
+        Task<IEnumerable<UserViewModel>> GetAll();
         UserViewModel GetById(Guid id);
         UpdateUserViewModel GetUpdateUserData(Guid id);
         void Create(UserViewModel userViewModel);

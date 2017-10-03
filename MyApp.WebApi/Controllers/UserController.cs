@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MyApp.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.ViewModels;
+using System.Threading.Tasks;
 
 namespace MyApp.Web.Controllers
 {
@@ -18,9 +19,9 @@ namespace MyApp.Web.Controllers
 
         [HttpGet]
         [Route("")]
-        public IEnumerable<UserViewModel> GetUsers()
+        public async Task<IEnumerable<UserViewModel>> GetUsers()
         {
-            var users = userAppService.GetAll();
+            var users = await userAppService.GetAll();
             return users;
         }
 

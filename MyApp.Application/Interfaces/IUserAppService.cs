@@ -11,7 +11,7 @@ namespace MyApp.Application.Interfaces
         Task<RegisterNewUserViewModel> GetRegisterNewUserData();
         Task<IEnumerable<UserViewModel>> GetAll();
         Task<UserViewModel> GetById(Guid id);
-        UpdateUserViewModel GetUpdateUserData(Guid id);
+        Task<UpdateUserViewModel> GetUpdateUserData(Guid id);
         void Create(UserViewModel userViewModel);
         void Update(UserViewModel userViewModel);
         void Remove(Guid id);

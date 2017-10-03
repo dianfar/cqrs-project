@@ -28,9 +28,9 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            var viewModel = userAppService.GetRegisterNewUserData();
+            var viewModel = await userAppService.GetRegisterNewUserData();
             return View(viewModel);
         }
 

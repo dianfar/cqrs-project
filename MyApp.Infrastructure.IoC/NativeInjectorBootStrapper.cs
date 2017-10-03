@@ -56,6 +56,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveUserCommand>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<GetAllUserQuery, IQueryable<User>>, GetAllUserQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllRoleQuery, IQueryable<Role>>, GetAllRoleQueryHandler>();
 
             services.AddScoped<IRequestHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();

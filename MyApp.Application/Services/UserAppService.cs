@@ -8,6 +8,7 @@ using MyApp.Domain.Core.Bus;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MyApp.Domain.Queries;
+using System.Threading.Tasks;
 
 namespace MyApp.Application.Services
 {
@@ -40,9 +41,10 @@ namespace MyApp.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<UserViewModel> GetAll()
+        public async Task<IEnumerable<UserViewModel>> GetAll()
         {
-            return userRepository.GetAll().ProjectTo<UserViewModel>();
+            var users = await mediatorHandler.GetResult(new GetAllUserQuery());
+            return users.ProjectTo<UserViewModel>();
         }
 
         public UserViewModel GetById(Guid id)

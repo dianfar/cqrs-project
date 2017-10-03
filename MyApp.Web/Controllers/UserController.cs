@@ -21,9 +21,9 @@ namespace MyApp.Web.Controllers
             this.userAppService = userAppService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var users = userAppService.GetAll();
+            var users = await userAppService.GetAll();
             return View(users);
         }
 

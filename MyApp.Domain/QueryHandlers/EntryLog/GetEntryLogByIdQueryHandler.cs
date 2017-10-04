@@ -2,7 +2,6 @@
 using MyApp.Domain.CommandHandlers;
 using MyApp.Domain.Models;
 using MyApp.Domain.Queries;
-using System.Linq;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Interfaces;
 using MyApp.Domain.Core.Notifications;
@@ -10,11 +9,11 @@ using MyApp.Domain.Interfaces;
 
 namespace MyApp.Domain.QueryHandlers
 {
-    public class GetEntryLogByUserQueryHandler : ActionHandler, IRequestHandler<GetEntryLogByUserQuery, IQueryable<EntryLog>>
+    public class GetEntryLogByIdQueryHandler : ActionHandler, IRequestHandler<GetEntryLogByIdQuery, EntryLog>
     {
         private readonly IEntryLogRepository entryLogRepository;
 
-        public GetEntryLogByUserQueryHandler(
+        public GetEntryLogByIdQueryHandler(
             IEntryLogRepository entryLogRepository,
             IUnitOfWork uow, 
             IMediatorHandler bus, 
@@ -23,9 +22,9 @@ namespace MyApp.Domain.QueryHandlers
             this.entryLogRepository = entryLogRepository;
         }
 
-        public IQueryable<EntryLog> Handle(GetEntryLogByUserQuery message)
+        public EntryLog Handle(GetEntryLogByIdQuery message)
         {
-            return this.entryLogRepository.GetByUser(message.UserId);
+            return this.entryLogRepository.GetById(message.Id);
         }
     }
 }

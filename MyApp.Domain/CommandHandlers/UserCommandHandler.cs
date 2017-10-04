@@ -7,6 +7,7 @@ using MyApp.Domain.Queries;
 using MyApp.Domain.Models;
 using MyApp.Domain.Core.Interfaces;
 using MyApp.Infrastructure.Identity.PasswordHasher;
+using MyApp.Domain.Events;
 
 namespace MyApp.Domain.CommandHandlers
 {
@@ -55,7 +56,10 @@ namespace MyApp.Domain.CommandHandlers
             user.PasswordSalt = passwordHasher.GetSalt();
 
             this.userRepository.Add(user);
-            this.Commit();
+            if(this.Commit())
+            {
+                mediatorHandler.RaiseEvent(new ClientRegisteredEvent(user.Id, user.Name, user.Email));
+            }
         }
 
         public void Handle(UpdateUserCommand message)
@@ -63,6 +67,12 @@ namespace MyApp.Domain.CommandHandlers
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
+                return;
+            }
+
+            if (userRepository.GetByEmail(message.Email) != null)
+            {
+                mediatorHandler.RaiseEvent(new DomainNotification(message.MessageType, "The user e-mail has already been taken."));
                 return;
             }
 
@@ -74,7 +84,10 @@ namespace MyApp.Domain.CommandHandlers
             user.Role = role;
 
             userRepository.Update(user);
-            this.Commit();
+            if (this.Commit())
+            {
+                mediatorHandler.RaiseEvent(new ClientUpdatedEvent(user.Id, user.Name, user.Email));
+            }
         }
 
         public void Handle(RemoveUserCommand message)
@@ -86,7 +99,10 @@ namespace MyApp.Domain.CommandHandlers
             }
 
             userRepository.Remove(message.Id);
-            this.Commit();
+            if(this.Commit())
+            {
+                mediatorHandler.RaiseEvent(new ClientRemovedEvent(message.Id));
+            }
         }
     }
 }

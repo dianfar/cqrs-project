@@ -51,14 +51,18 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IRequestHandler<UpdateProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveProjectCommand>, ProjectCommandHandler>();
             services.AddScoped<IRequestHandler<GetAllProjectQuery, IQueryable<Project>>, GetAllProjectQueryHandler>();
+            services.AddScoped<IRequestHandler<GetProjectByIdQuery, Project>, GetProjectByIdQueryHandler>();
 
             services.AddScoped<IRequestHandler<RegisterNewUserCommand>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveUserCommand>, UserCommandHandler>();
             services.AddScoped<IRequestHandler<GetAllUserQuery, IQueryable<User>>, GetAllUserQueryHandler>();
+            services.AddScoped<IRequestHandler<GetUserByIdQuery, User>, GetUserByIdQueryHandler>();
+            services.AddScoped<IRequestHandler<GetAllRoleQuery, IQueryable<Role>>, GetAllRoleQueryHandler>();
 
             services.AddScoped<IRequestHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
+            services.AddScoped<IRequestHandler<GetEntryLogByUserQuery, IQueryable<EntryLog>>, GetEntryLogByUserQueryHandler>();
 
             services.AddScoped<IRequestHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
             services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();

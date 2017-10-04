@@ -1,9 +1,7 @@
 ﻿using MyApp.Application.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using MyApp.Application.ViewModels;
-using MyApp.Domain.Interfaces;
 using MyApp.Domain.Core.Bus;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -15,18 +13,13 @@ namespace MyApp.Application.Services
     public class UserAppService : IUserAppService
     {
         private readonly IMapper mapper;
-        private readonly IUserRepository userRepository;
-        private readonly IRoleRepository roleRepository;
         private readonly IMediatorHandler mediatorHandler;
 
-        public UserAppService(IMapper mapper,
-                                  IUserRepository userRepository,
-                                  IRoleRepository roleRepository,
-                                  IMediatorHandler bus)
+        public UserAppService(
+            IMapper mapper,
+            IMediatorHandler bus)
         {
             this.mapper = mapper;
-            this.userRepository = userRepository;
-            this.roleRepository = roleRepository;
             this.mediatorHandler = bus;
         }
 
@@ -47,25 +40,27 @@ namespace MyApp.Application.Services
             return users.ProjectTo<UserViewModel>();
         }
 
-        public UserViewModel GetById(Guid id)
+        public async Task<UserViewModel> GetById(Guid id)
         {
-            return mapper.Map<UserViewModel>(userRepository.GetById(id));
+            var user = await mediatorHandler.GetResult(new GetUserByIdQuery(id));
+            return mapper.Map<UserViewModel>(user);
         }
 
-        public RegisterNewUserViewModel GetRegisterNewUserData()
+        public async Task<RegisterNewUserViewModel> GetRegisterNewUserData()
         {
-            var roles = this.roleRepository.GetAll().ProjectTo<RoleViewModel>();
+            var roles = await mediatorHandler.GetResult(new GetAllRoleQuery());
             return new RegisterNewUserViewModel()
             {
-                Roles = roles
+                Roles = roles.ProjectTo<RoleViewModel>()
             };
         }
 
-        public UpdateUserViewModel GetUpdateUserData(Guid id)
+        public async Task<UpdateUserViewModel> GetUpdateUserData(Guid id)
         {
-            var roles = this.roleRepository.GetAll().ProjectTo<RoleViewModel>();
-            var result = mapper.Map<UpdateUserViewModel>(userRepository.GetById(id));
-            result.Roles = roles;
+            var roles = await mediatorHandler.GetResult(new GetAllRoleQuery());
+            var user = await mediatorHandler.GetResult(new GetUserByIdQuery(id));
+            var result = mapper.Map<UpdateUserViewModel>(user);
+            result.Roles = roles.ProjectTo<RoleViewModel>();
 
             return result;
         }

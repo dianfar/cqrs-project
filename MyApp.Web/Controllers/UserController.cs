@@ -28,9 +28,9 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
-            var viewModel = userAppService.GetRegisterNewUserData();
+            var viewModel = await userAppService.GetRegisterNewUserData();
             return View(viewModel);
         }
 
@@ -44,9 +44,9 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            var user = userAppService.GetUpdateUserData(id);
+            var user = await userAppService.GetUpdateUserData(id);
             return View(user);
         }
 

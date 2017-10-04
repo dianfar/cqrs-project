@@ -3,7 +3,6 @@ using System;
 using MyApp.Application.ViewModels;
 using MyApp.Domain.Core.Bus;
 using AutoMapper;
-using MyApp.Domain.Interfaces;
 using MyApp.Domain.Queries;
 using System.Collections.Generic;
 using AutoMapper.QueryableExtensions;
@@ -14,21 +13,12 @@ namespace MyApp.Application.Services
     public class ProjectAppService : IProjectAppService
     {
         private readonly IMapper mapper;
-        private readonly IProjectRepository projectRepository;
-        private readonly IClientRepository clientRepository;
-        private readonly IUserRepository userRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public ProjectAppService(IMapper mapper,
-                                IProjectRepository projectRepository,
-                                IClientRepository clientRepository,
-                                IUserRepository userRepository,
                                 IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
-            this.projectRepository = projectRepository;
-            this.clientRepository = clientRepository;
-            this.userRepository = userRepository;
             this.mediatorHandler = mediatorHandler;
         }
 
@@ -79,11 +69,11 @@ namespace MyApp.Application.Services
         public async Task<UpdateProjectViewModel> GetUpdateProjectData(Guid id)
         {
             var clients = await mediatorHandler.GetResult(new GetAllClientQuery());
-            var users = userRepository.GetAll().ProjectTo<UserViewModel>();
+            var users = await mediatorHandler.GetResult(new GetAllUserQuery());
             var project = await mediatorHandler.GetResult(new GetProjectByIdQuery(id));
             var result = mapper.Map<UpdateProjectViewModel>(project);
             result.Clients = clients.ProjectTo<ClientViewModel>();
-            result.Users = users;
+            result.Users = users.ProjectTo<UserViewModel>();
 
             return result;
         }

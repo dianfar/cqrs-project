@@ -7,6 +7,7 @@ using MyApp.Domain.Interfaces;
 using MyApp.Domain.Queries;
 using System.Collections.Generic;
 using AutoMapper.QueryableExtensions;
+using System.Threading.Tasks;
 
 namespace MyApp.Application.Services
 {
@@ -39,10 +40,10 @@ namespace MyApp.Application.Services
             GC.SuppressFinalize(this);
         }
 
-        public CreateUpdateEntryLogViewModel GetUpdatedData(Guid id)
+        public async Task<CreateUpdateEntryLogViewModel> GetUpdatedData(Guid userId, Guid id)
         {
-            var entryLogs = entryLogRepository.GetAll().ProjectTo<EntryLogViewModel>();
-            var projects = projectRepository.GetAll().ProjectTo<ProjectViewModel>();
+            var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
+            var projects = await mediatorHandler.GetResult(new GetAllProjectQuery());
             var entryLog = entryLogRepository.GetById(id);
 
             return new CreateUpdateEntryLogViewModel
@@ -53,20 +54,20 @@ namespace MyApp.Application.Services
                 Description = entryLog.Description,
                 UserId = entryLog.User.Id,
                 ProjectId = entryLog.Project.Id,
-                EntryLogs = entryLogs,
-                Projects = projects
-            };
+                EntryLogs = entryLogs.ProjectTo<EntryLogViewModel>(),
+                Projects = projects.ProjectTo<ProjectViewModel>()
+        };
         }
 
-        public CreateUpdateEntryLogViewModel GetByUser(Guid userId)
+        public async Task<CreateUpdateEntryLogViewModel> GetByUser(Guid userId)
         {
-            var entryLogs = entryLogRepository.GetByUser(userId).ProjectTo<EntryLogViewModel>();
-            var projects = projectRepository.GetAll().ProjectTo<ProjectViewModel>();
+            var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
+            var projects = await mediatorHandler.GetResult(new GetAllProjectQuery());
 
             return new CreateUpdateEntryLogViewModel
             {
-                EntryLogs = entryLogs,
-                Projects = projects
+                EntryLogs = entryLogs.ProjectTo<EntryLogViewModel>(),
+                Projects = projects.ProjectTo<ProjectViewModel>()
             };
         }
 

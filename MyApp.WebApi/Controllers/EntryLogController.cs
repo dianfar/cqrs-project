@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
+using System.Threading.Tasks;
 
 namespace MyApp.WebApi.Controllers
 {
@@ -17,9 +18,9 @@ namespace MyApp.WebApi.Controllers
 
         [HttpGet]
         [Route("{userId}")]
-        public CreateUpdateEntryLogViewModel GetEntries(Guid userId)
+        public async Task<CreateUpdateEntryLogViewModel> GetEntries(Guid userId)
         {
-            var entryLogs = entryLogAppService.GetByUser(userId);
+            var entryLogs = await entryLogAppService.GetByUser(userId);
             entryLogs.EditMode = false;
             return entryLogs;
         }

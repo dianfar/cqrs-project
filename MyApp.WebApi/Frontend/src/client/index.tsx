@@ -1,9 +1,9 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react";
-import { IClientStore } from "./store";
+import { ClientStore } from "./store";
 
 interface IClientProps {
-    clientStore?: IClientStore
+    clientStore: ClientStore
 }
 
 @inject("clientStore")
@@ -59,9 +59,9 @@ class Client extends React.Component<IClientProps> {
                                             <a className="btn btn-warning">
                                                 <span className="glyphicon glyphicon-pencil"></span>
                                             </a>
-                                            <a className="btn btn-danger">
+                                            <button type="button" className="btn btn-danger" onClick={(e) => clientStore.deleteClient(client.id)}>
                                                 <span className="glyphicon glyphicon-trash"></span>
-                                            </a>
+                                            </button>
                                         </td>
                                     </tr>
                                 ))

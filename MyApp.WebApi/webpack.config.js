@@ -7,16 +7,16 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [".tsx", ".js"]
+        extensions: [".tsx", ".ts", ".js"]
     },
 
     module: {
         loaders: [
-          {
-              test: /\.tsx?$/,
-              exclude: /node_modules/,
-              loaders: ["ts-loader"]
-          }
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loaders: ["ts-loader"]
+            }
         ]
     }
 };

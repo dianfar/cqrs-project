@@ -1,7 +1,22 @@
 import * as React from "react";
+import { observer, inject } from "mobx-react";
+import { IClientStore } from "./store";
 
-class Client extends React.Component {
+interface IClientProps {
+    clientStore?: IClientStore
+}
+
+@inject("clientStore")
+@observer
+class Client extends React.Component<IClientProps> {
+    constructor(props: IClientProps) {
+        super(props);
+        const { clientStore } = props;
+        clientStore.getClients();
+    }
+
     render() {
+        const { clientStore } = this.props;
         return (
             <div>
                 <div className="row">
@@ -31,7 +46,26 @@ class Client extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* Todo: using state management library, get a list of clients from api and display it here */}
+                            {
+                                clientStore.clients.map((client) => (
+                                    <tr key={client.id}>
+                                        <td>
+                                            {client.name}
+                                        </td>
+                                        <td>
+                                            {client.description}
+                                        </td>
+                                        <td>
+                                            <a className="btn btn-warning">
+                                                <span className="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                            <a className="btn btn-danger">
+                                                <span className="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>

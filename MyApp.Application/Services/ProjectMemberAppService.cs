@@ -11,15 +11,12 @@ namespace MyApp.Application.Services
     public class ProjectMemberAppService : IProjectMemberAppService
     {
         private readonly IMapper mapper;
-        private readonly IProjectMemberRepository projectMemberRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public ProjectMemberAppService(IMapper mapper,
-                                  IProjectMemberRepository projectMemberRepository,
                                   IMediatorHandler bus)
         {
             this.mapper = mapper;
-            this.projectMemberRepository = projectMemberRepository;
             this.mediatorHandler = bus;
         }
 

@@ -3,9 +3,7 @@ using System;
 using MyApp.Application.ViewModels;
 using MyApp.Domain.Core.Bus;
 using AutoMapper;
-using MyApp.Domain.Interfaces;
 using MyApp.Domain.Queries;
-using System.Collections.Generic;
 using AutoMapper.QueryableExtensions;
 using System.Threading.Tasks;
 
@@ -14,18 +12,12 @@ namespace MyApp.Application.Services
     public class EntryLogAppService : IEntryLogAppService
     {
         private readonly IMapper mapper;
-        private readonly IEntryLogRepository entryLogRepository;
-        private readonly IProjectRepository projectRepository;
         private readonly IMediatorHandler mediatorHandler;
 
         public EntryLogAppService(IMapper mapper,
-                               IEntryLogRepository entryLogRepository,
-                               IProjectRepository projectRepository,
                                IMediatorHandler mediatorHandler)
         {
             this.mapper = mapper;
-            this.entryLogRepository = entryLogRepository;
-            this.projectRepository = projectRepository;
             this.mediatorHandler = mediatorHandler;
         }
 
@@ -44,7 +36,7 @@ namespace MyApp.Application.Services
         {
             var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
             var projects = await mediatorHandler.GetResult(new GetAllProjectQuery());
-            var entryLog = entryLogRepository.GetById(id);
+            var entryLog = await mediatorHandler.GetResult(new GetEntryLogByIdQuery(id));
 
             return new CreateUpdateEntryLogViewModel
             {

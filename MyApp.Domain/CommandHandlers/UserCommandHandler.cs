@@ -42,6 +42,12 @@ namespace MyApp.Domain.CommandHandlers
                 return;
             }
 
+            if (userRepository.GetByEmail(message.Email) != null)
+            {
+                mediatorHandler.RaiseEvent(new DomainNotification(message.MessageType, "The user e-mail has already been taken."));
+                return;
+            }
+
             var role = this.roleRepository.GetById(message.RoleId);
             var user = new User(Guid.NewGuid(), message.Name, true, message.Email, role);
             var hashPassword = passwordHasher.HashPassword(message.Password);

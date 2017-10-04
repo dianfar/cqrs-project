@@ -1,15 +1,10 @@
 ﻿using MyApp.Domain.Queries;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Notifications;
-using MyApp.Domain.Events;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Models;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.CommandHandlers
@@ -41,18 +36,8 @@ namespace MyApp.Domain.CommandHandlers
 
             var client = new Client(Guid.NewGuid(), message.Name, message.Description);
 
-            ////if (clientRepository.GetByEmail(customer.Email) != null)
-            ////{
-            ////    mediatorHandler.RaiseEvent(new DomainNotification(message.MessageType, "The customer e-mail has already been taken."));
-            ////    return;
-            ////}
-
             clientRepository.Add(client);
-
-            if (Commit())
-            {
-                ////mediatorHandler.RaiseEvent(new CustomerRegisteredEvent(client.Id, client.Name, client.Email, client.BirthDate));
-            }
+            Commit();
         }
 
         public void Handle(UpdateClientCommand message)
@@ -63,24 +48,10 @@ namespace MyApp.Domain.CommandHandlers
                 return;
             }
 
-            var customer = new Client(message.Id, message.Name, message.Description);
-            //var existingCustomer = clientRepository.GetByEmail(customer.Email);
+            var client = new Client(message.Id, message.Name, message.Description);
 
-            //if (existingCustomer != null && existingCustomer.Id != customer.Id)
-            //{
-            //    if (!existingCustomer.Equals(customer))
-            //    {
-            //        mediatorHandler.RaiseEvent(new DomainNotification(message.MessageType, "The customer e-mail has already been taken."));
-            //        return;
-            //    }
-            //}
-
-            clientRepository.Update(customer);
-
-            if (Commit())
-            {
-                ////mediatorHandler.RaiseEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
-            }
+            clientRepository.Update(client);
+            Commit();
         }
 
         public void Handle(RemoveClientCommand message)
@@ -92,11 +63,7 @@ namespace MyApp.Domain.CommandHandlers
             }
 
             clientRepository.Remove(message.Id);
-
-            if (Commit())
-            {
-                mediatorHandler.RaiseEvent(new ClientRemovedEvent(message.Id));
-            }
+            Commit();
         }
 
         public void Dispose()

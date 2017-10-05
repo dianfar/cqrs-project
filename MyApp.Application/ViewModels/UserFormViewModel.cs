@@ -4,11 +4,11 @@ using System.Text;
 
 namespace MyApp.Application.ViewModels
 {
-    public class RegisterNewUserViewModel
+    public class UserFormViewModel : UserViewModel
     {
         private IEnumerable<RoleViewModel> roles;
 
-        public RegisterNewUserViewModel()
+        public UserFormViewModel()
         {
             roles = new List<RoleViewModel>();
         }

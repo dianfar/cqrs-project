@@ -35,12 +35,19 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(UserViewModel userViewModel)
+        public IActionResult Add(UserFormViewModel userFormViewModel)
         {
-            if (!ModelState.IsValid) return View(userViewModel);
-            userAppService.Create(userViewModel);
+            if (!ModelState.IsValid) return View(userFormViewModel);
+            userAppService.Create(userFormViewModel);
 
-            return RedirectToAction("Index");
+            if (IsValidOperation())
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(userFormViewModel);
+            }
         }
 
         [HttpGet]
@@ -51,7 +58,7 @@ namespace MyApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(UserViewModel userViewModel)
+        public IActionResult Edit(UserFormViewModel userViewModel)
         {
             if (!ModelState.IsValid) return View(userViewModel);
             userAppService.Update(userViewModel);

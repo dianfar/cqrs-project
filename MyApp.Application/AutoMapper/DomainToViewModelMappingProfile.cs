@@ -39,8 +39,8 @@ namespace MyApp.Application.AutoMapper
                     RoleId = c.Role.Id,
                     RoleName = c.Role.Name
                 });
-            CreateMap<User, UpdateUserViewModel>()
-                .ConstructUsing(c => new UpdateUserViewModel()
+            CreateMap<User, UserFormViewModel>()
+                .ConstructUsing(c => new UserFormViewModel()
                 {
                     Id = c.Id,
                     Name = c.Name,

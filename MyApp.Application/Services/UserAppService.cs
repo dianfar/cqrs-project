@@ -46,20 +46,20 @@ namespace MyApp.Application.Services
             return mapper.Map<UserViewModel>(user);
         }
 
-        public async Task<RegisterNewUserViewModel> GetRegisterNewUserData()
+        public async Task<UserFormViewModel> GetRegisterNewUserData()
         {
             var roles = await mediatorHandler.GetResult(new GetAllRoleQuery());
-            return new RegisterNewUserViewModel()
+            return new UserFormViewModel()
             {
                 Roles = roles.ProjectTo<RoleViewModel>()
             };
         }
 
-        public async Task<UpdateUserViewModel> GetUpdateUserData(Guid id)
+        public async Task<UserFormViewModel> GetUpdateUserData(Guid id)
         {
             var roles = await mediatorHandler.GetResult(new GetAllRoleQuery());
             var user = await mediatorHandler.GetResult(new GetUserByIdQuery(id));
-            var result = mapper.Map<UpdateUserViewModel>(user);
+            var result = mapper.Map<UserFormViewModel>(user);
             result.Roles = roles.ProjectTo<RoleViewModel>();
 
             return result;

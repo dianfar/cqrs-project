@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using MyApp.Domain.Core.Notifications;
@@ -8,6 +6,7 @@ using MyApp.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using MyApp.Application.Interfaces;
+using Microsoft.AspNetCore.Authentication;
 
 namespace MyApp.Web.Controllers
 {
@@ -48,7 +47,7 @@ namespace MyApp.Web.Controllers
             };
 
             ClaimsPrincipal principal = new ClaimsPrincipal(new ClaimsIdentity(userClaims, "CustomClaims"));
-            await HttpContext.Authentication.SignInAsync("CookieAuth", principal);
+            await HttpContext.SignInAsync(principal);
 
             return RedirectToRoute(new
             {

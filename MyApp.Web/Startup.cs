@@ -29,7 +29,12 @@ namespace MyApp.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddAuthentication(sharedOption => sharedOption.SignInScheme = "CookieAuth");
+            services.AddAuthentication("CookieAuth")
+                    .AddCookie("CookieAuth", options => {
+                        options.AccessDeniedPath = "/Account/Forbidden/";
+                        options.LoginPath = "/Account/Login/";
+                        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+            }); 
             services.AddAutoMapper();
             services.AddMediatR(typeof(Startup));
             NativeInjectorBootStrapper.RegisterServices(services);
@@ -51,15 +56,7 @@ namespace MyApp.Web
             }
 
             app.UseStaticFiles();
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AccessDeniedPath = "/Account/Forbidden/",
-                AuthenticationScheme = "CookieAuth",
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                LoginPath = "/Account/Login/",
-                ExpireTimeSpan = TimeSpan.FromMinutes(30)
-            });
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

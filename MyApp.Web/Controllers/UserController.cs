@@ -50,6 +50,7 @@ namespace MyApp.Web.Controllers
                 var viewModel = await userAppService.GetRegisterNewUserData();
                 userFormViewModel.Roles = viewModel.Roles;
                 userFormViewModel.EditMode = false;
+                userFormViewModel.ErrorMessages = GetErrorMessages();
                 return View("AddEdit", userFormViewModel);
             }
         }

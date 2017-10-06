@@ -8,9 +8,14 @@ namespace MyApp.Application.ViewModels
     {
         private IEnumerable<RoleViewModel> roles;
 
+        public IEnumerable<string> ErrorMessages { get; set; }
+
+        public bool EditMode { get; set; }
+
         public UserFormViewModel()
         {
             roles = new List<RoleViewModel>();
+            ErrorMessages = new List<string>();
         }
 
         public IEnumerable<RoleViewModel> Roles

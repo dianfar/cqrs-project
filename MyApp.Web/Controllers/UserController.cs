@@ -31,11 +31,12 @@ namespace MyApp.Web.Controllers
         public async Task<IActionResult> Add()
         {
             var viewModel = await userAppService.GetRegisterNewUserData();
-            return View(viewModel);
+            viewModel.EditMode = false;
+            return View("AddEdit", viewModel);
         }
 
         [HttpPost]
-        public IActionResult Add(UserFormViewModel userFormViewModel)
+        public async Task<IActionResult> Add(UserFormViewModel userFormViewModel)
         {
             if (!ModelState.IsValid) return View(userFormViewModel);
             userAppService.Create(userFormViewModel);
@@ -46,7 +47,11 @@ namespace MyApp.Web.Controllers
             }
             else
             {
-                return View(userFormViewModel);
+                var viewModel = await userAppService.GetRegisterNewUserData();
+                userFormViewModel.Roles = viewModel.Roles;
+                userFormViewModel.EditMode = false;
+                userFormViewModel.ErrorMessages = GetErrorMessages();
+                return View("AddEdit", userFormViewModel);
             }
         }
 
@@ -54,7 +59,8 @@ namespace MyApp.Web.Controllers
         public async Task<IActionResult> Edit(Guid id)
         {
             var user = await userAppService.GetUpdateUserData(id);
-            return View(user);
+            user.EditMode = true;
+            return View("AddEdit", user);
         }
 
         [HttpPost]

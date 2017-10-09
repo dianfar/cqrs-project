@@ -35,7 +35,7 @@ namespace MyApp.Application.Services
         public async Task<CreateUpdateEntryLogViewModel> GetUpdatedData(Guid userId, Guid id)
         {
             var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
-            var projects = await mediatorHandler.GetResult(new GetAllProjectQuery());
+            var projects = await mediatorHandler.GetResult(new GetProjectsByUserQuery(userId));
             var entryLog = await mediatorHandler.GetResult(new GetEntryLogByIdQuery(id));
 
             return new CreateUpdateEntryLogViewModel
@@ -54,7 +54,7 @@ namespace MyApp.Application.Services
         public async Task<CreateUpdateEntryLogViewModel> GetByUser(Guid userId)
         {
             var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
-            var projects = await mediatorHandler.GetResult(new GetAllProjectQuery());
+            var projects = await mediatorHandler.GetResult(new GetProjectsByUserQuery(userId));
 
             return new CreateUpdateEntryLogViewModel
             {

@@ -25,7 +25,7 @@ namespace MyApp.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var entryLogs = await entryLogAppService.GetByUser(Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value));
+            var entryLogs = await entryLogAppService.GetByUser(this.UserId);
             entryLogs.EditMode = false;
             return View(entryLogs);
         }
@@ -34,7 +34,7 @@ namespace MyApp.Web.Controllers
         public IActionResult Add(CreateUpdateEntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
-            viewModel.UserId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+            viewModel.UserId = this.UserId;
             entryLogAppService.Create(viewModel);
 
             return RedirectToAction("Index");
@@ -43,8 +43,7 @@ namespace MyApp.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var userId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
-            var updateEntryLogData = await entryLogAppService.GetUpdatedData(userId, id);
+            var updateEntryLogData = await entryLogAppService.GetUpdatedData(this.UserId, id);
             updateEntryLogData.EditMode = true;
             return View("Index", updateEntryLogData);
         }
@@ -53,7 +52,7 @@ namespace MyApp.Web.Controllers
         public IActionResult Edit(CreateUpdateEntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
-            viewModel.UserId = Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+            viewModel.UserId = this.UserId;
             entryLogAppService.Update(viewModel);
 
             return RedirectToAction("Index");

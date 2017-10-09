@@ -13,6 +13,7 @@ namespace MyApp.Infrastructure.Data.Context
         public DbSet<Client> Client { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Role> Role { get; set; }
+        public DbSet<ProjectMember> ProjectMember { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

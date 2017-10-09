@@ -10,5 +10,6 @@ namespace MyApp.Domain.Interfaces
 {
     public interface IProjectRepository : IRepository<Project>
     {
+        IQueryable<Project> GetProjectsByUser(Guid userId);
     }
 }

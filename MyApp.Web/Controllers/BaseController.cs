@@ -3,12 +3,20 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Security.Claims;
 
 namespace MyApp.Web.Controllers
 {
     public class BaseController : Controller
     {
         private readonly DomainNotificationHandler notifications;
+        protected Guid UserId
+        {
+            get {
+                return Guid.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+            }
+        }
 
         public BaseController(INotificationHandler<DomainNotification> notifications)
         {

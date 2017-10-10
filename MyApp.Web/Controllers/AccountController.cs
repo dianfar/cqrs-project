@@ -7,18 +7,22 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using MyApp.Application.Interfaces;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
 
 namespace MyApp.Web.Controllers
 {
     public class AccountController : BaseController
     {
         private readonly IAccountAppService accountAppService;
+        private readonly ILogger logger;
 
         public AccountController(
             IAccountAppService accountAppService,
+            ILogger<AccountController> logger,
             INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.accountAppService = accountAppService;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -36,6 +40,7 @@ namespace MyApp.Web.Controllers
 
             if (user == null)
             {
+                this.logger.LogWarning(1, string.Format("User {0} Unauthorize", viewModel.Email));
                 return RedirectToAction("Unauthorize");
             }
 
@@ -48,6 +53,7 @@ namespace MyApp.Web.Controllers
 
             ClaimsPrincipal principal = new ClaimsPrincipal(new ClaimsIdentity(userClaims, "CustomClaims"));
             await HttpContext.SignInAsync(principal);
+            this.logger.LogInformation(1, string.Format("User {0} Logged in", viewModel.Email));
 
             return RedirectToRoute(new
             {

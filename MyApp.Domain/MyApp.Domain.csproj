@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Domain.Core\MyApp.Domain.Core.csproj" />
     <ProjectReference Include="..\MyApp.Infrastructure.Identity\MyApp.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\MyApp.Infrastructure.Mail\MyApp.Infrastructure.Mail.csproj" />
   </ItemGroup>
 
 </Project>

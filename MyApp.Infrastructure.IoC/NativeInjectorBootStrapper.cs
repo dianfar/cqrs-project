@@ -19,6 +19,7 @@ using MyApp.Domain.Models;
 using MyApp.Domain.Core.Interfaces;
 using System.Linq;
 using MyApp.Domain.QueryHandlers;
+using MyApp.Infrastructure.Mail;
 
 namespace MyApp.Infrastructure.IoC
 {
@@ -72,6 +73,8 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IRequestHandler<AccountLoginQuery, User>, AccountLoginQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllClientQuery, IQueryable<Client>>, GetAllClientQueryHandler>();
             services.AddScoped<IRequestHandler<GetClientByIdQuery, Client>, GetClientByIdQueryHandler>();
+
+            services.AddScoped<IMailProvider, MockMailProvider>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();

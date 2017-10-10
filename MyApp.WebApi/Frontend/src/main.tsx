@@ -1,16 +1,21 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "mobx-react";
 import Client from "./client"
+import AddClient from "./client/add"
+import EditClient from "./client/edit"
 import clientStore from "./client/store"
 
 const route = (
-    <BrowserRouter>
+    <HashRouter>
         <Switch>
             <Route exact path="/" component={Client}></Route>
+            <Route exact path="/clients" component={Client}></Route>
+            <Route path="/clients/add" component={AddClient}></Route>
+            <Route path="/clients/:clientId/edit" component={EditClient}></Route>
         </Switch>
-    </BrowserRouter>
+    </HashRouter>
 );
 
 const main = (

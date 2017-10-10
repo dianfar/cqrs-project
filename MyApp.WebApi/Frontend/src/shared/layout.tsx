@@ -1,25 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { HashRouter, Switch, Route } from "react-router-dom";
-import { Provider } from "mobx-react";
-import Client from "./client"
-import AddClient from "./client/add"
-import EditClient from "./client/edit"
-import clientStore from "./client/store"
-
-const route = (
-    <HashRouter>
-        <Switch>
-            <Route exact path="/" component={Client}></Route>
-            <Route exact path="/clients" component={Client}></Route>
-            <Route path="/clients/add" component={AddClient}></Route>
-            <Route path="/clients/:clientId/edit" component={EditClient}></Route>
-        </Switch>
-    </HashRouter>
-);
+import Client from "../client/list"
+import AddClient from "../client/add"
+import EditClient from "../client/edit"
+import clientStore from "../client/store"
 
 const main = (
-    <Provider clientStore={clientStore}>
         <div>
             <nav className="navbar navbar-inverse">
                 <div className="container">
@@ -43,17 +29,15 @@ const main = (
                 </div>
             </nav>
             <div className="container body-content">
-                {route}
                 <hr />
                 <footer>
                     <p>&copy; 2017 - Project Management System</p>
                 </footer>
             </div>
         </div>
-    </Provider>
 );
 
-ReactDOM.render(
-    main,
-    document.getElementById("main")
-);
+//ReactDOM.render(
+//    <h1></h1>,
+//    document.getElementById("main")
+//);

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { observer, inject } from "mobx-react";
 import { ClientStore } from "./store";
 
@@ -24,9 +23,9 @@ class Client extends React.Component<IClientProps> {
                     <div className="col-md-12">
                         <div>
                             <div className="pull-left">
-                                <Link className="btn btn-primary" to={`/clients/add`}>
+                                <a className="btn btn-primary" href="/client/add">
                                     <span title="Register New" className="glyphicon glyphicon-plus-sign"></span> Create New
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -57,9 +56,9 @@ class Client extends React.Component<IClientProps> {
                                             {client.description}
                                         </td>
                                         <td>
-                                            <Link className="btn btn-warning" to={`/clients/${client.id}/edit`}>
+                                            <a className="btn btn-warning" href={`/client/${client.id}/edit`}>
                                                 <span className="glyphicon glyphicon-pencil"></span>
-                                            </Link>
+                                            </a>
                                             <button type="button" className="btn btn-danger" onClick={(e) => clientStore.deleteClient(client.id)}>
                                                 <span className="glyphicon glyphicon-trash"></span>
                                             </button>

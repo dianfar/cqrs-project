@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import { Link } from "react-router-dom";
 import { observable } from "mobx";
 import { observer, inject } from "mobx-react";
 import { IClient } from "./interface";
@@ -59,7 +58,7 @@ class EditClient extends React.Component<IEditClientProps> {
                             <button type="button" className="btn btn-success" onClick={() => clientStore.updateClient(this.client)}>
                                 Save
                             </button>
-                            <Link to="/clients" className="btn btn-info">Back to List</Link>
+                            <a href="/client" className="btn btn-info">Back to List</a>
                         </div>
                     </div>
                 </div>

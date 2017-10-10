@@ -10,7 +10,6 @@
     "types": [
         "@types/react",
         "@types/react-dom",
-        "@types/react-router-dom",
         "@types/react-test-renderer",
         "@types/jasmine",
         "@types/isomorphic-fetch"

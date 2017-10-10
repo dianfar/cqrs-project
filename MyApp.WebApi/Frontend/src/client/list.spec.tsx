@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as TestUtils from "react-dom/test-utils";
 import * as ReactShallowRenderer from "react-test-renderer/shallow";
-import Client from "./index";
+import Client from "./list";
 import { ClientStore } from "./store";
 
 const clientStore = new ClientStore();

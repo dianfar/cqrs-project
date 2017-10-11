@@ -24,6 +24,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public User Handle(GetUserByIdQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return userRepository.GetById(message.Id);
         }
     }

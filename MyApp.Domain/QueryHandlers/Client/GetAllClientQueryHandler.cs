@@ -25,6 +25,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public IQueryable<Client> Handle(GetAllClientQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return clientRepository.GetAll();
         }
     }

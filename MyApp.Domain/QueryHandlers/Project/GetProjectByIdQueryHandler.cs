@@ -27,6 +27,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public Project Handle(GetProjectByIdQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return projectRepository.GetById(message.Id);
         }
     }

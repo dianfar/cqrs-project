@@ -29,6 +29,12 @@ namespace MyApp.Domain.CommandHandlers
 
         public User Handle(AccountLoginQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             var user = this.userRepository.GetByEmail(message.Email);
             var hashPassword = passwordHasher.HashPassword(message.Password, user.PasswordSalt);
             if (hashPassword.Equals(user.Password))

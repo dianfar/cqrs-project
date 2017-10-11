@@ -28,6 +28,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public IQueryable<User> Handle(GetAllUserQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return userRepository.GetAll();
         }
     }

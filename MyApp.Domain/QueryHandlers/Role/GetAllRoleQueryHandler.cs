@@ -25,6 +25,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public IQueryable<Role> Handle(GetAllRoleQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return roleRepository.GetAll();
         }
     }

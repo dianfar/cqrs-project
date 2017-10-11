@@ -25,6 +25,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public IQueryable<EntryLog> Handle(GetEntryLogByUserQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return this.entryLogRepository.GetByUser(message.UserId);
         }
     }

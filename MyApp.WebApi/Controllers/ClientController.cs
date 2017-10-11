@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Interfaces;
-using MyApp.Application.ViewModels;
-using System.Threading.Tasks;
 
 namespace MyApp.WebApi.Controllers
 {
-    [Route("api/clients")]
+    [Route("clients")]
     public class ClientController : Controller
     {
         private readonly IClientAppService clientAppService;
@@ -19,46 +15,24 @@ namespace MyApp.WebApi.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IEnumerable<ClientViewModel>> GetClients()
+        public IActionResult List()
         {
-            var clients = await clientAppService.GetAll();
-            return clients;
+            return View("List");
         }
 
         [HttpGet]
-        [Route("{id}")]
-        public async Task<ClientViewModel> GetClient(Guid id)
+        [Route("{clientId}/edit")]
+        public IActionResult Edit(string clientId)
         {
-            var client = await clientAppService.GetById(id);
-            return client;
+            ViewBag.ClientId = clientId;
+            return View("Edit");
         }
 
-        [HttpPost]
-        [Route("")]
-        public IActionResult Add([FromBody] ClientViewModel clientViewModel)
+        [HttpGet]
+        [Route("add")]
+        public IActionResult Add()
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            clientAppService.Register(clientViewModel);
-
-            return Ok();
-        }
-
-        [HttpPut]
-        [Route("")]
-        public IActionResult Edit([FromBody] ClientViewModel clientViewModel)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            clientAppService.Update(clientViewModel);
-
-            return Ok();
-        }
-
-        [HttpDelete]
-        [Route("{id}")]
-        public IActionResult Delete(Guid id)
-        {
-            clientAppService.Remove(id);
-            return Ok();
+            return View("Add");
         }
     }
 }

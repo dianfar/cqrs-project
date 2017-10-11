@@ -1,25 +1,29 @@
 ﻿import * as React from "react";
-import { Link } from "react-router-dom";
+import * as ReactDom from "react-dom";
 import { observable } from "mobx";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import { IClient } from "./interface";
-import { ClientStore } from "./store";
+import clientStore from "./store";
 
-interface IAddClientProps {
-    clientStore: ClientStore
-}
-
-@inject("clientStore")
 @observer
-class AddClient extends React.Component<IAddClientProps> {
+class AddClient extends React.Component {
     @observable client: IClient = {
         name: "",
         description: ""
     } as IClient;
-    
-    render() {
-        const { clientStore } = this.props;
 
+    constructor(props) {
+        super(props);
+
+        this.addClient = this.addClient.bind(this);
+    }
+
+    async addClient(client: IClient) {
+        await clientStore.addClient(client);
+        window.location.href = "/clients";
+    }
+
+    render() {
         return (
             <form>
                 <div className="form-horizontal">
@@ -46,10 +50,10 @@ class AddClient extends React.Component<IAddClientProps> {
 
                     <div className="form-group">
                         <div className="col-md-offset-2 col-md-10">
-                            <button type="button" className="btn btn-success" onClick={() => clientStore.addClient(this.client)}>
+                            <button type="button" className="btn btn-success" onClick={() => this.addClient(this.client)}>
                                 Save
                             </button>
-                            <Link to="/clients" className="btn btn-info">Back to List</Link>
+                            <a href="/clients" className="btn btn-info">Back to List</a>
                         </div>
                     </div>
                 </div>
@@ -58,4 +62,7 @@ class AddClient extends React.Component<IAddClientProps> {
     }
 }
 
-export default AddClient;
+ReactDom.render(
+    <AddClient></AddClient>,
+    document.getElementById("main")
+);

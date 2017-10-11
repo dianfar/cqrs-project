@@ -3,13 +3,10 @@ import * as fetch from "isomorphic-fetch";
 import { IClient } from "./interface";
 
 export class ClientStore {
-    @observable clients: IClient[] = [];
-    
     async getClients(): Promise<IClient[]> {
         let response = await fetch("/api/clients");
         let clients = await response.json() as IClient[];
-        this.clients = clients;
-        return this.clients;
+        return clients;
     }
 
     async getClient(clientId: string): Promise<IClient> {
@@ -44,11 +41,6 @@ export class ClientStore {
         let response = await fetch(`/api/clients/${clientId}`, {
             method: "delete"
         });
-
-        if (response.status == 200) {
-            let clientIndex = this.clients.findIndex(client => client.id == clientId);
-            this.clients.splice(clientIndex, 1);
-        };
     }
 }
 

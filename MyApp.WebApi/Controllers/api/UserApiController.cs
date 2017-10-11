@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace MyApp.Web.Controllers
 {
     [Route("api/users")]
-    public class UserController : Controller
+    public class UserApiController : Controller
     {
         private readonly IUserAppService userAppService;
 
-        public UserController(IUserAppService userAppService)
+        public UserApiController(IUserAppService userAppService)
         {
             this.userAppService = userAppService;
         }

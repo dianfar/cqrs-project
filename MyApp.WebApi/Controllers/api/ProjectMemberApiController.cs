@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace MyApp.Web.Controllers
 {
     [Route("api/projectmembers")]
-    public class ProjectMemberController : Controller
+    public class ProjectMemberApiController : Controller
     {
         private readonly IProjectMemberAppService projectMemberAppService;
 
-        public ProjectMemberController(IProjectMemberAppService projectMemberAppService)
+        public ProjectMemberApiController(IProjectMemberAppService projectMemberAppService)
         {
             this.projectMemberAppService = projectMemberAppService;
         }

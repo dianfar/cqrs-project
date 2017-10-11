@@ -4,7 +4,7 @@ var exec = require("child_process").exec;
 var runSequence = require("run-sequence");
 
 gulp.task("copy:html", function () {
-    return gulp.src("Frontend/src/index.html")
+    return gulp.src("Views/**/*.html")
         .pipe(gulp.dest("wwwroot"));
 });
 

@@ -1,16 +1,12 @@
 ﻿import * as React from "react";
+import * as ReactDom from "react-dom";
 import { observable } from "mobx";
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import { IClient } from "./interface";
-import { ClientStore } from "./store";
+import clientStore from "./store";
 
-interface IEditClientProps {
-    clientStore: ClientStore
-}
-
-@inject("clientStore")
 @observer
-class EditClient extends React.Component<IEditClientProps> {
+class EditClient extends React.Component {
     @observable client: IClient = {
         name: "",
         description: ""
@@ -19,16 +15,21 @@ class EditClient extends React.Component<IEditClientProps> {
     constructor(props) {
         super(props);
 
-        const { clientStore } = props;
-        const clientId = (props as any).match.params.clientId;
+        this.updateClient = this.updateClient.bind(this);
+
+        const clientId = document.getElementById("clientId").getAttribute("data-param");
+        console.log(clientId);
         clientStore.getClient(clientId).then(client => {
             this.client = client;
         });
     }
 
-    render() {
-        const { clientStore } = this.props;
+    async updateClient(client: IClient) {
+        await clientStore.updateClient(client);
+        window.location.href = "/clients";
+    }
 
+    render() {
         return (
             <form>
                 <div className="form-horizontal">
@@ -55,10 +56,10 @@ class EditClient extends React.Component<IEditClientProps> {
 
                     <div className="form-group">
                         <div className="col-md-offset-2 col-md-10">
-                            <button type="button" className="btn btn-success" onClick={() => clientStore.updateClient(this.client)}>
+                            <button type="button" className="btn btn-success" onClick={() => this.updateClient(this.client)}>
                                 Save
                             </button>
-                            <a href="/client" className="btn btn-info">Back to List</a>
+                            <a href="/clients" className="btn btn-info">Back to List</a>
                         </div>
                     </div>
                 </div>
@@ -67,4 +68,7 @@ class EditClient extends React.Component<IEditClientProps> {
     }
 }
 
-export default EditClient;
+ReactDom.render(
+    <EditClient></EditClient>,
+    document.getElementById("main")
+);

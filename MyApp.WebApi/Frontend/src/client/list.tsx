@@ -1,29 +1,39 @@
 import * as React from "react";
-import { observer, inject } from "mobx-react";
-import { ClientStore } from "./store";
+import * as ReactDom from "react-dom";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
+import clientStore from "./store";
+import { IClient } from "./interface";
 
-interface IClientProps {
-    clientStore: ClientStore
-}
-
-@inject("clientStore")
 @observer
-class Client extends React.Component<IClientProps> {
+class Client extends React.Component {
+    @observable clients: IClient[] = [];
+
     constructor(props) {
         super(props);
-        const { clientStore } = this.props;
-        clientStore.getClients();
+
+        this.refreshList = this.refreshList.bind(this);
+        this.refreshList();
+    }
+
+    async refreshList(): Promise<void> {
+        let clients = await clientStore.getClients();
+        this.clients = clients;
+    }
+
+    async deleteClient(client: IClient): Promise<void> {
+        await clientStore.deleteClient(client.id);
+        this.refreshList();
     }
 
     render() {
-        const { clientStore } = this.props;
         return (
             <div>
                 <div className="row">
                     <div className="col-md-12">
                         <div>
                             <div className="pull-left">
-                                <a className="btn btn-primary" href="/client/add">
+                                <a className="btn btn-primary" href="/clients/add">
                                     <span title="Register New" className="glyphicon glyphicon-plus-sign"></span> Create New
                                 </a>
                             </div>
@@ -47,7 +57,7 @@ class Client extends React.Component<IClientProps> {
                         </thead>
                         <tbody>
                             {
-                                clientStore.clients.map((client) => (
+                                this.clients.map((client) => (
                                     <tr key={client.id}>
                                         <td>
                                             {client.name}
@@ -56,10 +66,10 @@ class Client extends React.Component<IClientProps> {
                                             {client.description}
                                         </td>
                                         <td>
-                                            <a className="btn btn-warning" href={`/client/${client.id}/edit`}>
+                                            <a className="btn btn-warning" href={`/clients/${client.id}/edit`}>
                                                 <span className="glyphicon glyphicon-pencil"></span>
                                             </a>
-                                            <button type="button" className="btn btn-danger" onClick={(e) => clientStore.deleteClient(client.id)}>
+                                            <button type="button" className="btn btn-danger" onClick={(e) => this.deleteClient(client)}>
                                                 <span className="glyphicon glyphicon-trash"></span>
                                             </button>
                                         </td>
@@ -74,4 +84,7 @@ class Client extends React.Component<IClientProps> {
     }
 }
 
-export default Client;
+ReactDom.render(
+    <Client></Client>,
+    document.getElementById("main")
+);

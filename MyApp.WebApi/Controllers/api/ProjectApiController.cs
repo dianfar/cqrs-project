@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace MyApp.WebApi.Controllers
 {
     [Route("api/projects")]
-    public class ProjectController : Controller
+    public class ProjectApiController : Controller
     {
         private readonly IProjectAppService projectAppService;
 
-        public ProjectController(IProjectAppService productAppService)
+        public ProjectApiController(IProjectAppService productAppService)
         {
             this.projectAppService = productAppService;
         }

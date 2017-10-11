@@ -34,8 +34,13 @@ namespace MyApp.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-            app.UseFileServer();
+            app.UseStaticFiles();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Client}/{action=List}/{id?}");
+            });
         }
     }
 }

@@ -25,4 +25,10 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Client\Add.cshtml" />
+    <None Include="Views\Client\Edit.cshtml" />
+    <None Include="Views\Client\List.cshtml" />
+  </ItemGroup>
+
 </Project>

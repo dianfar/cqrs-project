@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace MyApp.WebApi.Controllers
 {
     [Route("api/entries")]
-    public class EntryLogController : Controller
+    public class EntryLogApiController : Controller
     {
         private readonly IEntryLogAppService entryLogAppService;
 
-        public EntryLogController(IEntryLogAppService entryLogAppService)
+        public EntryLogApiController(IEntryLogAppService entryLogAppService)
         {
             this.entryLogAppService = entryLogAppService;
         }

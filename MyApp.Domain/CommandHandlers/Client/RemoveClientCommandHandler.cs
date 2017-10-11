@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MyApp.Domain.Queries;
+using MyApp.Domain.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;

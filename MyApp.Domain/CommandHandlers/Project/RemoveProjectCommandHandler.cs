@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MyApp.Domain.Interfaces;
-using MyApp.Domain.Queries;
+using MyApp.Domain.Commands;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Core.Interfaces;
 using MyApp.Domain.Core.Notifications;

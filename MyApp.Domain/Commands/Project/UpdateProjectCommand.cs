@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyApp.Domain.Queries
+namespace MyApp.Domain.Commands
 {
     public class UpdateProjectCommand : Command
     {

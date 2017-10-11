@@ -4,7 +4,7 @@ using MyApp.Domain.Core.Interfaces;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Models;
-using MyApp.Domain.Queries;
+using MyApp.Domain.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;

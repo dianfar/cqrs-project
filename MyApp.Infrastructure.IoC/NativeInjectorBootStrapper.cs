@@ -20,6 +20,7 @@ using MyApp.Domain.Core.Interfaces;
 using System.Linq;
 using MyApp.Domain.QueryHandlers;
 using MyApp.Infrastructure.Mail;
+using MyApp.Domain.Commands;
 
 namespace MyApp.Infrastructure.IoC
 {

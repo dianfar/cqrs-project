@@ -14,6 +14,7 @@
     <ProjectReference Include="..\MyApp.Domain\MyApp.Domain.csproj" />
     <ProjectReference Include="..\MyApp.Infrastructure.Data\MyApp.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\MyApp.Infrastructure.Identity\MyApp.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\MyApp.Infrastructure.Mail\MyApp.Infrastructure.Mail.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using MyApp.Domain.Events;
 using MediatR;
+using MyApp.Infrastructure.Mail;
 
 namespace MyApp.Domain.EventHandlers
 {
@@ -8,14 +9,21 @@ namespace MyApp.Domain.EventHandlers
             INotificationHandler<ClientUpdatedEvent>,
             INotificationHandler<ClientRemovedEvent>
     {
+        private readonly IMailProvider mailProvider;
+
+        public ClientEventHandler(IMailProvider mailProvider)
+        {
+            this.mailProvider = mailProvider;
+        }
+
         public void Handle(ClientUpdatedEvent message)
         {
-            // Send some notification e-mail
+            mailProvider.SendMailAsync("Subject", "Content", "myapp-no-reply@myapp.com", "Sender", message.Email);
         }
 
         public void Handle(ClientRegisteredEvent message)
         {
-            // Send some greetings e-mail
+            mailProvider.SendMailAsync("Subject", "Content", "myapp-no-reply@myapp.com", "Sender", message.Email);
         }
 
         public void Handle(ClientRemovedEvent message)

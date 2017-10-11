@@ -11,8 +11,7 @@
         "@types/react",
         "@types/react-dom",
         "@types/react-test-renderer",
-        "@types/jasmine",
-        "@types/isomorphic-fetch"
+        "@types/jasmine"
     ],
     "lib": [
         "es2015",

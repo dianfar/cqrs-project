@@ -44,31 +44,32 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<INotificationHandler<ClientUpdatedEvent>, ClientEventHandler>();
             services.AddScoped<INotificationHandler<ClientRemovedEvent>, ClientEventHandler>();
 
-            services.AddScoped<IRequestHandler<RegisterNewClientCommand>, ClientCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateClientCommand>, ClientCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveClientCommand>, ClientCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewClientCommand>, RegisterNewClientCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateClientCommand>, UpdateClientCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveClientCommand>, RemoveClientCommandHandler>();
 
-            services.AddScoped<IRequestHandler<CreateNewProjectCommand>, ProjectCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateProjectCommand>, ProjectCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveProjectCommand>, ProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateNewProjectCommand>, CreateNewProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateProjectCommand>, UpdateProjectCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveProjectCommand>, RemoveProjectCommandHandler>();
             services.AddScoped<IRequestHandler<GetAllProjectQuery, IQueryable<Project>>, GetAllProjectQueryHandler>();
             services.AddScoped<IRequestHandler<GetProjectByIdQuery, Project>, GetProjectByIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetProjectsByUserQuery, IQueryable<Project>>, GetProjectsByUserQueryHandler>();
 
-            services.AddScoped<IRequestHandler<RegisterNewUserCommand>, UserCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateUserCommand>, UserCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveUserCommand>, UserCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterNewUserCommand>, RegisterNewUserCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateUserCommand>, UpdateUserCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveUserCommand>, RemoveUserCommandHandler>();
             services.AddScoped<IRequestHandler<GetAllUserQuery, IQueryable<User>>, GetAllUserQueryHandler>();
             services.AddScoped<IRequestHandler<GetUserByIdQuery, User>, GetUserByIdQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllRoleQuery, IQueryable<Role>>, GetAllRoleQueryHandler>();
 
-            services.AddScoped<IRequestHandler<AddProjectMemberCommand>, ProjectMemberCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveProjectMemberCommand>, ProjectMemberCommandHandler>();
+            services.AddScoped<IRequestHandler<AddProjectMemberCommand>, AddProjectMemberCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveProjectMemberCommand>, RemoveProjectMemberCommandHandler>();
+
             services.AddScoped<IRequestHandler<GetEntryLogByUserQuery, IQueryable<EntryLog>>, GetEntryLogByUserQueryHandler>();
             services.AddScoped<IRequestHandler<GetEntryLogByIdQuery, EntryLog>, GetEntryLogByIdQueryHandler>();
-
-            services.AddScoped<IRequestHandler<AddEntryLogCommand>, EntryLogCommandHandler>();
-            services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, EntryLogCommandHandler>();
+            services.AddScoped<IRequestHandler<AddEntryLogCommand>, AddEntryLogCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoveEntryLogCommand>, RemoveEntryLogCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateEntryLogCommand>, UpdateEntryLogCommandHandler>();
 
             services.AddScoped<IRequestHandler<AccountLoginQuery, User>, AccountLoginQueryHandler>();
             services.AddScoped<IRequestHandler<GetAllClientQuery, IQueryable<Client>>, GetAllClientQueryHandler>();

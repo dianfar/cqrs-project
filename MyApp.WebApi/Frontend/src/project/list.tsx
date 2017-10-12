@@ -2,12 +2,12 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
-import clientStore from "./store";
-import { IClient } from "./interface";
+import projectStore from "./store";
+import { IProject } from "./interface";
 
 @observer
-class Client extends React.Component {
-    @observable clients: IClient[] = [];
+class Project extends React.Component {
+    @observable projects: IProject[] = [];
 
     constructor(props) {
         super(props);
@@ -16,12 +16,12 @@ class Client extends React.Component {
     }
 
     async refreshList(): Promise<void> {
-        let clients = await clientStore.getClients();
-        this.clients = clients;
+        let projects = await projectStore.getProjects();
+        this.projects = projects;
     }
 
-    async deleteClient(client: IClient): Promise<void> {
-        await clientStore.deleteClient(client.id);
+    async deleteProject(project: IProject): Promise<void> {
+        await projectStore.deleteProject(project.id);
         this.refreshList();
     }
 
@@ -32,8 +32,8 @@ class Client extends React.Component {
                     <div className="col-md-12">
                         <div>
                             <div className="pull-left">
-                                <a className="btn btn-primary" href="/clients/add">
-                                    <span title="Register New" className="glyphicon glyphicon-plus-sign"></span> Create New
+                                <a href="/projects/add" className="btn btn-primary">
+                                    <span title="Create New" className="glyphicon glyphicon-plus-sign"></span> Create New
                                 </a>
                             </div>
                         </div>
@@ -49,26 +49,38 @@ class Client extends React.Component {
                                     Name
                                 </th>
                                 <th>
-                                    Description
+                                    Client Name
+                                </th>
+                                <th>
+                                    Completion Date
+                                </th>
+                                <th>
+                                    Status
                                 </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                this.clients.map((client) => (
-                                    <tr key={client.id}>
+                                this.projects.map(project => (
+                                    <tr key={project.id}>
                                         <td>
-                                            {client.name}
-                                        </td>
+                                            {project.name}
+                                    </td>
                                         <td>
-                                            {client.description}
-                                        </td>
+                                            {project.clientName}
+                                    </td>
                                         <td>
-                                            <a className="btn btn-warning" href={`/clients/${client.id}/edit`}>
+                                            {project.completionDate}
+                                    </td>
+                                        <td>
+                                            {project.active ? "active" : "inactive"}
+                                    </td>
+                                        <td>
+                                            <a href={`/projects/${project.id}/edit`} className="btn btn-warning">
                                                 <span className="glyphicon glyphicon-pencil"></span>
                                             </a>
-                                            <button type="button" className="btn btn-danger" onClick={(e) => this.deleteClient(client)}>
+                                            <button type="button" className="btn btn-danger" onClick={e => this.deleteProject(project)}>
                                                 <span className="glyphicon glyphicon-trash"></span>
                                             </button>
                                         </td>
@@ -84,6 +96,6 @@ class Client extends React.Component {
 }
 
 ReactDom.render(
-    <Client></Client>,
+    <Project></Project>,
     document.getElementById("main")
 );

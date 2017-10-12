@@ -2,8 +2,8 @@
 
 namespace MyApp.WebApi.Controllers
 {
-    [Route("clients")]
-    public class ClientController : Controller
+    [Route("projects")]
+    public class ProjectController : Controller
     {
         [HttpGet]
         [Route("")]
@@ -13,10 +13,10 @@ namespace MyApp.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("{clientId}/edit")]
-        public IActionResult Edit(string clientId)
+        [Route("{projectId}/edit")]
+        public IActionResult Edit(string projectId)
         {
-            ViewBag.ClientId = clientId;
+            ViewBag.ProjectId = projectId;
             return View("Edit");
         }
 

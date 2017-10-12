@@ -47,6 +47,39 @@ const clientEditConfig = Object.assign({}, commonConfig, {
     },
 });
 
+const projectListConfig = Object.assign({}, commonConfig, {
+    name: "projectList",
+
+    entry: "./Frontend/src/project/list.tsx",
+
+    output: {
+        filename: "projectList.js",
+        path: __dirname + "/wwwroot/script",
+    },
+});
+
+const projectAddConfig = Object.assign({}, commonConfig, {
+    name: "projectAdd",
+
+    entry: "./Frontend/src/project/add.tsx",
+
+    output: {
+        filename: "projectAdd.js",
+        path: __dirname + "/wwwroot/script",
+    },
+});
+
+const projectEditConfig = Object.assign({}, commonConfig, {
+    name: "projectEdit",
+
+    entry: "./Frontend/src/project/edit.tsx",
+
+    output: {
+        filename: "projectEdit.js",
+        path: __dirname + "/wwwroot/script",
+    },
+});
+
 const userListConfig = Object.assign({}, commonConfig, {
     name: "userList",
 
@@ -62,5 +95,8 @@ module.exports = [
     clientListConfig,
     clientAddConfig,
     clientEditConfig,
+    projectListConfig,
+    projectAddConfig,
+    projectEditConfig,
     userListConfig
 ];

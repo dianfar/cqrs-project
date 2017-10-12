@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MyApp.Domain.Queries;
+using MyApp.Domain.Commands;
 using System;
 
 namespace MyApp.Domain.Validations

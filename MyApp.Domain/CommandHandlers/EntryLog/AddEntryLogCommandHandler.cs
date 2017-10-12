@@ -1,25 +1,21 @@
-﻿using System;
-using MediatR;
+﻿using MediatR;
+using MyApp.Domain.Commands;
+using System;
 using MyApp.Domain.Core.Bus;
+using MyApp.Domain.Core.Interfaces;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Interfaces;
-using MyApp.Domain.Queries;
 using MyApp.Domain.Models;
-using MyApp.Domain.Core.Interfaces;
 
 namespace MyApp.Domain.CommandHandlers
 {
-    public class EntryLogCommandHandler : ActionHandler,
-            IRequestHandler<AddEntryLogCommand>,
-            IRequestHandler<UpdateEntryLogCommand>,
-            IRequestHandler<RemoveEntryLogCommand>
+    public class AddEntryLogCommandHandler : ActionHandler, IRequestHandler<AddEntryLogCommand>
     {
         private readonly IEntryLogRepository entryLogRepository;
         private readonly IUserRepository userRepository;
         private readonly IProjectRepository projectRepository;
-        private readonly IMediatorHandler mediatorHandler;
 
-        public EntryLogCommandHandler(
+        public AddEntryLogCommandHandler(
             IEntryLogRepository entryLogRepository,
             IUserRepository userRepository,
             IProjectRepository projectRepository,
@@ -30,7 +26,6 @@ namespace MyApp.Domain.CommandHandlers
             this.entryLogRepository = entryLogRepository;
             this.userRepository = userRepository;
             this.projectRepository = projectRepository;
-            this.mediatorHandler = bus;
         }
 
         public void Handle(AddEntryLogCommand message)
@@ -48,36 +43,6 @@ namespace MyApp.Domain.CommandHandlers
             entryLog.Project = project;
 
             entryLogRepository.Add(entryLog);
-            Commit();
-        }
-
-        public void Handle(UpdateEntryLogCommand message)
-        {
-            if (!message.IsValid())
-            {
-                NotifyValidationErrors(message);
-                return;
-            }
-
-            var user = userRepository.GetById(message.UserId);
-            var project = projectRepository.GetById(message.ProjectId);
-            var entryLog = new EntryLog(message.Id, message.EntryDate, message.Hours, message.Description);
-            entryLog.User = user;
-            entryLog.Project = project;
-
-            entryLogRepository.Update(entryLog);
-            Commit();
-        }
-
-        public void Handle(RemoveEntryLogCommand message)
-        {
-            if (!message.IsValid())
-            {
-                NotifyValidationErrors(message);
-                return;
-            }
-
-            entryLogRepository.Remove(message.Id);
             Commit();
         }
     }

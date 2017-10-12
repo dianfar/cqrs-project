@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Frontend\src\user\interface.ts" />
+    <None Remove="Frontend\src\user\store.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="2.0.1" />
     <PackageReference Include="MediatR" Version="3.0.1" />
@@ -29,6 +34,12 @@
     <None Include="Views\Client\Add.cshtml" />
     <None Include="Views\Client\Edit.cshtml" />
     <None Include="Views\Client\List.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Frontend\src\user\list.tsx" />
+    <TypeScriptCompile Include="Frontend\src\user\interface.ts" />
+    <TypeScriptCompile Include="Frontend\src\user\store.ts" />
   </ItemGroup>
 
 </Project>

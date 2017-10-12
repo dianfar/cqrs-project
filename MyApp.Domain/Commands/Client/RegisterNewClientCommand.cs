@@ -1,7 +1,7 @@
 ﻿using MyApp.Domain.Core.Commands;
 using MyApp.Domain.Validations;
 
-namespace MyApp.Domain.Queries
+namespace MyApp.Domain.Commands
 {
     public class RegisterNewClientCommand : Command
     {

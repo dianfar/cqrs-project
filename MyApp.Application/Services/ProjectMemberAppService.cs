@@ -5,6 +5,7 @@ using AutoMapper;
 using MyApp.Domain.Interfaces;
 using MyApp.Domain.Core.Bus;
 using MyApp.Domain.Queries;
+using MyApp.Domain.Commands;
 
 namespace MyApp.Application.Services
 {

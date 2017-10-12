@@ -28,6 +28,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public IQueryable<Project> Handle(GetAllProjectQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return projectRepository.GetAll();
         }
     }

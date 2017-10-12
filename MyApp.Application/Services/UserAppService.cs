@@ -6,6 +6,7 @@ using MyApp.Domain.Core.Bus;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MyApp.Domain.Queries;
+using MyApp.Domain.Commands;
 using System.Threading.Tasks;
 
 namespace MyApp.Application.Services

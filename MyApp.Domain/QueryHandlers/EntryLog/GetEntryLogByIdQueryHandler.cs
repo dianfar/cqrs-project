@@ -24,6 +24,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public EntryLog Handle(GetEntryLogByIdQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return this.entryLogRepository.GetById(message.Id);
         }
     }

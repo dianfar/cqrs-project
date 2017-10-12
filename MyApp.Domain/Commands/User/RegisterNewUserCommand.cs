@@ -2,7 +2,7 @@
 using MyApp.Domain.Validations;
 using System;
 
-namespace MyApp.Domain.Queries
+namespace MyApp.Domain.Commands
 {
     public class RegisterNewUserCommand : Command
     {

@@ -7,6 +7,7 @@ using MyApp.Domain.Core.Bus;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MyApp.Domain.Commands;
 
 namespace MyApp.Application.Services
 {

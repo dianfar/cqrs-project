@@ -26,6 +26,12 @@ namespace MyApp.Domain.QueryHandlers
 
         public Client Handle(GetClientByIdQuery message)
         {
+            if (!message.IsValid())
+            {
+                NotifyValidationErrors(message);
+                return null;
+            }
+
             return clientRepository.GetById(message.Id);
         }
     }

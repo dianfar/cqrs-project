@@ -1,8 +1,8 @@
 ﻿using MyApp.Domain.Core.Bus;
-using MyApp.Domain.Core.Commands;
 using MyApp.Domain.Core.Notifications;
 using MyApp.Domain.Core.Interfaces;
 using MediatR;
+using MyApp.Domain.Core.Events;
 
 namespace MyApp.Domain.CommandHandlers
 {
@@ -19,7 +19,7 @@ namespace MyApp.Domain.CommandHandlers
             mediatorHandler = bus;
         }
 
-        protected void NotifyValidationErrors(Command message)
+        protected void NotifyValidationErrors(Message message)
         {
             foreach (var error in message.ValidationResult.Errors)
             {

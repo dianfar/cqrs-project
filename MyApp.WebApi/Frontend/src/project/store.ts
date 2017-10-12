@@ -1,6 +1,6 @@
 ﻿import { IObservableArray, observable } from "mobx";
 import axios from "axios";
-import { IProject } from "./interface";
+import { IProject, IAddProject, IEditProject } from "./interface";
 
 export class ProjectStore {
     async getProjects(): Promise<IProject[]> {
@@ -9,13 +9,19 @@ export class ProjectStore {
         return projects;
     }
 
-    async getProject(projectId: string): Promise<IProject> {
-        let response = await axios.get(`/api/projects/${projectId}`);
-        let project = response.data as IProject;
-        return project;
+    async getAddProject(): Promise<IAddProject> {
+        let response = await axios.get(`/api/projects/add`);
+        let addProject = response.data as IAddProject;
+        return addProject;
     }
 
-    async updateProject(project: IProject): Promise<void> {
+    async getEditProject(projectId: string): Promise<IEditProject> {
+        let response = await axios.get(`/api/projects/${projectId}/edit`);
+        let editProject = response.data as IEditProject;
+        return editProject;
+    };
+
+    async updateProject(project: IEditProject): Promise<void> {
         await axios.put(`/api/projects/`, project);
     }
 

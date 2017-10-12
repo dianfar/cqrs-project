@@ -25,6 +25,22 @@ namespace MyApp.WebApi.Controllers
             return projects;
         }
 
+        [HttpGet]
+        [Route("add")]
+        public async Task<CreateNewProjectViewModel> GetAddProject()
+        {
+            var createNewProjectViewModel = await projectAppService.GetCreateNewProjectData();
+            return createNewProjectViewModel;
+        }
+
+        [HttpGet]
+        [Route("{id}/edit")]
+        public async Task<UpdateProjectViewModel> GetUpdateProject(Guid id)
+        {
+            var updateProjectViewModel = await projectAppService.GetUpdateProjectData(id);
+            return updateProjectViewModel;
+        }
+
         [HttpPost]
         [Route("")]
         public IActionResult Add([FromBody] ProjectViewModel projectViewModel)

@@ -14,11 +14,8 @@ class EditClient extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.updateClient = this.updateClient.bind(this);
-
+        
         const clientId = document.getElementById("clientId").getAttribute("data-param");
-        console.log(clientId);
         clientStore.getClient(clientId).then(client => {
             this.client = client;
         });

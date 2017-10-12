@@ -1,4 +1,6 @@
-﻿export interface IProjectMember {
+﻿import { IClient } from "../client/interface";
+
+export interface IProjectMember {
     id: string,
     projectId: string,
     userId: string,
@@ -14,4 +16,13 @@ export interface IProject {
     clientId: string,
     clientName: string,
     projectMembers: IProjectMember[]
+}
+
+export interface IAddProject extends IProject {
+    clients: IClient[];
+}
+
+export interface IEditProject extends IProject {
+    clients: IClient[];
+    users: any[]; // TODO - change type to IUser[]
 }

@@ -11,8 +11,7 @@ class Project extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.refreshList = this.refreshList.bind(this);
+        
         this.refreshList();
     }
 
@@ -64,7 +63,7 @@ class Project extends React.Component {
                         <tbody>
                             {
                                 this.projects.map(project => (
-                                    <tr>
+                                    <tr key={project.id}>
                                         <td>
                                             {project.name}
                                     </td>

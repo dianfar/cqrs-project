@@ -11,8 +11,7 @@ class UserList extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.refreshList = this.refreshList.bind(this);
+        
         this.refreshList();
     }
 

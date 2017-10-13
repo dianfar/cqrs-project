@@ -14,82 +14,32 @@ const commonConfig = {
     }
 };
 
-const clientListConfig = Object.assign({}, commonConfig, {
-    name: "clientList",
+function getConfig(configName, fileUrl) {
+    return Object.assign({}, commonConfig, {
+        name: configName,
 
-    entry: "./Frontend/src/client/list.tsx",
+        entry: fileUrl,
 
-    output: {
-        filename: "clientList.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
+        output: {
+            filename: `${configName}.js`,
+            path: __dirname + "/wwwroot/script",
+        },
+    });
+}
 
-const clientAddConfig = Object.assign({}, commonConfig, {
-    name: "clientAdd",
+const clientListConfig = getConfig("clientList", "./Frontend/src/client/list.tsx");
 
-    entry: "./Frontend/src/client/add.tsx",
+const clientAddConfig = getConfig("clientAdd", "./Frontend/src/client/add.tsx");
 
-    output: {
-        filename: "clientAdd.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
+const clientEditConfig = getConfig("clientEdit", "./Frontend/src/client/edit.tsx");
 
-const clientEditConfig = Object.assign({}, commonConfig, {
-    name: "clientEdit",
+const projectListConfig = getConfig("projectList", "./Frontend/src/project/list.tsx");
 
-    entry: "./Frontend/src/client/edit.tsx",
+const projectAddConfig = getConfig("projectAdd", "./Frontend/src/project/add.tsx");
 
-    output: {
-        filename: "clientEdit.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
+const projectEditConfig = getConfig("projectEdit", "./Frontend/src/project/edit.tsx");
 
-const projectListConfig = Object.assign({}, commonConfig, {
-    name: "projectList",
-
-    entry: "./Frontend/src/project/list.tsx",
-
-    output: {
-        filename: "projectList.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
-
-const projectAddConfig = Object.assign({}, commonConfig, {
-    name: "projectAdd",
-
-    entry: "./Frontend/src/project/add.tsx",
-
-    output: {
-        filename: "projectAdd.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
-
-const projectEditConfig = Object.assign({}, commonConfig, {
-    name: "projectEdit",
-
-    entry: "./Frontend/src/project/edit.tsx",
-
-    output: {
-        filename: "projectEdit.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
-
-const userListConfig = Object.assign({}, commonConfig, {
-    name: "userList",
-
-    entry: "./Frontend/src/user/list.tsx",
-
-    output: {
-        filename: "userList.js",
-        path: __dirname + "/wwwroot/script",
-    },
-});
+const userListConfig = getConfig("userList", "./Frontend/src/user/list.tsx");
 
 module.exports = [
     clientListConfig,

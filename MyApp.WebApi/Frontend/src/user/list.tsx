@@ -9,9 +9,8 @@ import { IUser } from "./interface";
 class UserList extends React.Component {
     @observable users: IUser[] = [];
 
-    constructor(props) {
-        super(props);
-        
+    constructor() {       
+        super();
         this.refreshList();
     }
 
@@ -27,7 +26,7 @@ class UserList extends React.Component {
                     <div className="col-md-12">
                         <div>
                             <div className="pull-left">
-                                <a className="btn btn-primary" href="/user/add">
+                                <a className="btn btn-primary" href="/users/add">
                                     <span title="Register New" className="glyphicon glyphicon-plus-sign"></span> Create New
                                 </a>
                             </div>

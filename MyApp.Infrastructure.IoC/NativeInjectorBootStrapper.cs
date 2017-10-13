@@ -38,6 +38,7 @@ namespace MyApp.Infrastructure.IoC
             services.AddScoped<IUserAppService, UserAppService>();
             services.AddScoped<IProjectMemberAppService, ProjectMemberAppService>();
             services.AddScoped<IEntryLogAppService, EntryLogAppService>();
+            services.AddScoped<IRoleAppService, RoleAppService>();
             services.AddScoped<IAccountAppService, AccountAppService>();
 
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();

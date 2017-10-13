@@ -37,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Frontend\src\user\add.tsx" />
     <TypeScriptCompile Include="Frontend\src\user\list.tsx" />
     <TypeScriptCompile Include="Frontend\src\user\interface.ts" />
     <TypeScriptCompile Include="Frontend\src\user\store.ts" />

@@ -12,12 +12,6 @@ class AddClient extends React.Component {
         description: ""
     } as IClient;
 
-    constructor(props) {
-        super(props);
-
-        this.addClient = this.addClient.bind(this);
-    }
-
     async addClient(client: IClient) {
         await clientStore.addClient(client);
         window.location.href = "/clients";

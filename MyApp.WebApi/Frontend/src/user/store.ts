@@ -15,8 +15,18 @@ export class UserStore {
         return roles;
     }
 
+    async getUser(userId: string): Promise<IUser> {
+        let response = await fetch(`/api/users/${userId}`);
+        let user = await response.json() as IUser;
+        return user;
+    }
+
     async addUser(user: IUser): Promise<void> {
         await axios.post(`/api/users/`, user);
+    }
+
+    async updateUser(user: IUser): Promise<void> {
+        await axios.put(`/api/users/`, user);
     }
 }
 

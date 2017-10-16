@@ -43,6 +43,8 @@ const userListConfig = getConfig("userList", "./Frontend/src/user/list.tsx");
 
 const userAddConfig = getConfig("userAdd", "./Frontend/src/user/add.tsx");
 
+const userEditConfig = getConfig("userEdit", "./Frontend/src/user/edit.tsx");
+
 module.exports = [
     clientListConfig,
     clientAddConfig,
@@ -51,5 +53,6 @@ module.exports = [
     projectAddConfig,
     projectEditConfig,
     userListConfig,
-    userAddConfig
+    userAddConfig,
+    userEditConfig
 ];

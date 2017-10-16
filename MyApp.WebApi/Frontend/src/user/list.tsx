@@ -45,6 +45,7 @@ class UserList extends React.Component {
                                 <th>
                                     Email
                                 </th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,6 +57,11 @@ class UserList extends React.Component {
                                         </td>
                                         <td>
                                             {user.email}
+                                        </td>
+                                        <td>
+                                            <a className="btn btn-warning" href={`/users/${user.id}/edit`}>
+                                                <span className="glyphicon glyphicon-pencil"></span>
+                                            </a>
                                         </td>
                                     </tr>
                                 ))

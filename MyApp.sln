@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Infrastructure.Identi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.WebApi", "MyApp.WebApi\MyApp.WebApi.csproj", "{F580D36B-4D35-47BB-B60C-12B47BB60ECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Infrastructure.Mail", "MyApp.Infrastructure.Mail\MyApp.Infrastructure.Mail.csproj", "{3E50AAA7-C1BC-493C-A920-D4E94A5FBD24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyApp.Infrastructure.Mail", "MyApp.Infrastructure.Mail\MyApp.Infrastructure.Mail.csproj", "{3E50AAA7-C1BC-493C-A920-D4E94A5FBD24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

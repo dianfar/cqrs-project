@@ -35,6 +35,14 @@ namespace MyApp.Web.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<UserViewModel> GetUser(Guid id)
+        {
+            var user = await userAppService.GetById(id);
+            return user;
+        }
+
         [HttpPut]
         [Route("")]
         public IActionResult Edit([FromBody] UserViewModel userViewModel)

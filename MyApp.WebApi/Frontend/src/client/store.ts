@@ -1,4 +1,4 @@
-﻿import { IObservableArray, observable } from "mobx";
+﻿import { observable } from "mobx";
 import axios from "axios";
 import { IClient } from "./interface";
 

@@ -5,8 +5,12 @@ import { observer } from "mobx-react";
 import { IClient } from "./interface";
 import clientStore from "./store";
 
+interface IEditClientProps {
+    clientId: string
+}
+
 @observer
-class EditClient extends React.Component {
+class EditClient extends React.Component<IEditClientProps> {
     @observable client: IClient = {
         name: "",
         description: ""
@@ -15,8 +19,7 @@ class EditClient extends React.Component {
     constructor(props) {
         super(props);
         
-        const clientId = document.getElementById("clientId").getAttribute("data-param");
-        clientStore.getClient(clientId).then(client => {
+        clientStore.getClient(this.props.clientId).then(client => {
             this.client = client;
         });
     }
@@ -65,7 +68,9 @@ class EditClient extends React.Component {
     }
 }
 
+const html = document.getElementById("main");
+
 ReactDom.render(
-    <EditClient></EditClient>,
-    document.getElementById("main")
+    <EditClient clientId={html.getAttribute("data-clientid")}></EditClient>,
+    html
 );

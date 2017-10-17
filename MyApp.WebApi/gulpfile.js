@@ -9,7 +9,7 @@ gulp.task("copy:html", function () {
 });
 
 gulp.task("webpack", function () {
-    return exec("node ./node_modules/webpack/bin/webpack.js", function (err, stdout, stderr) {
+    return exec("webpack --devtool source-map", function (err, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
     });

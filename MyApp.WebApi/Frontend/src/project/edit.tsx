@@ -5,8 +5,12 @@ import { observer } from "mobx-react";
 import { IEditProject } from "./interface";
 import projectStore from "./store";
 
+interface IEditProjectProps {
+    projectId: string
+}
+
 @observer
-class EditProject extends React.Component {
+class EditProject extends React.Component<IEditProjectProps> {
     @observable project: IEditProject = {
         name: "",
         description: "",
@@ -18,9 +22,8 @@ class EditProject extends React.Component {
 
     constructor(props) {
         super(props);
-
-        const projectId = document.getElementById("projectId").getAttribute("data-param");
-        projectStore.getEditProject(projectId).then(project => {
+        
+        projectStore.getEditProject(this.props.projectId).then(project => {
             this.project = project;
         });
     }
@@ -88,7 +91,9 @@ class EditProject extends React.Component {
     }
 }
 
+const html = document.getElementById("main");
+
 ReactDom.render(
-    <EditProject></EditProject>,
-    document.getElementById("main")
+    <EditProject projectId={html.getAttribute("data-projectid")}></EditProject>,
+    html
 );

@@ -1,16 +1,15 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import { IClient } from "./interface";
 import clientStore from "./store";
 
 interface IEditClientProps {
-    clientId: string
+    clientid: string
 }
 
 @observer
-class EditClient extends React.Component<IEditClientProps> {
+export class EditClient extends React.Component<IEditClientProps> {
     @observable client: IClient = {
         name: "",
         description: ""
@@ -19,7 +18,7 @@ class EditClient extends React.Component<IEditClientProps> {
     constructor(props) {
         super(props);
         
-        clientStore.getClient(this.props.clientId).then(client => {
+        clientStore.getClient(this.props.clientid).then(client => {
             this.client = client;
         });
     }
@@ -67,10 +66,3 @@ class EditClient extends React.Component<IEditClientProps> {
         );
     }
 }
-
-const html = document.getElementById("main");
-
-ReactDom.render(
-    <EditClient clientId={html.getAttribute("data-clientid")}></EditClient>,
-    html
-);

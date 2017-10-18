@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import userStore from "./store";
 import { IUser } from "./interface";
 
 @observer
-class UserList extends React.Component {
+export class UserList extends React.Component {
     @observable users: IUser[] = [];
 
     constructor() {       
@@ -73,8 +72,3 @@ class UserList extends React.Component {
         );
     }
 }
-
-ReactDom.render(
-    <UserList></UserList>,
-    document.getElementById("main")
-);

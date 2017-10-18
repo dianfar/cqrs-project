@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import accountStore from "./account.store";
 import { IAccount } from "./account";
 
 @observer
-class LoginPage extends React.Component {
+export class LoginPage extends React.Component {
     @observable account: IAccount = {
         email: "",
         password: ""
@@ -54,8 +53,3 @@ class LoginPage extends React.Component {
         );
     }
 }
-
-ReactDom.render(
-    <LoginPage></LoginPage>,
-    document.getElementById("main")
-);

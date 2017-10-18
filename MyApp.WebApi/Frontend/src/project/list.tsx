@@ -1,12 +1,11 @@
 import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import projectStore from "./store";
 import { IProject } from "./interface";
 
 @observer
-class Project extends React.Component {
+export class Project extends React.Component {
     @observable projects: IProject[] = [];
 
     constructor(props) {
@@ -94,8 +93,3 @@ class Project extends React.Component {
         );
     }
 }
-
-ReactDom.render(
-    <Project></Project>,
-    document.getElementById("main")
-);

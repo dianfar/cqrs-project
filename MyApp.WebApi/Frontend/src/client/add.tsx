@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import { IClient } from "./interface";
 import clientStore from "./store";
 
 @observer
-class AddClient extends React.Component {
+export class AddClient extends React.Component {
     @observable client: IClient = {
         name: "",
         description: ""
@@ -55,8 +54,3 @@ class AddClient extends React.Component {
         );
     }
 }
-
-ReactDom.render(
-    <AddClient></AddClient>,
-    document.getElementById("main")
-);

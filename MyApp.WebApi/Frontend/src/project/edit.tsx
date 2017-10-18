@@ -1,5 +1,4 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import { IEditProject } from "./interface";
@@ -10,7 +9,7 @@ interface IEditProjectProps {
 }
 
 @observer
-class EditProject extends React.Component<IEditProjectProps> {
+export class EditProject extends React.Component<IEditProjectProps> {
     @observable project: IEditProject = {
         name: "",
         description: "",
@@ -90,25 +89,3 @@ class EditProject extends React.Component<IEditProjectProps> {
         );
     }
 }
-
-import * as ReactHabitat from "react-habitat";
-
-class MyApp extends ReactHabitat.Bootstrapper {
-    constructor() {
-        super();
-
-        // Create a new container builder
-        const builder = new ReactHabitat.ContainerBuilder();
-
-        // Register a component
-        builder
-            .register(EditProject)
-            .as("EditProject");
-
-        // Finally, set the container
-        this.setContainer(builder.build());
-    }
-}
-
-// Always export a 'new' instance so it immediately evokes
-export default new MyApp();

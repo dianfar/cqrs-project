@@ -1,16 +1,15 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import { IUser, IRole } from "./interface";
 import userStore from "./store";
 
 interface IEditUserProps {
-    userId: string
+    userid: string
 }
 
 @observer
-class EditUser extends React.Component<IEditUserProps> {
+export class EditUser extends React.Component<IEditUserProps> {
     @observable roles: IRole[] = [];
     @observable user: IUser = {
         name: "",
@@ -20,7 +19,7 @@ class EditUser extends React.Component<IEditUserProps> {
     constructor(props) {
         super(props);
         
-        userStore.getUser(this.props.userId).then(client => {
+        userStore.getUser(this.props.userid).then(client => {
             this.user = client;
         });
         this.refreshRoleList();
@@ -98,10 +97,3 @@ class EditUser extends React.Component<IEditUserProps> {
         );
     }
 }
-
-const html = document.getElementById("main");
-
-ReactDom.render(
-    <EditUser userId={html.getAttribute("data-userid")}></EditUser>,
-    html
-);

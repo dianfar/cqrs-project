@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
-import * as ReactDom from "react-dom";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 import entryLogStore from "./entryLog.store";
 import { IEntryLog } from "./entryLog";
 
 @observer
-class EntryLogComponent extends React.Component {
+export class EntryLogComponent extends React.Component {
     @observable entryLogs: IEntryLog[] = [];
 
     constructor() {

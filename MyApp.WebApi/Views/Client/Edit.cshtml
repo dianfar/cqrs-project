@@ -2,5 +2,5 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="main" data-clientid="@ViewBag.ClientId"></div>
-<script src="/script/clientEdit.js"></script>
+<div data-component="EditClient"
+     data-prop-clientid="@ViewBag.ClientId"></div>

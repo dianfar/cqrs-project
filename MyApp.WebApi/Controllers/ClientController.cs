@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyApp.WebApi.Controllers
 {
+    [Authorize]
     [Route("clients")]
     public class ClientController : Controller
     {

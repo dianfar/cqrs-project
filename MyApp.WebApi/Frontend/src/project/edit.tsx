@@ -6,7 +6,7 @@ import { IEditProject } from "./interface";
 import projectStore from "./store";
 
 interface IEditProjectProps {
-    projectId: string
+    projectid: string
 }
 
 @observer
@@ -22,8 +22,8 @@ class EditProject extends React.Component<IEditProjectProps> {
 
     constructor(props) {
         super(props);
-        
-        projectStore.getEditProject(this.props.projectId).then(project => {
+
+        projectStore.getEditProject(this.props.projectid).then(project => {
             this.project = project;
         });
     }
@@ -91,9 +91,24 @@ class EditProject extends React.Component<IEditProjectProps> {
     }
 }
 
-const html = document.getElementById("main");
+import * as ReactHabitat from "react-habitat";
 
-ReactDom.render(
-    <EditProject projectId={html.getAttribute("data-projectid")}></EditProject>,
-    html
-);
+class MyApp extends ReactHabitat.Bootstrapper {
+    constructor() {
+        super();
+
+        // Create a new container builder
+        const builder = new ReactHabitat.ContainerBuilder();
+
+        // Register a component
+        builder
+            .register(EditProject)
+            .as("EditProject");
+
+        // Finally, set the container
+        this.setContainer(builder.build());
+    }
+}
+
+// Always export a 'new' instance so it immediately evokes
+export default new MyApp();

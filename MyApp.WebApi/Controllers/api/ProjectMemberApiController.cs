@@ -2,15 +2,18 @@
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using MyApp.WebApi.Controllers.api;
+using MediatR;
+using MyApp.Domain.Core.Notifications;
 
 namespace MyApp.Web.Controllers
 {
     [Route("api/projectmembers")]
-    public class ProjectMemberApiController : Controller
+    public class ProjectMemberApiController : BaseApiController
     {
         private readonly IProjectMemberAppService projectMemberAppService;
 
-        public ProjectMemberApiController(IProjectMemberAppService projectMemberAppService)
+        public ProjectMemberApiController(IProjectMemberAppService projectMemberAppService, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.projectMemberAppService = projectMemberAppService;
         }

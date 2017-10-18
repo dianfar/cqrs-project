@@ -4,15 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
 using System.Threading.Tasks;
+using MediatR;
+using MyApp.Domain.Core.Notifications;
+using MyApp.WebApi.Controllers.api;
 
 namespace MyApp.WebApi.Controllers
 {
     [Route("api/clients")]
-    public class ClientApiController : Controller
+    public class ClientApiController : BaseApiController
     {
         private readonly IClientAppService clientAppService;
 
-        public ClientApiController(IClientAppService clientAppService)
+        public ClientApiController(IClientAppService clientAppService, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.clientAppService = clientAppService;
         }

@@ -4,15 +4,18 @@ using MyApp.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.ViewModels;
 using System.Threading.Tasks;
+using MyApp.WebApi.Controllers.api;
+using MediatR;
+using MyApp.Domain.Core.Notifications;
 
 namespace MyApp.Web.Controllers
 {
     [Route("api/users")]
-    public class UserApiController : Controller
+    public class UserApiController : BaseApiController
     {
         private readonly IUserAppService userAppService;
 
-        public UserApiController(IUserAppService userAppService)
+        public UserApiController(IUserAppService userAppService, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.userAppService = userAppService;
         }

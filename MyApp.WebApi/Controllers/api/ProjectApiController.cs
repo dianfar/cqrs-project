@@ -4,15 +4,18 @@ using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MyApp.WebApi.Controllers.api;
+using MediatR;
+using MyApp.Domain.Core.Notifications;
 
 namespace MyApp.WebApi.Controllers
 {
     [Route("api/projects")]
-    public class ProjectApiController : Controller
+    public class ProjectApiController : BaseApiController
     {
         private readonly IProjectAppService projectAppService;
 
-        public ProjectApiController(IProjectAppService productAppService)
+        public ProjectApiController(IProjectAppService productAppService, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.projectAppService = productAppService;
         }

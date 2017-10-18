@@ -7,15 +7,17 @@ using MyApp.Application.ViewModels;
 using MyApp.Application.Interfaces;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
+using MediatR;
+using MyApp.Domain.Core.Notifications;
 
 namespace MyApp.WebApi.Controllers.api
 {
     [Route("api/account")]
-    public class AccountApiController : Controller
+    public class AccountApiController : BaseApiController
     {
         private readonly IAccountAppService accountAppService;
 
-        public AccountApiController(IAccountAppService accountAppService)
+        public AccountApiController(IAccountAppService accountAppService, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.accountAppService = accountAppService;
         }

@@ -3,45 +3,50 @@ using Microsoft.AspNetCore.Mvc;
 using MyApp.Application.Interfaces;
 using MyApp.Application.ViewModels;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using MyApp.WebApi.Controllers.api;
+using MediatR;
+using MyApp.Domain.Core.Notifications;
 
 namespace MyApp.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/entries")]
-    public class EntryLogApiController : Controller
+    public class EntryLogApiController : BaseApiController
     {
         private readonly IEntryLogAppService entryLogAppService;
 
-        public EntryLogApiController(IEntryLogAppService entryLogAppService)
+        public EntryLogApiController(IEntryLogAppService entryLogAppService, INotificationHandler<DomainNotification> notifications) : base(notifications)
         {
             this.entryLogAppService = entryLogAppService;
         }
 
         [HttpGet]
-        [Route("{userId}")]
-        public async Task<CreateUpdateEntryLogViewModel> GetEntries(Guid userId)
+        [Route("")]
+        public async Task<CreateUpdateEntryLogViewModel> GetEntries()
         {
-            var entryLogs = await entryLogAppService.GetByUser(userId);
+            var entryLogs = await entryLogAppService.GetByUser(this.UserId);
             entryLogs.EditMode = false;
             return entryLogs;
         }
         
         [HttpPost]
-        [Route("{userId}")]
-        public IActionResult Add(Guid userId, [FromBody] CreateUpdateEntryLogViewModel viewModel)
+        [Route("")]
+        public IActionResult Add([FromBody] CreateUpdateEntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            viewModel.UserId = userId;
+            viewModel.UserId = this.UserId;
             entryLogAppService.Create(viewModel);
 
             return Ok();
         }
 
         [HttpPut]
-        [Route("{userId}")]
-        public IActionResult Edit(Guid userId, [FromBody] CreateUpdateEntryLogViewModel viewModel)
+        [Route("")]
+        public IActionResult Edit([FromBody] CreateUpdateEntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            viewModel.UserId = userId;
+            viewModel.UserId = this.UserId;
             entryLogAppService.Update(viewModel);
 
             return Ok();

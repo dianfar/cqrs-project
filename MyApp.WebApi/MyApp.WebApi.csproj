@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Frontend\src\account\account.store.ts" />
+    <None Remove="Frontend\src\account\account.ts" />
+    <None Remove="Frontend\src\entryLog\entryLog.store.ts" />
+    <None Remove="Frontend\src\entryLog\entryLog.ts" />
     <None Remove="Frontend\src\user\interface.ts" />
     <None Remove="Frontend\src\user\store.ts" />
   </ItemGroup>
@@ -37,6 +41,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Frontend\src\account\account.store.ts" />
+    <TypeScriptCompile Include="Frontend\src\account\account.ts" />
+    <TypeScriptCompile Include="Frontend\src\account\loginPage.component.tsx" />
+    <TypeScriptCompile Include="Frontend\src\entryLog\entryLog.store.ts" />
+    <TypeScriptCompile Include="Frontend\src\entryLog\entryLog.ts" />
+    <TypeScriptCompile Include="Frontend\src\entryLog\entryLogPage.component.tsx" />
     <TypeScriptCompile Include="Frontend\src\user\add.tsx" />
     <TypeScriptCompile Include="Frontend\src\user\edit.tsx" />
     <TypeScriptCompile Include="Frontend\src\user\list.tsx" />

@@ -28,22 +28,16 @@ function getConfig(configName, fileUrl) {
 }
 
 const clientListConfig = getConfig("clientList", "./Frontend/src/client/list.tsx");
-
 const clientAddConfig = getConfig("clientAdd", "./Frontend/src/client/add.tsx");
-
 const clientEditConfig = getConfig("clientEdit", "./Frontend/src/client/edit.tsx");
-
 const projectListConfig = getConfig("projectList", "./Frontend/src/project/list.tsx");
-
 const projectAddConfig = getConfig("projectAdd", "./Frontend/src/project/add.tsx");
-
 const projectEditConfig = getConfig("projectEdit", "./Frontend/src/project/edit.tsx");
-
 const userListConfig = getConfig("userList", "./Frontend/src/user/list.tsx");
-
 const userAddConfig = getConfig("userAdd", "./Frontend/src/user/add.tsx");
-
 const userEditConfig = getConfig("userEdit", "./Frontend/src/user/edit.tsx");
+const entryLogPageConfig = getConfig("entryLogPage", "./Frontend/src/entryLog/entryLogPage.component.tsx");
+const loginConfig = getConfig("login", "./Frontend/src/account/loginPage.component.tsx");
 
 module.exports = [
     clientListConfig,
@@ -54,5 +48,7 @@ module.exports = [
     projectEditConfig,
     userListConfig,
     userAddConfig,
-    userEditConfig
+    userEditConfig,
+    entryLogPageConfig,
+    loginConfig
 ];

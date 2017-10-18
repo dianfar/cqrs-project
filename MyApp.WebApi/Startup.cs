@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyApp.Infrastructure.IoC;
+using System;
 
 namespace MyApp.WebApi
 {
@@ -17,16 +18,20 @@ namespace MyApp.WebApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddAuthentication("CookieAuth")
+                    .AddCookie("CookieAuth", options => {
+                        options.AccessDeniedPath = "/Account/Forbidden/";
+                        options.LoginPath = "/Account/Login/";
+                        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    });
             services.AddAutoMapper();
             services.AddMediatR(typeof(Startup));
             NativeInjectorBootStrapper.RegisterServices(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -35,6 +40,7 @@ namespace MyApp.WebApi
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

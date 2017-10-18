@@ -1,5 +1,4 @@
-﻿import { observable } from "mobx";
-import axios from "axios";
+﻿import axios from "axios";
 import { IClient } from "./interface";
 
 export class ClientStore {

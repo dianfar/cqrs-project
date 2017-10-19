@@ -18,11 +18,14 @@ function getConfig(configName, fileUrl) {
     return Object.assign({}, commonConfig, {
         name: configName,
 
-        entry: fileUrl,
+        entry: { "main": fileUrl },
 
         output: {
             filename: `${configName}.js`,
-            path: __dirname + "/wwwroot/script",
+            path: __dirname + "/wwwroot",
+            publicPath: '/',
+            hotUpdateChunkFilename: 'hot/hot-update.js',
+            hotUpdateMainFilename: 'hot/hot-update.json'
         },
     });
 }

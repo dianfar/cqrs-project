@@ -52,7 +52,7 @@ export class EditProject extends React.Component<IEditProjectProps> {
                                     this.project.clients.map(client => (
                                         <option key={client.id} value={client.id}>{client.name}</option>
                                     ))
-                                }                                
+                                }
                             </select>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ export class EditProject extends React.Component<IEditProjectProps> {
                         <label className="col-md-2 control-label">Description</label>
                         <div className="col-md-10">
                             <input name="Description" className="form-control" value={this.project.description} onChange={e => this.project.description = e.target.value} />
-                            </div>
+                        </div>
                     </div>
 
                     <div className="form-group">

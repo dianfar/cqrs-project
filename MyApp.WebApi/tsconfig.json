@@ -8,10 +8,12 @@
     "jsx": "react",
     "target": "es5",
     "types": [
-        "@types/react",
-        "@types/react-dom",
-        "@types/react-test-renderer",
-        "@types/jasmine"
+      "@types/react",
+      "@types/react-dom",
+      "@types/react-test-renderer",
+      "@types/jasmine",
+      "@types/node",
+      "@types/webpack-env"
     ],
     "lib": [
         "es2015",

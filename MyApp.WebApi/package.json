@@ -28,10 +28,15 @@
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-habitat": "0.6.0",
+    "react-hot-loader": "3.1.1",
     "react-test-renderer": "15.6.1"
   },
   "devDependencies": {
     "@types/jasmine": "2.5.54",
+    "@types/node": "8.0.44",
+    "@types/webpack-env": "1.13.2",
+    "aspnet-webpack": "2.0.1",
+    "aspnet-webpack-react": "3.0.0",
     "gulp": "3.9.1",
     "jasmine-core": "2.7.0",
     "karma": "1.7.0",
@@ -43,6 +48,8 @@
     "ts-loader": "2.3.3",
     "typescript": "2.4.2",
     "typescript-compiler": "1.4.1-2",
-    "webpack": "3.5.5"
+    "webpack": "3.5.5",
+    "webpack-env": "0.8.0",
+    "webpack-hot-middleware": "2.20.0"
   }
 }

@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Authorization;
 using MyApp.WebApi.Controllers.api;
 using MediatR;
 using MyApp.Domain.Core.Notifications;
+using System.Collections.Generic;
 
 namespace MyApp.WebApi.Controllers
 {
     [Authorize]
-    [Route("api/entries")]
+    [Route("api/entryLogs")]
     public class EntryLogApiController : BaseApiController
     {
         private readonly IEntryLogAppService entryLogAppService;
@@ -23,16 +24,15 @@ namespace MyApp.WebApi.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<CreateUpdateEntryLogViewModel> GetEntries()
+        public async Task<IEnumerable<EntryLogViewModel>> GetEntries()
         {
-            var entryLogs = await entryLogAppService.GetByUser(this.UserId);
-            entryLogs.EditMode = false;
+            var entryLogs = await entryLogAppService.GetEntryLogsByUser(this.UserId);
             return entryLogs;
         }
         
         [HttpPost]
         [Route("")]
-        public IActionResult Add([FromBody] CreateUpdateEntryLogViewModel viewModel)
+        public IActionResult Add([FromBody] EntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             viewModel.UserId = this.UserId;
@@ -43,7 +43,7 @@ namespace MyApp.WebApi.Controllers
 
         [HttpPut]
         [Route("")]
-        public IActionResult Edit([FromBody] CreateUpdateEntryLogViewModel viewModel)
+        public IActionResult Edit([FromBody] EntryLogViewModel viewModel)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             viewModel.UserId = this.UserId;

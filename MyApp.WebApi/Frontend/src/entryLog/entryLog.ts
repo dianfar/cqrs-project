@@ -3,7 +3,7 @@
     userId: string,
     projectId: string,
     projectName: string,
+    entryDate: string,
     hours: number,
-    entryDate: Date,
     description: string
 }

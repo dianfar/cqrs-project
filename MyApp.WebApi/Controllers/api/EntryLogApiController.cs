@@ -34,8 +34,8 @@ namespace MyApp.WebApi.Controllers
         [Route("")]
         public IActionResult Add([FromBody] EntryLogViewModel viewModel)
         {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
             viewModel.UserId = this.UserId;
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             entryLogAppService.Create(viewModel);
 
             return Ok();

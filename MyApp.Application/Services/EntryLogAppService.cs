@@ -7,6 +7,7 @@ using MyApp.Domain.Queries;
 using MyApp.Domain.Commands;
 using AutoMapper.QueryableExtensions;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MyApp.Application.Services
 {
@@ -74,6 +75,12 @@ namespace MyApp.Application.Services
         {
             var addCommand = mapper.Map<UpdateEntryLogCommand>(entryLogViewModel);
             mediatorHandler.SendCommand(addCommand);
+        }
+
+        public async Task<IEnumerable<EntryLogViewModel>> GetEntryLogsByUser(Guid userId)
+        {
+            var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
+            return entryLogs.ProjectTo<EntryLogViewModel>();
         }
     }
 }

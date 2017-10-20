@@ -2,4 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-component="AddProject"></div>
+<div id="app"></div>
+<script src="~/scripts/projectAdd.js"></script>
+<script>
+    MyApp.renderApp(MyApp.AddProject);
+</script>

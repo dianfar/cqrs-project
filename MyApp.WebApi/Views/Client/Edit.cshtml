@@ -2,5 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-component="EditClient"
-     data-prop-clientid="@ViewBag.ClientId"></div>
+<div id="app"></div>
+<script src="~/scripts/clientEdit.js"></script>
+<script>
+    MyApp.renderApp(MyApp.EditClient, "@ViewBag.ClientId");
+</script>

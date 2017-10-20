@@ -1,6 +1,8 @@
 ﻿import * as React from "react";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
+import DatePicker from 'react-datepicker';
+import * as moment from 'moment';
 import entryLogStore from "./entryLog.store";
 import projectStore from "../project/store";
 import { IEntryLog } from "./entryLog";
@@ -22,6 +24,7 @@ export class EntryLogComponent extends React.Component {
         super();
         this.getEntryLogList();
         this.getProjectList();
+        this.handleChange = this.handleChange.bind(this);
     }
 
     async getEntryLogList(): Promise<void> {
@@ -64,6 +67,10 @@ export class EntryLogComponent extends React.Component {
 
     async deleteEntryLog(log: IEntryLog): Promise<void> {
 
+    }
+
+    handleChange(date) {
+        this.entryLog.entryDate = date;
     }
 
     render() {
@@ -134,7 +141,10 @@ export class EntryLogComponent extends React.Component {
                                 <div className="form-group">
                                     <label className="col-md-2 control-label">Entry Date</label>
                                     <div className="col-md-10">
-                                        <input id="datepicker" name="EntryDate" className="form-control" value={this.entryLog.entryDate} onChange={e => this.entryLog.entryDate = e.target.value} />
+                                        <DatePicker
+                                            selected={this.entryLog.entryDate}
+                                            onChange={this.handleChange}
+                                        />
                                     </div>
                                 </div>
 

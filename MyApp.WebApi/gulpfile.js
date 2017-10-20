@@ -26,7 +26,8 @@ gulp.task("copy:lib", function () {
     var lib =
         [
             ["jquery/dist", "node_modules/jquery/dist/jquery.min.js"],
-            ["bootstrap/dist", "node_modules/bootstrap/dist/**"]
+            ["bootstrap/dist", "node_modules/bootstrap/dist/**"],
+            ["react-datepicker/dist", "node_modules/react-datepicker/dist/**"]
         ];
 
     for (var index in lib) {

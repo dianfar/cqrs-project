@@ -10,6 +10,7 @@ namespace MyApp.Application.Interfaces
         Task<CreateUpdateEntryLogViewModel> GetByUser(Guid userId);
         Task<CreateUpdateEntryLogViewModel> GetUpdatedData(Guid userId, Guid id);
         Task<IEnumerable<EntryLogViewModel>> GetEntryLogsByUser(Guid userId);
+        Task<EntryLogViewModel> GetById(Guid id);
         void Create(EntryLogViewModel entryLogViewModel);
         void Update(EntryLogViewModel entryLogViewModel);
         void Remove(Guid id);

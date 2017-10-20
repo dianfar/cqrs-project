@@ -8,6 +8,12 @@ export class EntryLogStore {
         return logs;
     }
 
+    async getEntryLog(id: string): Promise<IEntryLog> {
+        let response = await axios.get(`/api/entryLogs/${id}`);
+        let log = response.data as IEntryLog;
+        return log;
+    }
+
     async updateEntryLog(entryLog: IEntryLog): Promise<void> {
         await axios.put(`/api/entryLogs`, entryLog);
     }

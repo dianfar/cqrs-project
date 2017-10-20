@@ -82,5 +82,11 @@ namespace MyApp.Application.Services
             var entryLogs = await mediatorHandler.GetResult(new GetEntryLogByUserQuery(userId));
             return entryLogs.ProjectTo<EntryLogViewModel>();
         }
+
+        public async Task<EntryLogViewModel> GetById(Guid id)
+        {
+            var entryLog = await mediatorHandler.GetResult(new GetEntryLogByIdQuery(id));
+            return mapper.Map<EntryLogViewModel>(entryLog);
+        }
     }
 }

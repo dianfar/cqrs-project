@@ -8,11 +8,12 @@ import { IProject } from "../project/interface";
 
 @observer
 export class EntryLogComponent extends React.Component {
+    @observable editMode: boolean = false;
     @observable entryLogs: IEntryLog[] = [];
     @observable entryLog: IEntryLog = {
         projectName: "",
         hours: 0,
-        entryDate: new Date().toDateString(),
+        entryDate: "",
         description: ""
     } as IEntryLog;
     @observable projects: IProject[] = [];
@@ -28,6 +29,12 @@ export class EntryLogComponent extends React.Component {
         this.entryLogs = entryLogs;
     }
 
+    async getEntryLog(id: string): Promise<void> {
+        let entryLog = await entryLogStore.getEntryLog(id);
+        this.entryLog = entryLog;
+        this.editMode = true;
+    }
+
     async getProjectList(): Promise<void> {
         let projects = await projectStore.getProjects();
         this.projects = projects;
@@ -36,10 +43,23 @@ export class EntryLogComponent extends React.Component {
         }
     }
 
-    async addEntryLog(entryLog: IEntryLog): Promise<void> {
-        entryLogStore.addEntryLog(entryLog).then(() => {
-            this.getEntryLogList();
-        });
+    async saveEntryLog(entryLog: IEntryLog): Promise<void> {
+        if (this.editMode) {
+            entryLogStore.updateEntryLog(entryLog).then(() => {
+                this.getEntryLogList();
+                this.entryLog = {
+                    projectName: "",
+                    hours: 0,
+                    entryDate: "",
+                    description: ""
+                } as IEntryLog;
+                this.editMode = false;
+            });
+        } else {
+            entryLogStore.addEntryLog(entryLog).then(() => {
+                this.getEntryLogList();
+            });
+        }
     }
 
     async deleteEntryLog(log: IEntryLog): Promise<void> {
@@ -79,7 +99,7 @@ export class EntryLogComponent extends React.Component {
                                             {log.description}
                                         </td>
                                         <td>
-                                            <a className="btn btn-warning" href={`/entryLogs/${log.id}/edit`}>
+                                            <a className="btn btn-warning" onClick={() => this.getEntryLog(log.id)}>
                                                 <span className="glyphicon glyphicon-pencil"></span>
                                             </a>
                                             <button type="button" className="btn btn-danger" onClick={(e) => this.deleteEntryLog(log)}>
@@ -134,7 +154,7 @@ export class EntryLogComponent extends React.Component {
 
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
-                                        <input type="button" value="Save" className="btn btn-success" onClick={() => this.addEntryLog(this.entryLog)} />
+                                        <input type="button" value="Save" className="btn btn-success" onClick={() => this.saveEntryLog(this.entryLog)} />
                                     </div>
                                 </div>
                             </div>

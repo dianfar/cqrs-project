@@ -29,7 +29,15 @@ namespace MyApp.WebApi.Controllers
             var entryLogs = await entryLogAppService.GetEntryLogsByUser(this.UserId);
             return entryLogs;
         }
-        
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<EntryLogViewModel> GetEntry(Guid id)
+        {
+            var entryLog = await entryLogAppService.GetById(id);
+            return entryLog;
+        }
+
         [HttpPost]
         [Route("")]
         public IActionResult Add([FromBody] EntryLogViewModel viewModel)

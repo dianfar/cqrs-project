@@ -2,5 +2,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-component="EditProject"
-     data-prop-projectid="@ViewBag.ProjectId"></div>
+<div id="app"></div>
+<script src="~/scripts/projectEdit.js"></script>
+<script>
+    MyApp.renderApp(MyApp.EditProject, "@ViewBag.ProjectId");
+</script>
